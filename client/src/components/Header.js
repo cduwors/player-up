@@ -14,7 +14,7 @@ const Header = () => {
     <header className="header">
       <div className="">
         <Link to="/">
-          <span><img src={logo}></img></span>
+          <span><img src={logo} alt="player-up-logo"></img></span>
         </Link>
 
         <nav className="text-center">

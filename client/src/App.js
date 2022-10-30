@@ -6,17 +6,17 @@ import {
   InMemoryCache,
   createHttpLink,
 } from "@apollo/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 // import page components
-// import Home from "./pages/Home";
-// import Login from "./pages/Login";
-// import NoMatch from "./pages/NoMatch";
-// import SingleEvent from "./pages/SingleEvent";
-// import Profile from "./pages/Profile";
-// import Signup from "./pages/Signup";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import NoMatch from "./pages/NoMatch";
+import SingleEvent from "./pages/SingleEvent";
+import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
 
 // first, establish a new link to the GraphQL server at its /graphql endpoint
 const httpLink = createHttpLink({
@@ -45,7 +45,8 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            {/* <Routes>
+            <Home></Home>
+            <Switch>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
@@ -55,7 +56,7 @@ function App() {
               </Route>
               <Route path="/event/:id" element={<SingleEvent />} />
               <Route path="*" element={<NoMatch />} />
-            </Routes> */}
+            </Switch>
           </div>
           <Footer />
         </div>
