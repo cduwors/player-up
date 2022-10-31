@@ -19,18 +19,17 @@ code {
 .side {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
-
+main {
+  width: 100%;
+}
+/* header  */
 .header {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.header-home {
-  display: flex;
-  justify-content: flex-end;
 }
 
 .logo-header {
@@ -50,6 +49,31 @@ code {
   list-style-type: none;
   flex-wrap: wrap;
 }
+
+.nav-link {
+  margin: 40px 0;
+}
+
+.navActive {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+.background-cork {
+  background-image: url("./images/cork-board.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 30%;
+  width: 100%;
+  /* border: 5px solid rgb(63, 31, 1);
+  border-style: inset; */
+}
+
+/* home page */
+.header-home {
+  display: flex;
+  justify-content: flex-end;
+}
 .nav-header-home {
   display: flex;
   justify-content: space-between;
@@ -67,16 +91,6 @@ code {
 .nav-link-home {
   margin: 0 20px;
 }
-
-.nav-link {
-  margin: 40px 0;
-}
-
-.navActive {
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
-}
-
 .logo-home {
   max-width: 300px;
   max-height: auto;
@@ -93,27 +107,42 @@ code {
   height: 500px;
   width: 100%;
 }
-.background-cork {
-  background-image: url("./images/cork-board.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  height: 30%;
-  width: 100%;
-  /* border: 5px solid rgb(63, 31, 1);
-  border-style: inset; */
-}
 
-footer {
-  text-align: center;
-}
-
+/* Events page */
 .cork-board {
   background-image: url("./images/cork-board.jpg");
   background-size: cover;
   background-attachment: fixed;
-}
-
-.column {
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
+}
+
+.event-header {
+text-align: center;
+}
+
+.event-list {
+list-style-type: none;
+display: flex;
+width: 100%;
+justify-content: center;
+}
+
+.thumbtack-note {
+  background-image: url("./images/blank-thumbtack-note.png");
+  /* background-size: cover;
+  background-attachment: fixed; */
+  height: 100%;
+  width: 100%;
+}
+
+.card {
+  max-width: 200px;
+  border: 3px solid black;
+  margin: 10px;
+}
+footer {
+  text-align: center;
 }
