@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 // import page components
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import NoMatch from "./pages/NoMatch";
+import Events from "./pages/Events";
+// import NoMatch from "./pages/NoMatch";
 import SingleEvent from "./pages/SingleEvent";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
@@ -17,6 +18,7 @@ function App() {
     { name: "Events" },
     { name: "Login" },
     { name: "Signup" },
+    { name: "SingleEvent" },
   ]);
 
   // page selection state
@@ -32,6 +34,8 @@ function App() {
       return <Login></Login>;
     } else if (currentPage === "Signup") {
       return <Signup></Signup>;
+    } else if (currentPage === "SingleEvent") {
+      return <SingleEvent></SingleEvent>;
     } else {
       return <Home></Home>;
     }
