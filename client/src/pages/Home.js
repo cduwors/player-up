@@ -3,12 +3,13 @@ import logo from "../images/player-up-logo.png";
 
 const Home = () => {
   return (
-    <main>
+    <section>
       <div>
         <div>Home Page</div>
-        <img src={logo} alt="player-up-logo"></img>
+        <div className="logo-home"><img className="logo" src={logo} alt="player-up-logo"></img></div>
+        
       </div>
-    </main>
+    </section>
   );
 };
 

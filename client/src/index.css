@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.page {
+  margin: 20px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.logo-header {
+  max-width: 100px;
+  max-height: auto;
+}
+
+.logo {
+  height: 100%;
+  width: 100%;
+}
+
+.nav-home {
+  display: flex;
+  margin-right: 50px;
+}
+
+.nav-link {
+  margin: 20px;
+}
+
+.logo-home {
+  max-width: 500px;
+  max-height: auto;
+}
