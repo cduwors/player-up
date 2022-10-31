@@ -11,7 +11,7 @@ export const QUERY_USER = gql`
           _id
           eventName
           description
-          dataAndTime
+          dateAndTime
           location
           numberPlayersNeeded
           organizerNames
