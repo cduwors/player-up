@@ -70,7 +70,7 @@ const Event = () => {
       <ul className="event-list">
         {events.map((event) => (
           <li key={event._id} className="card">
-            <div>
+            <div className="text-box">
               <div>{event.eventName}</div>
               <div>{event.description}</div>
               <div>{event.dateAndTime}</div>

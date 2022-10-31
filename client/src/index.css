@@ -126,6 +126,7 @@ text-align: center;
 .event-list {
 list-style-type: none;
 display: flex;
+flex-wrap: wrap;
 width: 100%;
 justify-content: center;
 }
@@ -139,10 +140,21 @@ justify-content: center;
 }
 
 .card {
-  max-width: 200px;
-  border: 3px solid black;
+  font-size: 12px;
+  width: 275px;
+  height: 300px;
   margin: 10px;
+  background-image: url("./images/blank-thumbtack-note.png");
+  background-size: cover;
 }
+
+.text-box {
+  position: relative;
+  top: 50px;
+  left: 30px;
+  width: 225px;
+}
+
 footer {
   text-align: center;
 }
