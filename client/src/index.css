@@ -64,3 +64,9 @@ code {
 .float {
   float: right;
 }
+
+.home-background {
+  background-image: url("./images/background-green.png");
+  background-size: cover;
+  background-attachment: fixed;
+}

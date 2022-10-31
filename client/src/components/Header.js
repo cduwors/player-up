@@ -24,64 +24,62 @@ const Header = (props) => {
 
   return (
     <header>
-      <div className="header">
+      
         {/* <Link to="/"> */}
         {currentPage.name !== "Home" ? (
+          <div className="header">
           <a href="/" onClick={() => setCurrentPage("Home")}>
             <div className="logo-header">
               <img className="logo" src={logo} alt="player-up-logo"></img>
             </div>
           </a>
+          <nav>
+          <ul className="nav-header">
+            {pages.map((page) => (
+              <li
+                className={`nav-link ${
+                  currentPage.name === page.name &&
+                  pageSelected &&
+                  "navActive"
+                }`}
+                key={page.name}
+              >
+                <span
+                  onClick={() => {
+                    setCurrentPage(page);
+                    setPageSelected(true);
+                  }}
+                >
+                  {capitalizeFirstLetter(page.name)}
+                </span>
+              </li>
+            ))}
+            {/* {Auth.loggedIn() ? (
+          <>
+            <Link to="/profile">Me</Link>
+            <a href="/" onClick={logout}>
+              Logout
+            </a>
+          </>
         ) : (
+        <>
+          <Link to="/events" className="nav-link">Events</Link>
+          <Link to="/login" className="nav-link">Login</Link>
+          <Link to="/signup" className="nav-link">Signup</Link>
+        </>
+        )} */}
+          </ul>
+        </nav>
+        </div>
+        ) : (
+          <div className="header">
           <a className="hide" href="/" onClick={() => setCurrentPage("Home")}>
             <div className="logo-header">
               <img className="logo" src={logo} alt="player-up-logo"></img>
             </div>
           </a>
-        )}
-
-        {/* </Link> */}
-        {currentPage.name !== "Home" ? (
-          <nav>
-            <ul className="nav-header">
-              {pages.map((page) => (
-                <li
-                  className={`nav-link ${
-                    currentPage.name === page.name &&
-                    pageSelected &&
-                    "navActive"
-                  }`}
-                  key={page.name}
-                >
-                  <span
-                    onClick={() => {
-                      setCurrentPage(page);
-                      setPageSelected(true);
-                    }}
-                  >
-                    {capitalizeFirstLetter(page.name)}
-                  </span>
-                </li>
-              ))}
-              {/* {Auth.loggedIn() ? (
-            <>
-              <Link to="/profile">Me</Link>
-              <a href="/" onClick={logout}>
-                Logout
-              </a>
-            </>
-          ) : (
-          <>
-            <Link to="/events" className="nav-link">Events</Link>
-            <Link to="/login" className="nav-link">Login</Link>
-            <Link to="/signup" className="nav-link">Signup</Link>
-          </>
-          )} */}
-            </ul>
-          </nav>
-        ) : (
           <div className="nav-home">
-            <nav className="float">
+            <nav>
               <ul className="nav-header">
                 {pages.map((page) => (
                   <li
@@ -102,11 +100,25 @@ const Header = (props) => {
                     </span>
                   </li>
                 ))}
+                   {/* {Auth.loggedIn() ? (
+          <>
+            <Link to="/profile">Me</Link>
+            <a href="/" onClick={logout}>
+              Logout
+            </a>
+          </>
+        ) : (
+        <>
+          <Link to="/events" className="nav-link">Events</Link>
+          <Link to="/login" className="nav-link">Login</Link>
+          <Link to="/signup" className="nav-link">Signup</Link>
+        </>
+        )} */}
               </ul>
             </nav>
           </div>
-        )}
       </div>
+        )}
     </header>
   );
 };

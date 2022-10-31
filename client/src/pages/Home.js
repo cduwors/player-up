@@ -5,9 +5,7 @@ const Home = () => {
   return (
     <section>
       <div>
-        <div>Home Page</div>
         <div className="logo-home"><img className="logo" src={logo} alt="player-up-logo"></img></div>
-        
       </div>
     </section>
   );
