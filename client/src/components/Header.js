@@ -26,11 +26,19 @@ const Header = (props) => {
     <header>
       <div className="header">
         {/* <Link to="/"> */}
+        {currentPage.name !== "Home" ?
         <a href="/" onClick={()=> setCurrentPage("Home")}>
           <div className="logo-header">
             <img className="logo" src={logo} alt="player-up-logo"></img>
           </div>
-          </a>
+          </a> 
+          : 
+          <a className="hide" href="/" onClick={()=> setCurrentPage("Home")}>
+          <div className="logo-header">
+            <img className="logo" src={logo} alt="player-up-logo"></img>
+          </div>
+          </a> }
+          
         {/* </Link> */}
 
         <nav className="nav-home">

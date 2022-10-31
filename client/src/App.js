@@ -23,6 +23,7 @@ function App() {
   // page selection state
   const [pageSelected, setPageSelected] = useState(false);
   const [currentPage, setCurrentPage] = useState(pages[0]);
+//   const [homePage, setHomePage] = useState(false);
 
   function renderPage(currentPage) {
     if (currentPage === "Profile") {

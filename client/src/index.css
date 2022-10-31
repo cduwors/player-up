@@ -50,3 +50,7 @@ code {
   max-width: 500px;
   max-height: auto;
 }
+
+.hide {
+  display: none;
+}
