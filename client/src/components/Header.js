@@ -24,37 +24,36 @@ const Header = (props) => {
 
   return (
     <header>
-      
-        {/* <Link to="/"> */}
-        {currentPage.name !== "Home" ? (
-          <div className="header">
+      {/* <Link to="/"> */}
+      {currentPage.name !== "Home" ? (
+        <div className="header">
           <a href="/" onClick={() => setCurrentPage("Home")}>
             <div className="logo-header">
               <img className="logo" src={logo} alt="player-up-logo"></img>
             </div>
           </a>
           <nav>
-          <ul className="nav-header">
-            {pages.map((page) => (
-              <li
-                className={`nav-link ${
-                  currentPage.name === page.name &&
-                  pageSelected &&
-                  "navActive"
-                }`}
-                key={page.name}
-              >
-                <span
-                  onClick={() => {
-                    setCurrentPage(page);
-                    setPageSelected(true);
-                  }}
+            <ul className="nav-header">
+              {pages.map((page) => (
+                <li
+                  className={`nav-link ${
+                    currentPage.name === page.name &&
+                    pageSelected &&
+                    "navActive"
+                  }`}
+                  key={page.name}
                 >
-                  {capitalizeFirstLetter(page.name)}
-                </span>
-              </li>
-            ))}
-            {/* {Auth.loggedIn() ? (
+                  <span
+                    onClick={() => {
+                      setCurrentPage(page);
+                      setPageSelected(true);
+                    }}
+                  >
+                    {capitalizeFirstLetter(page.name)}
+                  </span>
+                </li>
+              ))}
+              {/* {Auth.loggedIn() ? (
           <>
             <Link to="/profile">Me</Link>
             <a href="/" onClick={logout}>
@@ -68,11 +67,11 @@ const Header = (props) => {
           <Link to="/signup" className="nav-link">Signup</Link>
         </>
         )} */}
-          </ul>
-        </nav>
+            </ul>
+          </nav>
         </div>
-        ) : (
-          <div className="header">
+      ) : (
+        <div className="header-home">
           <a className="hide" href="/" onClick={() => setCurrentPage("Home")}>
             <div className="logo-header">
               <img className="logo" src={logo} alt="player-up-logo"></img>
@@ -100,7 +99,7 @@ const Header = (props) => {
                     </span>
                   </li>
                 ))}
-                   {/* {Auth.loggedIn() ? (
+                {/* {Auth.loggedIn() ? (
           <>
             <Link to="/profile">Me</Link>
             <a href="/" onClick={logout}>
@@ -117,8 +116,8 @@ const Header = (props) => {
               </ul>
             </nav>
           </div>
-      </div>
-        )}
+        </div>
+      )}
     </header>
   );
 };
