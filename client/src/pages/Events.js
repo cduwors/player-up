@@ -2,7 +2,9 @@ import React from 'react';
 
 const Event = () => {
   return (
-    <div>Event</div>
+    <section className='cork-board'>
+      <h2>Got Game?</h2>
+    </section>
   );
 };
 

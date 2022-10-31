@@ -16,8 +16,14 @@ code {
   padding: 20px;
 }
 
+.side {
+  display: flex;
+  flex-direction: row;
+}
+
 .header {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -28,7 +34,7 @@ code {
 }
 
 .logo-header {
-  max-width: 100px;
+  max-width: 150px;
   max-height: auto;
 }
 
@@ -38,6 +44,15 @@ code {
 }
 .nav-header {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 50px;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+.nav-header-home {
+  display: flex;
+  justify-content: space-between;
   margin-right: 50px;
   list-style-type: none;
   flex-wrap: wrap;
@@ -49,8 +64,12 @@ code {
   text-align: right;
 }
 
-.nav-link {
+.nav-link-home {
   margin: 0 20px;
+}
+
+.nav-link {
+  margin: 40px 0;
 }
 
 .navActive {
@@ -80,8 +99,21 @@ code {
   background-attachment: fixed;
   height: 30%;
   width: 100%;
+  /* border: 5px solid rgb(63, 31, 1);
+  border-style: inset; */
 }
 
 footer {
   text-align: center;
+}
+
+.cork-board {
+  background-image: url("./images/cork-board.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
 }

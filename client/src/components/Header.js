@@ -17,10 +17,13 @@ const Header = (props) => {
     document.title = capitalizeFirstLetter(currentPage.name);
   }, [currentPage]);
 
-  // const navList = pages.filer(page => {
-  //   if(page.name !== "SingleEvent") return page.name
-  // })
-  // console.log(navList)
+  const homeNavList = pages.filter(page => {
+    if(page.name !== "SingleEvent" && page.name !=="Home") return page.name
+  })
+  const navList = pages.filter(page => {
+    if(page.name !== "SingleEvent" && page.name !=="Home") return page.name
+  })
+  console.log(navList)
 
   return (
     <header>
@@ -34,7 +37,7 @@ const Header = (props) => {
           </a>
           <nav>
             <ul className="nav-header">
-              {pages.map((page) => (
+              {navList.map((page) => (
                 <li
                   className={`nav-link ${
                     currentPage.name === page.name &&
@@ -79,10 +82,10 @@ const Header = (props) => {
           </a>
           <div className="nav-home">
             <nav>
-              <ul className="nav-header">
-                {pages.map((page) => (
+              <ul className="nav-header-home">
+                {homeNavList.map((page) => (
                   <li
-                    className={`nav-link ${
+                    className={`nav-link-home ${
                       currentPage.name === page.name &&
                       pageSelected &&
                       "navActive"

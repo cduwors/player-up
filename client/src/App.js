@@ -10,7 +10,6 @@ import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 
 function App() {
-    
   // page navigation
   const [pages] = useState([
     { name: "Home" },
@@ -18,12 +17,13 @@ function App() {
     { name: "Events" },
     { name: "Login" },
     { name: "Signup" },
+    { name: "SingleEvent" },
   ]);
 
   // page selection state
   const [pageSelected, setPageSelected] = useState(false);
   const [currentPage, setCurrentPage] = useState(pages[0]);
-//   const [homePage, setHomePage] = useState(false);
+  //   const [homePage, setHomePage] = useState(false);
 
   function renderPage(currentPage) {
     if (currentPage === "Profile") {
@@ -40,16 +40,18 @@ function App() {
   }
   return (
     <div className="page">
-      <Header
-        pages={pages}
-        pageSelected={pageSelected}
-        setPageSelected={setPageSelected}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      ></Header>
-      <main>
-        {pageSelected ? renderPage(currentPage.name) : <Home></Home>}
-      </main>
+      <div className={`${pageSelected && currentPage !== 'Home' && 'side'}`}>
+        <Header
+          pages={pages}
+          pageSelected={pageSelected}
+          setPageSelected={setPageSelected}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        ></Header>
+        <main>
+          {pageSelected ? renderPage(currentPage.name) : <Home></Home>}
+        </main>
+      </div>
       <Footer></Footer>
     </div>
   );
