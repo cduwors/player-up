@@ -106,3 +106,14 @@ code {
 footer {
   text-align: center;
 }
+
+.cork-board {
+  background-image: url("./images/cork-board.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}

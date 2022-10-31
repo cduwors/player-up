@@ -2,7 +2,7 @@ import React from 'react';
 
 const Event = () => {
   return (
-    <div>Event</div>
+    <div className='cork-board' >Event</div>
   );
 };
 
