@@ -18,6 +18,7 @@ function App() {
     { name: "Events" },
     { name: "Login" },
     { name: "Signup" },
+    { name: "SingleEvent" },
   ]);
 
   // page selection state
@@ -40,6 +41,7 @@ function App() {
   }
   return (
     <div className="page">
+      <div className={`${currentPage !== "Home" && "side"}`}>
       <Header
         pages={pages}
         pageSelected={pageSelected}
@@ -50,6 +52,7 @@ function App() {
       <main>
         {pageSelected ? renderPage(currentPage.name) : <Home></Home>}
       </main>
+      </div>
       <Footer></Footer>
     </div>
   );
