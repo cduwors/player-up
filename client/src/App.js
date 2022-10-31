@@ -6,11 +6,11 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Events from "./pages/Events";
 // import NoMatch from "./pages/NoMatch";
-import SingleEvent from "./pages/SingleEvent";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 
 function App() {
+    
   // page navigation
   const [pages] = useState([
     { name: "Home" },
@@ -18,7 +18,6 @@ function App() {
     { name: "Events" },
     { name: "Login" },
     { name: "Signup" },
-    { name: "SingleEvent" },
   ]);
 
   // page selection state
@@ -34,8 +33,6 @@ function App() {
       return <Login></Login>;
     } else if (currentPage === "Signup") {
       return <Signup></Signup>;
-    } else if (currentPage === "SingleEvent") {
-      return <SingleEvent></SingleEvent>;
     } else {
       return <Home></Home>;
     }
