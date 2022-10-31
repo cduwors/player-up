@@ -31,14 +31,20 @@ code {
   height: 100%;
   width: 100%;
 }
-
-.nav-home {
+.nav-header {
   display: flex;
   margin-right: 50px;
+  list-style-type: none;
+}
+
+.nav-home {
+  float: right;
+  list-style-type: none;
+  text-align: right;
 }
 
 .nav-link {
-  margin: 20px;
+  margin: 0 20px;
 }
 
 .navActive {
@@ -53,4 +59,8 @@ code {
 
 .hide {
   display: none;
+}
+
+.float {
+  float: right;
 }
