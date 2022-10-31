@@ -13,7 +13,7 @@ code {
 }
 
 .page {
-  margin: 20px;
+  padding: 20px;
 }
 
 .header {
@@ -40,6 +40,7 @@ code {
   display: flex;
   margin-right: 50px;
   list-style-type: none;
+  flex-wrap: wrap;
 }
 
 .nav-home {
@@ -58,7 +59,7 @@ code {
 }
 
 .logo-home {
-  max-width: 500px;
+  max-width: 300px;
   max-height: auto;
 }
 
@@ -70,9 +71,17 @@ code {
   background-image: url("./images/board-games.jpg");
   background-size: cover;
   background-attachment: fixed;
-  height: 600px;
-}
-.background-green {
-  height: auto;
+  height: 500px;
   width: 100%;
+}
+.background-cork {
+  background-image: url("./images/cork-board.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 30%;
+  width: 100%;
+}
+
+footer {
+  text-align: center;
 }
