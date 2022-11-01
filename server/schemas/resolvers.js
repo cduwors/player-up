@@ -3,20 +3,15 @@ const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
-  //   Query: {
-  //   me: async (parent, args, context) => {
-  //     if (context.user) {
-  //       const userData = await User.findOne({ _id: context.user._id })
-  //         .select('-__v -password')
-  //         // .populate('thoughts')
-  //         // .populate('friends');
+    Query: {
+      user: async () => {
+        return await User.findOne({ _id: userId }).populate('events');
+        },
 
-  //       return userData;
-  //     }
-
-  //     throw new AuthenticationError('Not logged in');
-  //   },
-  // },
+      events: async () => {
+        return await User.find( events ).sort({ createdAt: -1 });
+      },
+  },
 	Mutation: {
 		addUser: async (parent, args) => {
 			const user = await User.create(args);
@@ -38,6 +33,17 @@ const resolvers = {
 			const token = signToken(user);
 			return { token, user };
 		},
+    // addPlayer: async (parent, { eventsId }, context) => {
+    //   if (context.user) {
+    //     const udpatedUser = await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $addToset: { players: { playerId } } },
+    //       { new: true, runValidators: true }
+    //     )
+    //     return updatedUser;
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
     addEvent: async (parent, { eventsId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
@@ -45,10 +51,8 @@ const resolvers = {
           { $addToset: { events: { eventsId } } },
           { new: true, runValidators: true }
         ).populate('events');
-
         return updatedUser;
       }
-
       throw new AuthenticationError('You need to be logged in!');
     },
     updateEvent: async (parent, { eventsId }, context) => {
@@ -58,10 +62,8 @@ const resolvers = {
           { $push: { events: { eventsId } } },
           { new: true, runValidators: true }
         );
-
         return updatedUser;
       }
-
       throw new AuthenticationError('You need to be logged in!');
     },
     deleteEvent: async (parent, { eventsId }, context) => {
@@ -72,10 +74,8 @@ const resolvers = {
           { new: true }
         );
       return updatedUser;
-
       }
     throw new AuthenticationError('You need to be logged in!');
-    
     }
 	},
 };
