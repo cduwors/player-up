@@ -29,6 +29,11 @@ const eventSchema = new Schema({
 	organizerName: {
 		type: String,
 	},
+	attending: [
+        {
+		type: String,
+	},
+    ]
 });
 
 module.exports = eventSchema;
