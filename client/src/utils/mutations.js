@@ -1,71 +1,69 @@
 import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
-	mutation login($email: String!, $password: String!) {
-		login(email: $email, password: $password) {
-			token
-			user {
-				_id
-				username
-				email
-			}
-		}
-	}
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+        email
+      }
+    }
+  }
 `;
 
 export const ADD_USER = gql`
-	mutation addUser($username: String!, $email: String!, $password: String!) {
-		addUser(username: $username, email: $email, password: $password) {
-			token
-			user {
-				_id
-				username
-				email
-			}
-		}
-	}
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+        email
+      }
+    }
+  }
 `;
 
-export const ADD_FRIEND = gql`
-	mutation addFriend($id: ID!) {
-		addFriend(friendId: $id) {
-			_id
-			username
-			friendCount
-			friends {
-				_id
-				username
-			}
-		}
-	}
+export const ADD_EVENT = gql`
+  mutation addEvent($event: SavedEventInput!) {
+    addEvent(event: $event) {
+      id
+      username
+      email
+      eventCount
+      savedEvents {
+        _id
+        eventName
+        description
+        date
+        time
+        location
+        numberPlayersNeeded
+        organizerName
+      }
+    }
+  }
 `;
 
-export const ADD_THOUGHT = gql`
-	mutation addThought($thoughtText: String!) {
-		addThought(thoughtText: $thoughtText) {
-			_id
-			thoughtText
-			createdAt
-			username
-			reactionCount
-			reactions {
-				_id
-			}
-		}
-	}
-`;
-
-export const ADD_REACTION = gql`
-	mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
-		addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
-			_id
-			reactionCount
-			reactions {
-				_id
-				reactionBody
-				createdAt
-				username
-			}
-		}
-	}
+export const REMOVE_EVENT = gql`
+  mutation removeEvent($eventId: String!) {
+    removeEvent(eventId: $eventId) {
+      _id
+      username
+    //   email
+    //   eventCount
+      savedEvents {
+        _id
+        eventName
+        // description
+        // date
+        // time
+        // location
+        // numberPlayersNeeded
+        // organizerName
+      }
+    }
+  }
 `;
