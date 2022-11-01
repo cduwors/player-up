@@ -11,3 +11,201 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.page {
+  padding: 20px;
+}
+
+.side {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+main {
+  width: 100%;
+}
+/* header  */
+.header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.logo-header {
+  max-width: 150px;
+  max-height: auto;
+}
+
+.logo {
+  height: 100%;
+  width: 100%;
+}
+.nav-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 50px;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  margin: 40px 0;
+  cursor: pointer;
+}
+
+.navActive {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+.background-cork {
+  background-image: url("./images/cork-board.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
+  width: auto;
+  display: inline-block;
+  border-right: 100px solid black; 
+}
+
+/* home page */
+.header-home {
+  display: flex;
+  justify-content: flex-end;
+}
+.nav-header-home {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 50px;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+
+.nav-home {
+  float: right;
+  list-style-type: none;
+  text-align: right;
+}
+
+.nav-link-home {
+  margin: 0 20px;
+  cursor: pointer;
+}
+.logo-home {
+  max-width: 300px;
+  max-height: auto;
+  margin: 20px;
+  margin-left: 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.home-background {
+  background-image: url("./images/board-games.jpg");
+  background-size: cover;
+  /* background-attachment: fixed; */
+  height: 700px;
+  width: 100%;
+}
+
+/* Events page */
+.cork-board {
+  background-image: url("./images/cork-board.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-header {
+text-align: center;
+font-size: 48px;
+}
+
+.event-list {
+list-style-type: none;
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+justify-content: center;
+}
+
+.card {
+  font-size: 12px;
+  width: 300px;
+  height: 350px;
+  margin: 10px;
+  background-image: url("./images/blank-thumbtack-note.png");
+  background-size: cover;
+}
+
+.text-box {
+  position: relative;
+  top: 40px;
+  left: 35px;
+  width: 225px;
+  text-align: center;
+}
+
+.eventName {
+  margin-bottom: 5px;
+}
+ 
+.play-btn {
+  position: relative;
+  top: 40px;
+  left: 30px;
+  width: 225px;
+  text-align: center;
+}
+
+/* profile page */
+.profile-background {
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: black;
+  height: auto;
+  width: 100%;
+}
+
+.profile-background h1 {
+  color: white;
+  padding: 0x;
+}
+
+.button-box {
+  display: flex;
+  justify-content: space-evenly;
+  background-image: url("./images/board-games.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 10px 0;
+}
+
+.button-box button {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  color: black;
+  font-weight: 900;
+}
+
+ul button {
+  background-color: rgb(29, 175, 29);
+  border-radius: 10px;
+}
+
+button:hover {
+background-color: greenyellow;
+}
+
+footer {
+  text-align: center;
+}
