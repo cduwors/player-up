@@ -6,7 +6,8 @@ type Events {
     _id: ID
     eventName: String
     description: String
-    dateAndTime: Date
+    date: String
+    time: String
     location: String
     numberPlayersNeeded: Int
     organizerName: String
@@ -33,8 +34,8 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
-    addEvent(_id:ID!, eventName: String!, description: String!, dateAndTime: Date!, location: String!, numberPlayersNeeded: Int!, organizerNames: [String]): Events
-    updateEvent(_id:ID!, eventName: String!, description: String!, dateAndTime: Date!, location: String!, numberPlayersNeeded: Int!, organizerNames: [String]): Events
+    addEvent(_id:ID!, eventName: String!, description: String!, date: String!, time: String!  location: String!, numberPlayersNeeded: Int!, organizerNames: [String]): Events
+    updateEvent(_id:ID!, eventName: String!, description: String!, date: String!, time: String! location: String!, numberPlayersNeeded: Int!, organizerNames: [String]): Events
     deleteEvent(_id:ID!): Events
   }
 `

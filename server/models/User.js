@@ -9,6 +9,7 @@ const eventSchema = require("./Events");
 
 const userSchema = new Schema(
   {
+
     username: {
       type: String,
       required: true,
@@ -24,10 +25,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    phone: {
-        mobile: { type: mongoose.SchemaTypes.Phone, required: true }, 
-        Home: { type: mongoose.SchemaTypes.Phone}, 
-      },
     savedEvents: [eventSchema],
   },
   {
