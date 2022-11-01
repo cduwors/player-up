@@ -7,7 +7,9 @@ function EventList({events}) {
             {events.map((event) => (
               <li key={event._id} className="card">
                 <Event event={event}></Event>
-                <button className="play-btn">I'm Game!</button>
+                {/* {event.organizerNames === context.user.username ?  */}
+                 <button className="play-btn">I'm Game!</button>
+                 {/*  :  <button>Edit Game</button>} */}
               </li>
             ))}
           </ul>
