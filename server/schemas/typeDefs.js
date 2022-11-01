@@ -9,14 +9,13 @@ type Events {
     dateAndTime: Date
     location: String
     numberPlayersNeeded: Int
-    organizerNames: []
+    organizerName: String
 }
 
 type User {
     _id: ID
     username: String
     email: String
-    phone: Number
     events: [Events]
   }
 

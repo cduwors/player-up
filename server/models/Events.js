@@ -22,11 +22,10 @@ const eventSchema = new Schema({
         type: Number,
         required: true,
     },
-    organizerNames: [
-      {
+    organizerNames: {
         type: String,
       },
-    ],
+    
 
 });
 
