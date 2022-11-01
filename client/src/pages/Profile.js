@@ -14,7 +14,7 @@ const Profile = () => {
       organizerNames: "James Douglas",
     },
     {
-      _id: 1,
+      _id: 2,
       eventName: "Apples to Apples",
       description:
         "The game of hilarious comparisons with a roll of the dice. Judge awards a chip to the noun he or she deems the best comparison.",
