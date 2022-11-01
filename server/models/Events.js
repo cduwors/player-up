@@ -30,5 +30,5 @@ const eventSchema = new Schema({
         type: String,
     }
 });
-
+ 
 module.exports = eventSchema;
