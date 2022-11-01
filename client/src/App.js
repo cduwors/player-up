@@ -9,6 +9,33 @@ import Events from "./pages/Events";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 
+import { setContext } from "@apollo/client/link/context";
+
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 function App() {
   // page navigation
   const [pages] = useState([
@@ -38,7 +65,9 @@ function App() {
       return <Home></Home>;
     }
   }
+
   return (
+    <ApolloProvider client={client}>
     <div className="page">
       <div className={`${pageSelected && currentPage !== 'Home' && 'side'}`}>
         <Header
@@ -54,6 +83,7 @@ function App() {
       </div>
       <Footer></Footer>
     </div>
+    </ApolloProvider>
   );
 }
 export default App;
