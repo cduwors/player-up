@@ -26,10 +26,12 @@ const Profile = () => {
   ];
   return (
     <section className="cork-board">
+      <div className="profile-background">
       <h1 className="event-header">James Douglas</h1>
       <div className="button-box">
         <button>Your Events</button>
         <button>Your Commitments</button>
+      </div>
       </div>
       <EventList events={events}></EventList>
     </section>

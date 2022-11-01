@@ -157,11 +157,6 @@ justify-content: center;
 .eventName {
   margin-bottom: 5px;
 }
-
-.play-button {
-max-width: 15px;
-height: auto;
-}
  
 .play-btn {
   position: relative;
@@ -172,19 +167,36 @@ height: auto;
 }
 
 /* profile page */
+.profile-background {
+  /* background-image: url("./images/board-games.jpg"); */
+  /* background-size: cover; */
+  /* background-attachment: fixed; */
+  background-color: black;
+  height: auto;
+  width: 100%;
+}
+
+.profile-background h1 {
+  background-color: black;
+  color: white;
+}
+
 .button-box {
   display: flex;
   justify-content: space-evenly;
-  background-color: black;
+    background-image: url("./images/board-games.jpg");
+  background-size: cover;
+  /* background-color: black; */
   padding: 10px 0;
 }
 
 .button-box button {
   border-radius: 10px;
   padding: 10px;
-  background-color:  black;
-  color: white;
- 
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  color: black;
+  font-weight: 900;
 }
 
 ul button {
