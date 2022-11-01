@@ -24,7 +24,7 @@ const Event = () => {
       organizerNames: "Chelsea Montreal",
     },
     {
-      _id: 1,
+      _id: 3,
       eventName: "Apples to Apples",
       description:
         "The game of hilarious comparisons with a roll of the dice. Judge awards a chip to the noun he or she deems the best comparison.",
@@ -34,7 +34,7 @@ const Event = () => {
       organizerNames: "James Douglas",
     },
     {
-      _id: 2,
+      _id: 4,
       eventName: "Clue",
       description:
         "players move from room to room in a mansion to solve the mystery of: who done it, with what, and where?",
@@ -44,7 +44,7 @@ const Event = () => {
       organizerNames: "Chelsea Montreal",
     },
     {
-      _id: 1,
+      _id: 5,
       eventName: "Capture the Flag",
       description:
         "Two teams each have their own color flag placed in their “home base.” The objective is to steal the other team's flag and take it to their own base. Players can tag or capture opposing players if they enter enemy territory.",
@@ -54,14 +54,14 @@ const Event = () => {
       organizerNames: "James Douglas",
     },
     {
-      _id: 2,
-      eventName: "Clue",
+      _id: 6,
+      eventName: "Apples to Apples",
       description:
-        "players move from room to room in a mansion to solve the mystery of: who done it, with what, and where?",
-      dateAndTime: "7pm Friday, July 22th, 2022",
-      location: "506 Rowan Way, Apex NC",
-      numberPlayersNeeded: "2-6",
-      organizerNames: "Chelsea Montreal",
+        "The game of hilarious comparisons with a roll of the dice. Judge awards a chip to the noun he or she deems the best comparison.",
+      dateAndTime: "2pm Sunday, June 12th, 2022",
+      location: "Jenks Carpenter Rd, Cary, NC 27519",
+      numberPlayersNeeded: "4-10",
+      organizerNames: "James Douglas",
     },
   ];
   return (

@@ -31,7 +31,6 @@ const Profile = () => {
         <button>Your Events</button>
         <button>Your Commitments</button>
       </div>
-
       <EventList events={events}></EventList>
     </section>
   );

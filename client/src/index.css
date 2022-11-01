@@ -149,7 +149,7 @@ justify-content: center;
 .text-box {
   position: relative;
   top: 40px;
-  left: 30px;
+  left: 35px;
   width: 225px;
   text-align: center;
 }
@@ -158,6 +158,11 @@ justify-content: center;
   margin-bottom: 5px;
 }
 
+.play-button {
+max-width: 15px;
+height: auto;
+}
+ 
 .play-btn {
   position: relative;
   top: 40px;
@@ -184,6 +189,7 @@ justify-content: center;
 
 ul button {
   background-color: rgb(29, 175, 29);
+  border-radius: 10px;
 }
 
 button:hover {
