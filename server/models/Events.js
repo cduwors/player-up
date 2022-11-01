@@ -26,7 +26,7 @@ const eventSchema = new Schema({
         type: Number,
         required: true,
     },
-    organizerNames: {
+    organizerName: {
         type: String,
     }
 });

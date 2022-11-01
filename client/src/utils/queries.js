@@ -11,10 +11,11 @@ export const QUERY_USER = gql`
         _id
           eventName
           description
-          dateAndTime
+          date
+          time
           location
           numberPlayersNeeded
-          organizerNames
+          organizerName
       }
     }
   }
@@ -30,10 +31,11 @@ export const QUERY_ME = gql`
           _id
           eventName
           description
-          dateAndTime
+          date
+          time
           location
           numberPlayersNeeded
-          organizerNames
+          organizerName
       }
     }
   }
