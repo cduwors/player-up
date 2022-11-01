@@ -9,8 +9,12 @@ const eventSchema = new Schema({
         type: String,
         required: true,
     },
-    //DATE represents full date and time timestamp, so separate TIME is not required.
-    dateAndTime: {
+    //DATE type works for both date and time requirements.
+    date: {
+        type: Date,
+        required: true,
+    },
+    time: {
         type: Date,
         required: true,
     },
@@ -22,12 +26,9 @@ const eventSchema = new Schema({
         type: Number,
         required: true,
     },
-    organizerNames: [
-      {
+    organizerNames: {
         type: String,
-      },
-    ],
-
+    }
 });
 
 module.exports = eventSchema;
