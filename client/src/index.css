@@ -67,8 +67,7 @@ main {
   height: 100%;
   width: auto;
   display: inline-block;
-  /* border: 5px solid rgb(63, 31, 1);
-  border-style: inset;   */
+  border-right: 100px solid black; 
 }
 
 /* home page */
@@ -168,25 +167,24 @@ justify-content: center;
 
 /* profile page */
 .profile-background {
-  /* background-image: url("./images/board-games.jpg"); */
-  /* background-size: cover; */
-  /* background-attachment: fixed; */
+  background-size: cover;
+  background-attachment: fixed;
   background-color: black;
   height: auto;
   width: 100%;
 }
 
 .profile-background h1 {
-  background-color: black;
   color: white;
+  padding: 0x;
 }
 
 .button-box {
   display: flex;
   justify-content: space-evenly;
-    background-image: url("./images/board-games.jpg");
+  background-image: url("./images/board-games.jpg");
   background-size: cover;
-  /* background-color: black; */
+  background-attachment: fixed;
   padding: 10px 0;
 }
 
