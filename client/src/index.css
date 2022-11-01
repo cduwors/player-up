@@ -63,10 +63,11 @@ main {
   background-image: url("./images/cork-board.jpg");
   background-size: cover;
   background-attachment: fixed;
-  height: 30%;
-  width: 100%;
+  height: 100%;
+  width: auto;
+  display: inline-block;
   /* border: 5px solid rgb(63, 31, 1);
-  border-style: inset; */
+  border-style: inset;   */
 }
 
 /* home page */
@@ -94,6 +95,8 @@ main {
 .logo-home {
   max-width: 300px;
   max-height: auto;
+  margin: 20px;
+  margin-left: 5px;
 }
 
 .hide {
@@ -103,8 +106,8 @@ main {
 .home-background {
   background-image: url("./images/board-games.jpg");
   background-size: cover;
-  background-attachment: fixed;
-  height: 500px;
+  /* background-attachment: fixed; */
+  height: 700px;
   width: 100%;
 }
 

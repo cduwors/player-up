@@ -66,7 +66,7 @@ const Event = () => {
 
   return (
     <section className="cork-board">
-      <h2 className="event-header">Game On</h2>
+      <h1 className="event-header">Game On</h1>
       <ul className="event-list">
         {events.map((event) => (
           <li key={event._id} className="card">
