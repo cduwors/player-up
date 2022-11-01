@@ -1,8 +1,6 @@
 const { Schema, model } = require("mongoose");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-//https://www.npmjs.com/package/mongoose-type-phone
-const mongooseTypePhone = require('mongoose-type-phone');
 
 // import schema from Events.js
 const eventSchema = require("./Events");
@@ -24,10 +22,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    phone: {
-        mobile: { type: mongoose.SchemaTypes.Phone, required: true }, 
-        Home: { type: mongoose.SchemaTypes.Phone}, 
-      },
     savedEvents: [eventSchema],
   },
   {
