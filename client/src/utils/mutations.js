@@ -48,8 +48,8 @@ export const ADD_PLAYER = gql`
 	}
 `
 export const ADD_EVENT = gql`
-  mutation addEvent($eventBody: String!) {
-    addEvent(eventBody: $eventBody) {
+  mutation addEvent($input: EventInput) {
+    addEvent(input: $input) {
       _id
       eventName
       description
@@ -67,8 +67,8 @@ export const ADD_EVENT = gql`
 `;
 
 export const UPDATE_EVENT = gql`
-  mutation updateEvent($eventId: ID!, $eventBody: String!) {
-    updateEvent(eventId: $eventId, eventBody: $eventBody) {
+  mutation updateEvent($eventId: ID!, $input: EventInput) {
+    updateEvent(eventId: $eventId, input: $input) {
         _id
       eventName
       description
