@@ -57,29 +57,30 @@ const resolvers = {
           { $addToSet: { attending: { username: context.user.username } } },
           { new: true}
         )
-        return updatedUser;
+        return updatedEvent;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
     addEvent: async (parent, { eventsId }, context) => {
       if (context.user) {
+        const event = await Events.create({ ...args, username: context.user.username });
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { events: { eventsId } } },
+          { $addToSet: { events: event._id  } },
           { new: true, runValidators: true }
         ).populate('events');
         return updatedUser;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    updateEvent: async (parent, { eventsId }, context) => {
+    updateEvent: async (parent, { eventsId, eventBody }, context) => {
       if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $push: { events: { eventsId } } },
+        const updatedEvent = await User.findOneAndUpdate(
+          { _id: eventsId },
+          { $push: { eventBody } },
           { new: true, runValidators: true }
         );
-        return updatedUser;
+        return updatedEvent;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
