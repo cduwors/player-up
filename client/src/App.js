@@ -8,9 +8,10 @@ import Events from "./pages/Events";
 // import NoMatch from "./pages/NoMatch";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+// import SingleEvent from "./pages/SingleEvent";
 
 import { setContext } from "@apollo/client/link/context";
-
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   ApolloProvider,
   ApolloClient,
@@ -68,6 +69,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+      {/* <Router> */}
     <div className="page">
       <div className={`${pageSelected && currentPage !== 'Home' && 'side'}`}>
         <Header
@@ -79,10 +81,22 @@ function App() {
         ></Header>
         <main>
           {pageSelected ? renderPage(currentPage.name) : <Home></Home>}
+          {/* <Switch>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/profile">
+                <Route path=":username" element={<Profile />} />
+                <Route path="" element={<Profile />} />
+              </Route>
+              <Route path="/event/:id" element={<SingleEvent />} />
+              <Route path="*" element={<NoMatch />} />
+            </Switch> */}
         </main>
       </div>
       <Footer></Footer>
     </div>
+    {/* </Router> */}
     </ApolloProvider>
   );
 }

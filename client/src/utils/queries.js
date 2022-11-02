@@ -16,6 +16,7 @@ export const QUERY_USER = gql`
           location
           numberPlayersNeeded
           organizerName
+          attending
       }
     }
   }
@@ -36,22 +37,9 @@ export const QUERY_ME = gql`
           location
           numberPlayersNeeded
           organizerName
+          attending
       }
     }
   }
 `;
 
-export const QUERY_ME_BASIC = gql`
-  {
-    me {
-      _id
-      username
-      email
-      eventCount
-      event {
-        _id
-        eventName
-      }
-    }
-  }
-`;

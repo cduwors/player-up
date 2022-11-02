@@ -10,6 +10,7 @@ const typeDefs = gql`
 		location: String
 		numberPlayersNeeded: Int
 		organizerName: String
+		attending: [String]
 	}
 
 	type User {
@@ -42,6 +43,7 @@ const typeDefs = gql`
 			location: String!
 			numberPlayersNeeded: Int!
 			organizerName: String
+			attending: [String]
 		): Events
 		updateEvent(
 			_id: ID!
@@ -52,6 +54,7 @@ const typeDefs = gql`
 			location: String!
 			numberPlayersNeeded: Int!
 			organizerName: String
+			attending: [String]
 		): Events
 		deleteEvent(_id: ID!): Events
 	}
