@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const eventSchema = new Schema({
 	eventName: {
@@ -9,7 +9,6 @@ const eventSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	//DATE type works for both date and time requirements.
 	date: {
 		type: String,
 		required: true,
@@ -23,7 +22,7 @@ const eventSchema = new Schema({
 		required: true,
 	},
 	numberPlayersNeeded: {
-		type: Number,
+		type: String,
 		required: true,
 	},
 	organizerName: {
@@ -36,4 +35,6 @@ const eventSchema = new Schema({
     ]
 });
 
-module.exports = eventSchema;
+const Events = model("Events", eventSchema)
+
+module.exports = Events;
