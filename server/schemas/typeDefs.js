@@ -28,7 +28,7 @@ const typeDefs = gql`
 	type Query {
 		events: [Events]
 		event(_id: ID!): Events
-		event(username: String): Events
+		userEvents(username: String): Events
 		me: User
 		user(username: String!): User
 		users: [User]
