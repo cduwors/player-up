@@ -58,6 +58,7 @@ const typeDefs = gql`
 			attending: [String]
 		): Events
 		deleteEvent(_id: ID!): Events
+		addPlayer(attending: [String]): Events
 	}
 `;
 

@@ -33,22 +33,22 @@ const resolvers = {
 			const token = signToken(user);
 			return { token, user };
 		},
-    // addPlayer: async (parent, { eventsId }, context) => {
-    //   if (context.user) {
-    //     const udpatedUser = await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $addToset: { players: { playerId } } },
-    //       { new: true, runValidators: true }
-    //     )
-    //     return updatedUser;
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+    addPlayer: async (parent, { eventsId }, context) => {
+      if (context.user) {
+        const updatedEvent = await Event.findOneAndUpdate(
+          { _id: eventsId },
+          { $addToSet: { attending: { username: context.user.username } } },
+          { new: true}
+        )
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
     addEvent: async (parent, { eventsId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToset: { events: { eventsId } } },
+          { $addToSet: { events: { eventsId } } },
           { new: true, runValidators: true }
         ).populate('events');
         return updatedUser;
