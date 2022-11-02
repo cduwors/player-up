@@ -33,6 +33,50 @@ const resolvers = {
 			const token = signToken(user);
 			return { token, user };
 		},
+    // addPlayer: async (parent, { eventsId }, context) => {
+    //   if (context.user) {
+    //     const udpatedUser = await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $addToset: { players: { playerId } } },
+    //       { new: true, runValidators: true }
+    //     )
+    //     return updatedUser;
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
+    addEvent: async (parent, { eventsId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToset: { events: { eventsId } } },
+          { new: true, runValidators: true }
+        ).populate('events');
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    updateEvent: async (parent, { eventsId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { events: { eventsId } } },
+          { new: true, runValidators: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    deleteEvent: async (parent, { eventsId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { events: { eventsId } } },
+          { new: true }
+        );
+      return updatedUser;
+      }
+    throw new AuthenticationError('You need to be logged in!');
+    }
 	},
 };
 module.exports = resolvers;
