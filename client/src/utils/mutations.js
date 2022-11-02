@@ -25,66 +25,70 @@ export const UPDATE_USER = gql`
 `;
 
 export const ADD_PLAYER = gql`
-	mutation addPlayer($id: ID!) {
-		addPlayer(playerId: $id) {
+	mutation addPlayer($userId: ID!, $playerUsername: String!) {
+		addPlayer(userId: $userId, $playerUsername: String!) {
 			_id
 			username
+			attending {
+				_id
+				username
+			}
 		}
 	}
 `
 export const ADD_EVENT = gql`
-  mutation addEvent($id: ID!) {
-    addEvent(eventsId: $id) {
-      id
+  mutation addEvent($events: SavedEventInput!) {
+    addEvent(events: $event) {
+      _id
       eventName
-      email
-      eventCount
-      events {
+      description
+      date
+      time
+      location
+      numberPlayersNeeded
+      organizerName
+      attending {
         _id
-        eventName
-        description
-        date
-        time
-        location
-        numberPlayersNeeded
-        organizerName
-		attending {
-            _id
-            username
-          }
+        username
       }
     }
   }
 `;
 
 export const UPDATE_EVENT = gql`
-  mutation updateEvent($events: SavedEventInput!) {
-    updateEvent(events: $event) {
-      id
+  mutation updateEvent($eventId: ID!, $eventBody: String!) {
+    updateEvent($eventId: ID!, $eventBody: $eventBody) {
+        _id
       eventName
-      email
-      event
+      description
+      date
+      time
+      location
+      numberPlayersNeeded
+      organizerName
+      attending {
+        _id
+        username
+      }
     }
   }
 `;
 
 export const REMOVE_EVENT = gql`
-  mutation removeEvent($eventId: String!) {
+  mutation removeEvent($eventId: ID!,) {
     removeEvent(eventId: $eventId) {
-      _id
-      eventName
-    //   email
-    //   eventCount
-      savedEvents {
-        _id
-        eventName
-        // description
-        // date
-        // time
-        // location
-        // numberPlayersNeeded
-        // organizerName
-      }
+		_id
+		eventName
+		description
+		date
+		time
+		location
+		numberPlayersNeeded
+		organizerName
+		attending {
+		  _id
+		  username
+		}
     }
   }
 `;

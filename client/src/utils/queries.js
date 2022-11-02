@@ -16,7 +16,6 @@ export const QUERY_USER = gql`
           location
           numberPlayersNeeded
           organizerName
-          attendingCount
           attending {
             _id
             username
@@ -41,7 +40,6 @@ export const QUERY_ME = gql`
           location
           numberPlayersNeeded
           organizerName
-          attendingCount
           attending {
             _id
             username
@@ -62,7 +60,6 @@ export const QUERY_ALL_EVENTS = gql`
           location
           numberPlayersNeeded
           organizerName
-          attendingCount
           attending {
             _id
             username
@@ -82,7 +79,6 @@ export const QUERY_USER_EVENTS = gql`
           location
           numberPlayersNeeded
           organizerName
-          attendingCount
           attending {
             _id
             username
@@ -102,7 +98,6 @@ export const QUERY_SINGLE_EVENTS = gql`
           location
           numberPlayersNeeded
           organizerName
-          attendingCount
           attending {
             _id
             username
