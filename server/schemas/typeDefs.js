@@ -61,7 +61,7 @@ const typeDefs = gql`
 			attending: [User]
 		): Events
 		deleteEvent(_id: ID!): Events
-		addPlayer(playerUsername: String!): Events
+		addPlayer(eventsId: ID!): Events
 	}
 `;
 

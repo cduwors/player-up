@@ -1,6 +1,7 @@
-const { User } = require("../models");
+const { User, Events } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
+
 
 const resolvers = {
 	Query: {
@@ -50,10 +51,10 @@ const resolvers = {
 			const token = signToken(user);
 			return { token, user };
 		},
-    addPlayer: async (parent, { eventsId }, context) => {
+    addPlayer: async (parent, { eventId }, context) => {
       if (context.user) {
         const updatedEvent = await Event.findOneAndUpdate(
-          { _id: eventsId },
+          { _id: eventId },
           { $addToSet: { attending: { username: context.user.username } } },
           { new: true}
         )
@@ -61,7 +62,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addEvent: async (parent, { eventsId }, context) => {
+    addEvent: async (parent, { eventId }, context) => {
       if (context.user) {
         const event = await Events.create({ ...args, username: context.user.username });
         const updatedUser = await User.findOneAndUpdate(
@@ -73,10 +74,10 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    updateEvent: async (parent, { eventsId, eventBody }, context) => {
+    updateEvent: async (parent, { eventId, eventBody }, context) => {
       if (context.user) {
         const updatedEvent = await User.findOneAndUpdate(
-          { _id: eventsId },
+          { _id: eventId },
           { $push: { eventBody } },
           { new: true, runValidators: true }
         );
@@ -84,11 +85,12 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    deleteEvent: async (parent, { eventsId }, context) => {
+    deleteEvent: async (parent, { eventId }, context) => {
       if (context.user) {
+        const deleteEvent = await Events.delete({_id: eventId})
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { events: { eventsId } } },
+          { $pull: { events: { eventId } } },
           { new: true }
         );
       return updatedUser;

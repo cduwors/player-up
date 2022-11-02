@@ -25,8 +25,8 @@ export const UPDATE_USER = gql`
 `;
 
 export const ADD_PLAYER = gql`
-	mutation addPlayer($userId: ID!, $playerUsername: String!) {
-		addPlayer(userId: $userId, $playerUsername: String!) {
+	mutation addPlayer(eventId: ID!) {
+		addPlayer(eventId: $eventId) {
 			_id
 			username
 			attending {
@@ -37,8 +37,8 @@ export const ADD_PLAYER = gql`
 	}
 `
 export const ADD_EVENT = gql`
-  mutation addEvent($events: SavedEventInput!) {
-    addEvent(events: $event) {
+  mutation addEvent($eventBody: String!) {
+    addEvent(eventBody: $eventBody) {
       _id
       eventName
       description
