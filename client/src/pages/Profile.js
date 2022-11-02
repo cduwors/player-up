@@ -52,8 +52,8 @@ const Profile = () => {
       <div className="profile-background">
         <h1 className="event-header">James Douglas</h1>
         <div className="button-box">
-          <button onClick={displayEvents}>My Events</button>
-          <button onClick={displayCommitments}>My Game Plan</button>
+          <button onClick={displayEvents} className={`list-btn ${!commitmentList && "list-button"}`}>My Events</button>
+          <button onClick={displayCommitments} className={`list-btn ${commitmentList && "list-button"}`}>My Game Plan</button>
         </div>
       </div>
       {commitmentList ? (

@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
 import logo from "../images/player-up-logo.png";
 import { capitalizeFirstLetter } from "../utils/helpers";
-// import { Link } from "react-router-dom";
-// import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
 
-const Header = (props) => {
-  const { pages, pageSelected, setPageSelected, currentPage, setCurrentPage } =
-    props;
+const Header = ({ pages, pageSelected, setPageSelected, currentPage, setCurrentPage }) => {
   // logout
-  // const logout = (event) => {
-  //   event.preventDefault();
-  //   Auth.logout();
-  // };
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   // update document.title to match category selection
   useEffect(() => {
     document.title = capitalizeFirstLetter(currentPage.name);
@@ -52,24 +50,10 @@ const Header = (props) => {
                       setPageSelected(true);
                     }}
                   >
-                    {capitalizeFirstLetter(page.name)}
+                    <Link to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
                   </span>
                 </li>
               ))}
-              {/* {Auth.loggedIn() ? (
-          <>
-            <Link to="/profile">Me</Link>
-            <a href="/" onClick={logout}>
-              Logout
-            </a>
-          </>
-        ) : (
-        <>
-          <Link to="/events" className="nav-link">Events</Link>
-          <Link to="/login" className="nav-link">Login</Link>
-          <Link to="/signup" className="nav-link">Signup</Link>
-        </>
-        )} */}
             </ul>
           </nav>
         </div>
@@ -98,24 +82,10 @@ const Header = (props) => {
                         setPageSelected(true);
                       }}
                     >
-                      {capitalizeFirstLetter(page.name)}
+                      <Link to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
                     </span>
                   </li>
                 ))}
-                {/* {Auth.loggedIn() ? (
-          <>
-            <Link to="/profile">Me</Link>
-            <a href="/" onClick={logout}>
-              Logout
-            </a>
-          </>
-        ) : (
-        <>
-          <Link to="/events" className="nav-link">Events</Link>
-          <Link to="/login" className="nav-link">Login</Link>
-          <Link to="/signup" className="nav-link">Signup</Link>
-        </>
-        )} */}
               </ul>
             </nav>
           </div>
