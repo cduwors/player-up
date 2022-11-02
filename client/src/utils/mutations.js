@@ -28,28 +28,42 @@ export const ADD_USER = gql`
 export const UPDATE_USER = gql`
   mutation updateUser($username: String!, $email: String!, $password: String!) {
     updateUser(username: $username, email: $email, password: $password) {
-        _id
-        username
-        email
+      _id
+      username
+      email
     }
   }
 `;
 
 export const ADD_PLAYER = gql`
-	mutation addPlayer($eventId: ID!) {
-		addPlayer(eventId: $eventId) {
-			_id
-			eventName
-			attending {
-				_id
-				username
-			}
-		}
-	}
-`
+  mutation addPlayer($eventId: ID!) {
+    addPlayer(eventId: $eventId) {
+      _id
+      eventName
+      attending {
+        _id
+        username
+      }
+    }
+  }
+`;
 export const ADD_EVENT = gql`
-  mutation addEvent($input: EventInput) {
-    addEvent(input: $input) {
+  mutation addEvent(
+	$eventName: String!, 
+	$description: String!, 
+	$date: String!, 
+	$time: String!, 
+	$location: String!, 
+	$numberPlayersNeeded: String!, 
+	$organizerName: String) {
+    addEvent(   
+		eventName: $eventName,
+		description: $description, 
+		date: $date, 
+		time: $time, 
+		location: $location, 
+		numberPlayersNeeded: $numberPlayersNeeded, 
+		organizerName: $organizerName) {
       _id
       eventName
       description
@@ -67,9 +81,42 @@ export const ADD_EVENT = gql`
 `;
 
 export const UPDATE_EVENT = gql`
-  mutation updateEvent($eventId: ID!, $input: EventInput) {
-    updateEvent(eventId: $eventId, input: $input) {
-        _id
+  mutation updateEvent($eventId: ID!,    
+		$eventName: String!, 
+		$description: String!, 
+		$date: String!, 
+		$time: String!, 
+		$location: String!, 
+		$numberPlayersNeeded: String!, 
+		$organizerName: String) {
+    updateEvent(eventId: $eventId,   
+		eventName: $eventName,
+		description: $description, 
+		date: $date, 
+		time: $time, 
+		location: $location, 
+		numberPlayersNeeded: $numberPlayersNeeded, 
+		organizerName: $organizerName) {
+			_id
+		eventName
+		description
+		date
+		time
+		location
+		numberPlayersNeeded
+		organizerName
+		attending {
+			_id
+			username
+		}
+    }
+  }
+`;
+
+export const REMOVE_EVENT = gql`
+  mutation removeEvent($eventId: ID!) {
+    removeEvent(eventId: $eventId) {
+      _id
       eventName
       description
       date
@@ -81,25 +128,6 @@ export const UPDATE_EVENT = gql`
         _id
         username
       }
-    }
-  }
-`;
-
-export const REMOVE_EVENT = gql`
-  mutation removeEvent($eventId: ID!,) {
-    removeEvent(eventId: $eventId) {
-		_id
-		eventName
-		description
-		date
-		time
-		location
-		numberPlayersNeeded
-		organizerName
-		attending {
-		  _id
-		  username
-		}
     }
   }
 `;
