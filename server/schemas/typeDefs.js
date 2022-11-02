@@ -10,7 +10,13 @@ const typeDefs = gql`
 		location: String
 		numberPlayersNeeded: Int
 		organizerName: String
-		attending: [User]
+		attending: [Attending]
+	}
+
+	type Attending {
+		_id: ID
+		username: String
+		email: String
 	}
 
 	type User {
@@ -47,7 +53,7 @@ const typeDefs = gql`
 			location: String!
 			numberPlayersNeeded: Int!
 			organizerName: String
-			attending: [User]
+			attending: [String]
 		): Events
 		updateEvent(
 			_id: ID!
@@ -58,10 +64,10 @@ const typeDefs = gql`
 			location: String!
 			numberPlayersNeeded: Int!
 			organizerName: String
-			attending: [User]
+			attending: [String]
 		): Events
 		deleteEvent(_id: ID!): Events
-		addPlayer(eventsId: ID!): Events
+		addPlayer(eventId: ID!): Events
 	}
 `;
 

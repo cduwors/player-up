@@ -13,19 +13,30 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const ADD_USER = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
 export const UPDATE_USER = gql`
   mutation updateUser($username: String!, $email: String!, $password: String!) {
     updateUser(username: $username, email: $email, password: $password) {
         _id
         username
         email
-      }
     }
   }
 `;
 
 export const ADD_PLAYER = gql`
-	mutation addPlayer(eventId: ID!) {
+	mutation addPlayer($eventId: ID!) {
 		addPlayer(eventId: $eventId) {
 			_id
 			username
@@ -57,7 +68,7 @@ export const ADD_EVENT = gql`
 
 export const UPDATE_EVENT = gql`
   mutation updateEvent($eventId: ID!, $eventBody: String!) {
-    updateEvent($eventId: ID!, $eventBody: $eventBody) {
+    updateEvent(eventId: $eventId, eventBody: $eventBody) {
         _id
       eventName
       description
