@@ -39,7 +39,7 @@ export const ADD_PLAYER = gql`
 	mutation addPlayer($eventId: ID!) {
 		addPlayer(eventId: $eventId) {
 			_id
-			username
+			eventName
 			attending {
 				_id
 				username

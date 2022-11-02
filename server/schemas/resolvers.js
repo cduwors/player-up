@@ -62,17 +62,32 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addEvent: async (parent, { input }, context) => {
-      if (context.user) {
-        const event = await Events.create({ ...args, input: input, organizersName: context.user.username });
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { events: event._id  } },
-          { new: true, runValidators: true }
-        ).populate('events');
-        return updatedUser;
-      }
-      throw new AuthenticationError('You need to be logged in!');
+    addEvent: async (parent, {eventName,
+			description,
+			date,
+			time,
+			location,
+			numberPlayersNeeded,
+			organizerName,
+			attending}, context) => {
+      // if (context.user) {
+        const event = await Events.create({eventName,
+          description,
+          date,
+          time,
+          location,
+          numberPlayersNeeded,
+          organizerName,
+          attending});
+        // const updatedUser = await User.findOneAndUpdate(
+        //   { _id: context.user._id },
+        //   { $addToSet: { events: event._id  } },
+        //   { new: true, runValidators: true }
+        // ).populate('events');
+        // return updatedUser;
+        return event;
+      // }
+      // throw new AuthenticationError('You need to be logged in!');
     },
     updateEvent: async (parent, { eventId, input }, context) => {
       if (context.user) {

@@ -9,7 +9,6 @@ const eventSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	//DATE type works for both date and time requirements.
 	date: {
 		type: String,
 		required: true,
@@ -23,7 +22,7 @@ const eventSchema = new Schema({
 		required: true,
 	},
 	numberPlayersNeeded: {
-		type: Number,
+		type: String,
 		required: true,
 	},
 	organizerName: {
