@@ -8,7 +8,7 @@ const typeDefs = gql`
 		date: String
 		time: String
 		location: String
-		numberPlayersNeeded: Int
+		numberPlayersNeeded: String
 		organizerName: String
 		attending: [Attending]
 	}
@@ -31,6 +31,18 @@ const typeDefs = gql`
 		user: User
 	}
 
+	input EventInput {
+		_id: ID!
+			eventName: String!
+			description: String!
+			date: String!
+			time: String!
+			location: String!
+			numberPlayersNeeded: String!
+			organizerName: String
+			attending: [String]
+	}
+
 	type Query {
 		events: [Events]
 		event(_id: ID!): Events
@@ -44,28 +56,8 @@ const typeDefs = gql`
 		addUser(username: String!, email: String!, password: String!): Auth
 		updateUser(username: String, email: String, password: String): User
 		login(email: String!, password: String!): Auth
-		addEvent(
-			_id: ID!
-			eventName: String!
-			description: String!
-			date: String!
-			time: String!
-			location: String!
-			numberPlayersNeeded: Int!
-			organizerName: String
-			attending: [String]
-		): Events
-		updateEvent(
-			_id: ID!
-			eventName: String!
-			description: String!
-			date: String!
-			time: String!
-			location: String!
-			numberPlayersNeeded: Int!
-			organizerName: String
-			attending: [String]
-		): Events
+		addEvent(input: EventInput): Events
+		updateEvent(input: EventInput): Events
 		deleteEvent(_id: ID!): Events
 		addPlayer(eventId: ID!): Events
 	}
