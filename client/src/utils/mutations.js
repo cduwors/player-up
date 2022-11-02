@@ -28,7 +28,7 @@ export const ADD_EVENT = gql`
   mutation addEvent($event: SavedEventInput!) {
     addEvent(event: $event) {
       id
-      username
+      eventName
       email
       eventCount
       savedEvents {
@@ -46,19 +46,21 @@ export const ADD_EVENT = gql`
 `;
 
 export const UPDATE_EVENT = gql`
-mutation updateEvent(
-	id
-	username
-	email
-	event
-)
+  mutation updateEvent($event: SavedEventInput!) {
+    updateEvent(event: $event) {
+      id
+      eventName
+      email
+      event
+    }
+  }
 `;
 
 export const REMOVE_EVENT = gql`
   mutation removeEvent($eventId: String!) {
     removeEvent(eventId: $eventId) {
       _id
-      username
+      eventName
     //   email
     //   eventCount
       savedEvents {
