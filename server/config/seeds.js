@@ -2,7 +2,7 @@ const db = require("./connection");
 const { User, Events } = require("../models");
 
 db.once("open", async () => {
-  await Events.deleteMany();
+  await Events.deleteMany({});
 
   const events = await Events.insertMany([
     {
@@ -70,7 +70,7 @@ db.once("open", async () => {
 
   console.log("events seeded");
 
-  await User.deleteMany();
+  await User.deleteMany({});
 
   await User.create({
     username: "Brian",

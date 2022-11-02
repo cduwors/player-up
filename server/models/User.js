@@ -1,11 +1,10 @@
 const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 //https://www.npmjs.com/package/mongoose-type-phone
 const mongooseTypePhone = require('mongoose-type-phone');
 
 // import schema from Events.js
-const eventSchema = require("./Events");
+// const eventSchema = require("./Events");
 
 const userSchema = new Schema(
   {
@@ -25,7 +24,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    events: [eventSchema],
+    events: [{
+      type: Schema.Types.ObjectId,
+      ref: "Events"
+    }],
   },
   {
     toJSON: {
