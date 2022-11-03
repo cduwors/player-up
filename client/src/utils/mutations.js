@@ -1,71 +1,133 @@
 import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
-	mutation login($email: String!, $password: String!) {
-		login(email: $email, password: $password) {
-			token
-			user {
-				_id
-				username
-				email
-			}
-		}
-	}
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+        email
+      }
+    }
+  }
 `;
 
 export const ADD_USER = gql`
-	mutation addUser($username: String!, $email: String!, $password: String!) {
-		addUser(username: $username, email: $email, password: $password) {
-			token
-			user {
-				_id
-				username
-				email
-			}
-		}
-	}
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
 `;
 
-export const ADD_FRIEND = gql`
-	mutation addFriend($id: ID!) {
-		addFriend(friendId: $id) {
+export const UPDATE_USER = gql`
+  mutation updateUser($username: String!, $email: String!, $password: String!) {
+    updateUser(username: $username, email: $email, password: $password) {
+      _id
+      username
+      email
+    }
+  }
+`;
+
+export const ADD_PLAYER = gql`
+  mutation addPlayer($eventId: ID!) {
+    addPlayer(eventId: $eventId) {
+      _id
+      eventName
+      attending {
+        _id
+        username
+      }
+    }
+  }
+`;
+export const ADD_EVENT = gql`
+  mutation addEvent(
+	$eventName: String!, 
+	$description: String!, 
+	$date: String!, 
+	$time: String!, 
+	$location: String!, 
+	$numberPlayersNeeded: String!, 
+	$organizerName: String) {
+    addEvent(   
+		eventName: $eventName,
+		description: $description, 
+		date: $date, 
+		time: $time, 
+		location: $location, 
+		numberPlayersNeeded: $numberPlayersNeeded, 
+		organizerName: $organizerName) {
+      _id
+      eventName
+      description
+      date
+      time
+      location
+      numberPlayersNeeded
+      organizerName
+      attending {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const UPDATE_EVENT = gql`
+  mutation updateEvent($eventId: ID!,    
+		$eventName: String!, 
+		$description: String!, 
+		$date: String!, 
+		$time: String!, 
+		$location: String!, 
+		$numberPlayersNeeded: String!, 
+		$organizerName: String) {
+    updateEvent(eventId: $eventId,   
+		eventName: $eventName,
+		description: $description, 
+		date: $date, 
+		time: $time, 
+		location: $location, 
+		numberPlayersNeeded: $numberPlayersNeeded, 
+		organizerName: $organizerName) {
+			_id
+		eventName
+		description
+		date
+		time
+		location
+		numberPlayersNeeded
+		organizerName
+		attending {
 			_id
 			username
-			friendCount
-			friends {
-				_id
-				username
-			}
 		}
-	}
+    }
+  }
 `;
 
-export const ADD_THOUGHT = gql`
-	mutation addThought($thoughtText: String!) {
-		addThought(thoughtText: $thoughtText) {
-			_id
-			thoughtText
-			createdAt
-			username
-			reactionCount
-			reactions {
-				_id
-			}
-		}
-	}
-`;
-
-export const ADD_REACTION = gql`
-	mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
-		addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
-			_id
-			reactionCount
-			reactions {
-				_id
-				reactionBody
-				createdAt
-				username
-			}
-		}
-	}
+export const REMOVE_EVENT = gql`
+  mutation removeEvent($eventId: ID!) {
+    removeEvent(eventId: $eventId) {
+      _id
+      eventName
+      description
+      date
+      time
+      location
+      numberPlayersNeeded
+      organizerName
+      attending {
+        _id
+        username
+      }
+    }
+  }
 `;

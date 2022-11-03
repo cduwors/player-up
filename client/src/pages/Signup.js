@@ -18,15 +18,15 @@ const Signup = () => {
 	// set state for alert
 	const [showAlert, setShowAlert] = useState(false);
 
-	const [addUser, { error}] = useMutation(ADD_USER);
+	const [addUser, { error }] = useMutation(ADD_USER);
 
-  useEffect(() => {
-    if (error) {
-      setShowAlert(true);
-    } else {
-      setShowAlert(false);
-    }
-  }, [error]);
+	useEffect(() => {
+		if (error) {
+			setShowAlert(true);
+		} else {
+			setShowAlert(false);
+		}
+	}, [error]);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -44,14 +44,15 @@ const Signup = () => {
 		}
 
 		try {
-			const { data } = await addUser({variables: { ...userFormData }});
+			const { data } = await addUser({ variables: { ...userFormData } });
 
 			console.log(data);
 
 			Auth.login(data.addUser.token);
-
+			console.log(data.addUser.token)
 		} catch (err) {
 			console.error(err);
+			setShowAlert(true);
 		}
 
 		setUserFormData({
@@ -62,76 +63,97 @@ const Signup = () => {
 	};
 
 	return (
-		<>
-			{/* This is needed for the validation functionality above */}
-			<Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-				{/* show alert if server response is bad */}
-				<Alert
-					dismissible
-					onClose={() => setShowAlert(false)}
-					show={showAlert}
-					variant="danger">
-					Something went wrong with your signup!
-				</Alert>
+		<section className="cork-board loginForm">
+			<div className="login-background">
+				<h1 className="event-header">Sign Up to get playing!!</h1>
+			</div>
+			<div className="formGroupBackground">
+				<>
+					{/* This is needed for the validation functionality above */}
+					<Form
+						className="formGroup"
+						noValidate
+						validated={validated}
+						onSubmit={handleFormSubmit}>
+						{/* show alert if server response is bad */}
+						<Alert
+							dismissible
+							onClose={() => setShowAlert(false)}
+							show={showAlert}
+							variant="danger">
+							Something went wrong with your signup!
+						</Alert>
 
-				<Form.Group>
-					<Form.Label htmlFor="username">Username</Form.Label>
-					<Form.Control
-						type="text"
-						placeholder="Your username"
-						name="username"
-						onChange={handleInputChange}
-						value={userFormData.username}
-						required
-					/>
-					<Form.Control.Feedback type="invalid">
-						Username is required!
-					</Form.Control.Feedback>
-				</Form.Group>
+						<Form.Group>
+							<Form.Label className="label" htmlFor="username">
+								Username
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="Your username"
+								name="username"
+								onChange={handleInputChange}
+								value={userFormData.username}
+								required
+							/>
+							<Form.Control.Feedback className="feedback" type="invalid">
+								Username is required!
+							</Form.Control.Feedback>
+						</Form.Group>
 
-				<Form.Group>
-					<Form.Label htmlFor="email">Email</Form.Label>
-					<Form.Control
-						type="email"
-						placeholder="Your email address"
-						name="email"
-						onChange={handleInputChange}
-						value={userFormData.email}
-						required
-					/>
-					<Form.Control.Feedback type="invalid">
-						Email is required!
-					</Form.Control.Feedback>
-				</Form.Group>
+						<Form.Group>
+							<Form.Label className="label" htmlFor="email">
+								Email
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="email"
+								placeholder="Your email address"
+								name="email"
+								onChange={handleInputChange}
+								value={userFormData.email}
+								required
+							/>
+							<Form.Control.Feedback className="feedback" type="invalid">
+								Email is required!
+							</Form.Control.Feedback>
+						</Form.Group>
 
-				<Form.Group>
-					<Form.Label htmlFor="password">Password</Form.Label>
-					<Form.Control
-						type="password"
-						placeholder="Your password"
-						name="password"
-						onChange={handleInputChange}
-						value={userFormData.password}
-						required
-					/>
-					<Form.Control.Feedback type="invalid">
-						Password is required!
-					</Form.Control.Feedback>
-				</Form.Group>
-				<Button
-					disabled={
-						!(
-							userFormData.username &&
-							userFormData.email &&
-							userFormData.password
-						)
-					}
-					type="submit"
-					variant="success">
-					Submit
-				</Button>
-			</Form>
-		</>
+						<Form.Group>
+							<Form.Label className="label" htmlFor="password">
+								Password
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="password"
+								placeholder="Your password"
+								name="password"
+								onChange={handleInputChange}
+								value={userFormData.password}
+								required
+							/>
+							<Form.Control.Feedback className="feedback" type="invalid">
+								Password is required!
+							</Form.Control.Feedback>
+						</Form.Group>
+						<Button
+							className="loginBtn button:hover "
+							disabled={
+								!(
+									userFormData.username &&
+									userFormData.email &&
+									userFormData.password
+								)
+							}
+							type="submit"
+							variant="success">
+							Game On!
+						</Button>
+					</Form>
+				</>
+			</div>
+		</section>
 	);
 };
 

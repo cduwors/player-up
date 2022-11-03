@@ -7,7 +7,6 @@ import { LOGIN_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
-
 const Login = () => {
 	const [userFormData, setUserFormData] = useState({ email: "", password: "" });
 	const [validated] = useState(false);
@@ -42,10 +41,11 @@ const Login = () => {
 
 			console.log(data);
 			Auth.login(data.login.token);
+			
 		} catch (err) {
 			console.error(err);
+	
 		}
-
 		setUserFormData({
 			username: "",
 			email: "",
@@ -54,52 +54,73 @@ const Login = () => {
 	};
 
 	return (
-		<>
-			<Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-				<Alert
-					dismissible
-					onClose={() => setShowAlert(false)}
-					show={showAlert}
-					variant="danger">
-					Something went wrong with your login credentials!
-				</Alert>
-				<Form.Group>
-					<Form.Label htmlFor="email">Email</Form.Label>
-					<Form.Control
-						type="text"
-						placeholder="Your email"
-						name="email"
-						onChange={handleInputChange}
-						value={userFormData.email}
-						required
-					/>
-					<Form.Control.Feedback type="invalid">
-						Email is required!
-					</Form.Control.Feedback>
-				</Form.Group>
+		<section className="cork-board loginForm">
+			<div className="login-background">
+				<h1 className="event-header">Login to Play!</h1>
+			</div>
+			<div className="formGroupBackground">
+				<>
+					<Form
+						className="formGroup"
+						noValidate
+						validated={validated}
+						onSubmit={handleFormSubmit}>
+						<Alert
+							dismissible
+							onClose={() => setShowAlert(false)}
+							show={showAlert}
+							variant="danger">
+							Something went wrong with your login credentials!
+						</Alert>
+						{/* <Form.Group className="formGroup" > */}
+						<Form.Group>
+							<Form.Label className="label" htmlFor="email">
+								Email
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="Your email"
+								name="email"
+								onChange={handleInputChange}
+								value={userFormData.email}
+								required
+							/>
+							<Form.Control.Feedback className="feedback" type="invalid">
+								Email is required!
+							</Form.Control.Feedback>
+						</Form.Group>
 
-				<Form.Group>
-					<Form.Label htmlFor="password">Password</Form.Label>
-					<Form.Control
-						type="password"
-						placeholder="Your password"
-						name="password"
-						onChange={handleInputChange}
-						value={userFormData.password}
-						required
-					/>
-					<Form.Control.Feedback type="invalid">
-						Password is required!
-					</Form.Control.Feedback>
-				</Form.Group>
-				<Button
-					disabled={!(userFormData.email && userFormData.password)}
-					type="submit"
-					variant="success">
-					Submit
-				</Button>
-			</Form>
-		</>
+						<Form.Group>
+							<Form.Label className="label" htmlFor="password">
+								Password
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="password"
+								placeholder="Your password"
+								name="password"
+								onChange={handleInputChange}
+								value={userFormData.password}
+								required
+							/>
+							<Form.Control.Feedback className="feedback" type="invalid">
+								Password is required!
+							</Form.Control.Feedback>
+						</Form.Group>
+						<Button 
+							className="loginBtn button:hover "
+							disabled={!(userFormData.email && userFormData.password)}
+							type="submit"
+							variant="success">
+							Game Time!
+						</Button>
+						{/* </Form.Group> */}
+
+					</Form>
+				</>
+			</div>
+		</section>
 	);
 };
 

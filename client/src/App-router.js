@@ -17,6 +17,7 @@ import NoMatch from "./pages/NoMatch";
 import SingleEvent from "./pages/SingleEvent";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+// import AddEvent from "/pages/AddEvent";
 
 // first, establish a new link to the GraphQL server at its /graphql endpoint
 const httpLink = createHttpLink({

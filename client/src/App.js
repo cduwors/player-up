@@ -5,13 +5,13 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Events from "./pages/Events";
-// import NoMatch from "./pages/NoMatch";
+import NoMatch from "./pages/NoMatch";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
-// import SingleEvent from "./pages/SingleEvent";
+import SingleEvent from "./pages/SingleEvent";
 
 import { setContext } from "@apollo/client/link/context";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   ApolloProvider,
   ApolloClient,
@@ -40,12 +40,12 @@ const client = new ApolloClient({
 function App() {
   // page navigation
   const [pages] = useState([
-    { name: "Home" },
-    { name: "Profile" },
-    { name: "Events" },
-    { name: "Login" },
-    { name: "Signup" },
-    { name: "SingleEvent" },
+    { name: "Home", path: "/" },
+    { name: "Profile", path: "/profile"  },
+    { name: "Events", path: "/event"  },
+    { name: "Login", path: "/login"  },
+    { name: "Signup", path: "/signup" },
+    { name: "Logout", path: "/"}
   ]);
 
   // page selection state
@@ -62,6 +62,8 @@ function App() {
       return <Login></Login>;
     } else if (currentPage === "Signup") {
       return <Signup></Signup>;
+    } else if (currentPage === "Logout") {
+      return <Home></Home>;
     } else {
       return <Home></Home>;
     }
@@ -69,34 +71,36 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      {/* <Router> */}
-    <div className="page">
-      <div className={`${pageSelected && currentPage !== 'Home' && 'side'}`}>
-        <Header
-          pages={pages}
-          pageSelected={pageSelected}
-          setPageSelected={setPageSelected}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        ></Header>
-        <main>
-          {pageSelected ? renderPage(currentPage.name) : <Home></Home>}
-          {/* <Switch>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/profile">
-                <Route path=":username" element={<Profile />} />
-                <Route path="" element={<Profile />} />
-              </Route>
-              <Route path="/event/:id" element={<SingleEvent />} />
-              <Route path="*" element={<NoMatch />} />
-            </Switch> */}
-        </main>
-      </div>
-      <Footer></Footer>
-    </div>
-    {/* </Router> */}
+      <Router>
+        <div className="page">
+          <div
+            className="side"
+          >
+            <Header
+              
+              pageSelected={pageSelected}
+              setPageSelected={setPageSelected}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            ></Header>
+            <main>
+              {pageSelected ? renderPage(currentPage) : <Home></Home>}
+              <Switch>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/profile">
+                  <Route path=":username" element={<Profile />} />
+                  <Route path="" element={<Profile />} />
+                </Route>
+                <Route path="/event/:id" element={<SingleEvent />} />
+                <Route path="*" element={<NoMatch />} />
+              </Switch>
+            </main>
+          </div>
+          <Footer></Footer>
+        </div>
+      </Router>
     </ApolloProvider>
   );
 }
