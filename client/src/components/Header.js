@@ -50,7 +50,7 @@ const Header = ({ pages, pageSelected, setPageSelected, currentPage, setCurrentP
                       setPageSelected(true);
                     }}
                   >
-                    <Link to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
+                    <Link style={{ textDecoration: 'none' }} to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
                   </span>
                 </li>
               ))}
@@ -82,7 +82,7 @@ const Header = ({ pages, pageSelected, setPageSelected, currentPage, setCurrentP
                         setPageSelected(true);
                       }}
                     >
-                      <Link to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
+                      <Link style={{ textDecoration: 'none' }} to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
                     </span>
                   </li>
                 ))}
