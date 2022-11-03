@@ -108,16 +108,13 @@ link:hover {
 .nav-link-home {
 	margin: 20px 0;
 	cursor: pointer;
-  background-color: rgb(14, 240, 165);
+  /* background-color: rgb(14, 240, 165); */
   padding: 20px;
-  /* min-height: 50px; */
-  /* background-image: url("./images/red-dice.png"); */
+  border-radius: 10px;
+  min-height: 50px;
+  background-image: url("./images/red-dice.png");
   background-size: cover;
 	/* background-attachment: fixed; */
-}
-
-.link-tex {
-  margin-top: 25px;
 }
 
 .logo-home {

@@ -36,7 +36,7 @@ const Header = ({
                   setPageSelected(true);
                 }}
               >
-                <Link to={"/profile"}>Profile</Link>
+                <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/profile"}>Profile</Link>
               </li>
               <li
                 className={`nav-link ${
@@ -47,7 +47,7 @@ const Header = ({
                   setPageSelected(true);
                 }}
               >
-                <Link to={"/events"}>Events</Link>
+                <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/events"}>Events</Link>
               </li>
               <li
                 className={`nav-link ${
@@ -58,7 +58,7 @@ const Header = ({
                   setPageSelected(true);
                 }}
               >
-                <Link to={"/"} onClick={() => Auth.logout()}>Logout</Link>
+                <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/"} onClick={() => Auth.logout()}>Logout</Link>
               </li>
             </ul>
           </nav>
@@ -84,7 +84,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/profile"} className="link-text">Profile</Link>
+                  <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/profile"} className="link-text">Profile</Link>
                 </li>
                 <li
                   className={`nav-link-home ${
@@ -97,7 +97,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/events"} className="link-text">Events</Link>
+                  <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/events"} className="link-text">Events</Link>
                 </li>
                 <li
                   className={`nav-link-home ${
@@ -110,7 +110,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/"} onClick={() => Auth.logout()} className="link-text">Logout</Link>
+                  <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/"} onClick={() => Auth.logout()} className="link-text">Logout</Link>
                 </li>
                 </ul>
             </nav>
@@ -136,7 +136,7 @@ const Header = ({
                   setPageSelected(true);
                 }}
               >
-                <Link to={"/events"}>Events</Link>
+                <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/events"}>Events</Link>
               </li>
               <li
                 className={`nav-link ${
@@ -147,7 +147,7 @@ const Header = ({
                   setPageSelected(true);
                 }}
               >
-                <Link to={"/login"}>Login</Link>
+                <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/login"}>Login</Link>
               </li>
               <li
                 className={`nav-link ${
@@ -158,7 +158,7 @@ const Header = ({
                   setPageSelected(true);
                 }}
               >
-                <Link to={"/signup"}>Signup</Link>
+                <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/signup"}>Signup</Link>
               </li>
             </ul>
           </nav>
@@ -184,7 +184,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/events"} className="link-text">Events</Link>
+                  <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/events"} className="link-text">Events</Link>
                 </li>
                 <li
                   className={`nav-link-home ${
@@ -197,7 +197,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/login"} className="link-text">Login</Link>
+                  <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/login"} className="link-text">Login</Link>
                 </li>
                 <li
                   className={`nav-link-home ${
@@ -210,7 +210,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/signup"} className="link-text">Signup</Link>
+                  <Link style={{textDecoration: 'none', color: '#ffff', marginTop: '15px'}} to={"/signup"} className="link-text">Signup</Link>
                 </li>
                 </ul>
             </nav>
