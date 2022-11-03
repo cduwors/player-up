@@ -82,7 +82,7 @@ const Header = ({ pages, pageSelected, setPageSelected, currentPage, setCurrentP
                         setPageSelected(true);
                       }}
                     >
-                      <Link to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
+                      <Link to={page.path} className="reactLink">{capitalizeFirstLetter(page.name)}</Link>
                     </span>
                   </li>
                 ))}
