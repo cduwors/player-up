@@ -18,5 +18,23 @@ const SingleEvent = (props) => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  return (
+    <div>
+      <div className="">
+        <p className="">
+          <span style={{ fontWeight: 700 }} className="">
+            {event.username}
+          </span>{" "}
+          thought on {event.createdAt}
+        </p>
+        <div className="card-body">
+          <p>{event.eventText}</p>
+        </div>
+      </div>
+      SingleEvent
+    </div>
+  );
 };
+
 export default SingleEvent;
