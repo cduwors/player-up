@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 
 const Header = ({
-  pages,
   pageSelected,
   setPageSelected,
   currentPage,
@@ -28,7 +27,6 @@ const Header = ({
           </a>
           <nav>
             <ul className="nav-header">
-<<<<<<< HEAD
               <li
                 className={`nav-link ${
                   currentPage.name === "Profile" && pageSelected && "navActive"
@@ -62,32 +60,11 @@ const Header = ({
               >
                 <Link to={"/"} onClick={() => Auth.logout()}>Logout</Link>
               </li>
-=======
-              {navList.map((page) => (
-                <li
-                  className={`nav-link ${
-                    currentPage.name === page.name &&
-                    pageSelected &&
-                    "navActive"
-                  }`}
-                  key={page.name}
-                >
-                  <span
-                    onClick={() => {
-                      setCurrentPage(page);
-                      setPageSelected(true);
-                    }}
-                  >
-                    <Link style={{ textDecoration: 'none' }} to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
-                  </span>
-                </li>
-              ))}
->>>>>>> 637082008e15f25431f2faca3a2e2d813c377c47
             </ul>
           </nav>
         </div>
       ) : (
-        <div className="header-home">
+        <div className="header">
           <a className="hide" href="/" onClick={() => setCurrentPage("Home")}>
             <div className="logo-header">
               <img className="logo" src={logo} alt="player-up-logo"></img>
@@ -95,8 +72,7 @@ const Header = ({
           </a>
           <div className="nav-home">
             <nav>
-              <ul className="nav-header-home">
-<<<<<<< HEAD
+              <ul className="nav-header">
                 <li
                   className={`nav-link-home ${
                     currentPage.name === "Profile" &&
@@ -108,7 +84,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/profile"}>Profile</Link>
+                  <Link to={"/profile"} className="link-text">Profile</Link>
                 </li>
                 <li
                   className={`nav-link-home ${
@@ -121,7 +97,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/events"}>Events</Link>
+                  <Link to={"/events"} className="link-text">Events</Link>
                 </li>
                 <li
                   className={`nav-link-home ${
@@ -134,31 +110,9 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/"} onClick={() => Auth.logout()}>Logout</Link>
+                  <Link to={"/"} onClick={() => Auth.logout()} className="link-text">Logout</Link>
                 </li>
                 </ul>
-=======
-                {homeNavList.map((page) => (
-                  <li
-                    className={`nav-link-home ${
-                      currentPage.name === page.name &&
-                      pageSelected &&
-                      "navActive"
-                    }`}
-                    key={page.name}
-                  >
-                    <span
-                      onClick={() => {
-                        setCurrentPage(page);
-                        setPageSelected(true);
-                      }}
-                    >
-                      <Link style={{ textDecoration: 'none' }} to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
-                    </span>
-                  </li>
-                ))}
-              </ul>
->>>>>>> 637082008e15f25431f2faca3a2e2d813c377c47
             </nav>
           </div>
         </div>
@@ -210,7 +164,7 @@ const Header = ({
           </nav>
         </div>
       ) : (
-        <div className="header-home">
+        <div className="header">
           <a className="hide" href="/" onClick={() => setCurrentPage("Home")}>
             <div className="logo-header">
               <img className="logo" src={logo} alt="player-up-logo"></img>
@@ -218,7 +172,7 @@ const Header = ({
           </a>
           <div className="nav-home">
             <nav>
-              <ul className="nav-header-home">
+              <ul className="nav-header">
                 <li
                   className={`nav-link-home ${
                     currentPage.name === "Events" &&
@@ -230,7 +184,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/events"}>Events</Link>
+                  <Link to={"/events"} className="link-text">Events</Link>
                 </li>
                 <li
                   className={`nav-link-home ${
@@ -243,7 +197,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/login"}>Login</Link>
+                  <Link to={"/login"} className="link-text">Login</Link>
                 </li>
                 <li
                   className={`nav-link-home ${
@@ -256,7 +210,7 @@ const Header = ({
                     setPageSelected(true);
                   }}
                 >
-                  <Link to={"/signup"}>Signup</Link>
+                  <Link to={"/signup"} className="link-text">Signup</Link>
                 </li>
                 </ul>
             </nav>

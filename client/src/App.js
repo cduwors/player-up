@@ -74,10 +74,10 @@ function App() {
       <Router>
         <div className="page">
           <div
-            className={`${pageSelected && currentPage !== "Home" && "side"}`}
+            className="side"
           >
             <Header
-              pages={pages}
+              
               pageSelected={pageSelected}
               setPageSelected={setPageSelected}
               currentPage={currentPage}
