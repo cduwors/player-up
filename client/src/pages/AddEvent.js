@@ -3,15 +3,22 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/mutations";
+import { ADD_EVENT } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
-const Login = () => {
-	const [userFormData, setUserFormData] = useState({ email: "", password: "" });
+const AddEvent = () => {
+	const [eventFormData, setEventFormData] = useState({
+		eventName: "",
+		description: "",
+		date: "",
+		time: "",
+		location: "",
+		numberPlayersNeeded: "",
+		organizerName: "",
+	});
 	const [validated] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
-	const [login, { error }] = useMutation(LOGIN_USER);
 
 	useEffect(() => {
 		if (error) {
@@ -21,10 +28,10 @@ const Login = () => {
 		}
 	}, [error]);
 
-	const handleInputChange = (event) => {
-		const { name, value } = event.target;
-		setUserFormData({ ...userFormData, [name]: value });
-	};
+	// const handleInputChange = (event) => {
+	// 	const { name, value } = event.target;
+	// 	setEventFormData({ ...userEventData, [name]: value });
+	// };
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
@@ -41,22 +48,25 @@ const Login = () => {
 
 			console.log(data);
 			Auth.login(data.login.token);
-			
 		} catch (err) {
 			console.error(err);
-	
 		}
-		setUserFormData({
-			username: "",
-			email: "",
-			password: "",
+
+		setEventFormData({
+			eventName: "",
+			description: "",
+			date: "",
+			time: "",
+			location: "",
+			numberPlayersNeeded: "",
+			organizerName: "",
 		});
 	};
 
 	return (
 		<section className="cork-board loginForm">
 			<div className="login-background">
-				<h1 className="event-header">Login to Play!</h1>
+				<h1 className="event-header">List your Event here!</h1>
 			</div>
 			<div className="formGroupBackground">
 				<>
@@ -70,9 +80,8 @@ const Login = () => {
 							onClose={() => setShowAlert(false)}
 							show={showAlert}
 							variant="danger">
-							Something went wrong with your login credentials!
+							Something went wrong!
 						</Alert>
-						{/* <Form.Group className="formGroup" > */}
 						<Form.Group>
 							<Form.Label className="label" htmlFor="email">
 								Email
@@ -108,15 +117,13 @@ const Login = () => {
 								Password is required!
 							</Form.Control.Feedback>
 						</Form.Group>
-						<Button 
+						<Button
 							className="loginBtn button:hover "
 							disabled={!(userFormData.email && userFormData.password)}
 							type="submit"
 							variant="success">
 							Game Time!
 						</Button>
-						{/* </Form.Group> */}
-
 					</Form>
 				</>
 			</div>
@@ -124,4 +131,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default AddEvent;

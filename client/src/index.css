@@ -57,15 +57,20 @@ main {
 
 .navActive {
 	color: black;
-  border: 2px solid rgb(53, 30, 8);
-  padding: 5px 10px;
-  text-decoration: none !important;
+	/* border: 2px solid rgb(53, 30, 8); */
+	background-color: greenyellow;
+	border-radius: 20px;
+	padding: 15px 20px;
+	text-decoration: none !important;
+}
+
+link {
+	color: rgb(29, 175, 29);
 }
 
 link:hover {
-  color: black;
-  text-decoration: none;
-
+	color: black;
+	text-decoration: none;
 }
 
 .background-cork {
@@ -82,6 +87,7 @@ link:hover {
 .header-home {
 	display: flex;
 	justify-content: flex-end;
+ 
 }
 .nav-header-home {
 	display: flex;
@@ -92,15 +98,28 @@ link:hover {
 }
 
 .nav-home {
-	float: right;
 	list-style-type: none;
 	text-align: right;
+  position: absolute;
+  top: 250px;
+  left: 100px;
 }
 
 .nav-link-home {
-	margin: 0 20px;
+	margin: 20px 0;
 	cursor: pointer;
+  background-color: rgb(14, 240, 165);
+  padding: 20px;
+  /* min-height: 50px; */
+  /* background-image: url("./images/red-dice.png"); */
+  background-size: cover;
+	/* background-attachment: fixed; */
 }
+
+.link-tex {
+  margin-top: 25px;
+}
+
 .logo-home {
 	max-width: 300px;
 	max-height: auto;
@@ -184,7 +203,7 @@ link:hover {
 
 .profile-background h1 {
 	color: white;
-	padding: 0x;
+	padding: 0px;
 }
 
 .button-box {
@@ -199,7 +218,7 @@ link:hover {
 .button-box button {
 	border-radius: 10px;
 	padding: 10px;
-	background-color: rgba(255, 255, 255, 0.3);
+	background-color: rgba(255, 255, 255, 0.8);
 	border: none;
 	color: black;
 	font-weight: 900;
@@ -211,11 +230,11 @@ ul button {
 }
 
 .list-button {
-  border: 2px solid rgb(53, 30, 8);
+	border: 2px solid rgb(53, 30, 8);
 }
 .list-btn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  border: 2px solid rgb(53, 30, 8);
+	background-color: rgba(255, 255, 255, 0.3);
+	border: 2px solid rgb(53, 30, 8);
 }
 
 button:hover {
@@ -245,6 +264,7 @@ button:hover {
 	/* width: 50%; */
 	margin: 35px;
 	background-image: url("./images/board-games.jpg");
+	border-radius: 20px;
 }
 
 .formGroup {
@@ -260,6 +280,7 @@ button:hover {
 	margin: 25px;
 	background-color: #ffffff;
 	opacity: 0.8;
+	border-radius: 20px;
 }
 
 .label {
@@ -282,13 +303,17 @@ button:hover {
 }
 .loginBtn {
 	position: relative;
-	top: 10px;
+	display: flex;
+  top: 10px;
 	width: 225px;
 	text-align: center;
 	background-color: rgb(29, 175, 29);
 	border-radius: 10px;
 	font-size: 24px;
-	opacity: 1.0;
+	color: black;
+	opacity: .8;
+  justify-content: center;
+  /* box-shadow: 10px 3px 3px greenyellow; */
 }
 
 .login-background {

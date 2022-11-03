@@ -44,7 +44,8 @@ function App() {
     { name: "Profile", path: "/profile"  },
     { name: "Events", path: "/event"  },
     { name: "Login", path: "/login"  },
-    { name: "Signup", path: "/signup" }
+    { name: "Signup", path: "/signup" },
+    { name: "Logout", path: "/"}
   ]);
 
   // page selection state
@@ -61,6 +62,8 @@ function App() {
       return <Login></Login>;
     } else if (currentPage === "Signup") {
       return <Signup></Signup>;
+    } else if (currentPage === "Logout") {
+      return <Home></Home>;
     } else {
       return <Home></Home>;
     }
@@ -71,17 +74,17 @@ function App() {
       <Router>
         <div className="page">
           <div
-            className={`${pageSelected && currentPage !== "Home" && "side"}`}
+            className="side"
           >
             <Header
-              pages={pages}
+              
               pageSelected={pageSelected}
               setPageSelected={setPageSelected}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             ></Header>
             <main>
-              {pageSelected ? renderPage(currentPage.name) : <Home></Home>}
+              {pageSelected ? renderPage(currentPage) : <Home></Home>}
               <Switch>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
