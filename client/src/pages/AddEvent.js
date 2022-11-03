@@ -17,16 +17,17 @@ const AddEvent = () => {
 		numberPlayersNeeded: "",
 		organizerName: "",
 	});
-	const [validated] = useState(false);
-	const [showAlert, setShowAlert] = useState(false);
+	// const [validated] = useState(false);
+	// const [showAlert, setShowAlert] = useState(false);
+	const [event, { error }] = useMutation(ADD_EVENT);
 
-	useEffect(() => {
-		if (error) {
-			setShowAlert(true);
-		} else {
-			setShowAlert(false);
-		}
-	}, [error]);
+	// useEffect(() => {
+	// 	if (error) {
+	// 		setShowAlert(true);
+	// 	} else {
+	// 		setShowAlert(false);
+	// 	}
+	// }, [error]);
 
 	// const handleInputChange = (event) => {
 	// 	const { name, value } = event.target;
@@ -44,10 +45,10 @@ const AddEvent = () => {
 		}
 
 		try {
-			const { data } = await login({ variables: { ...userFormData } });
+			const { data } = await event({ variables: { ...eventFormData } });
 
 			console.log(data);
-			Auth.login(data.login.token);
+			// Auth.login(data.login.token);
 		} catch (err) {
 			console.error(err);
 		}
@@ -83,46 +84,137 @@ const AddEvent = () => {
 							Something went wrong!
 						</Alert>
 						<Form.Group>
-							<Form.Label className="label" htmlFor="email">
-								Email
+							<Form.Label className="label" htmlFor="eventName">
+								Event Name
 							</Form.Label>
 							<Form.Control
 								className="input"
 								type="text"
-								placeholder="Your email"
-								name="email"
+								placeholder="Name your event"
+								name="eventName"
 								onChange={handleInputChange}
-								value={userFormData.email}
+								value={eventFormData.eventName}
 								required
 							/>
 							<Form.Control.Feedback className="feedback" type="invalid">
-								Email is required!
+								An event name is required!
 							</Form.Control.Feedback>
 						</Form.Group>
 
 						<Form.Group>
-							<Form.Label className="label" htmlFor="password">
-								Password
+							<Form.Label className="label" htmlFor="description">
+								Description
 							</Form.Label>
 							<Form.Control
 								className="input"
-								type="password"
-								placeholder="Your password"
-								name="password"
+								type="text"
+								placeholder="Describe your event!"
+								name="description"
 								onChange={handleInputChange}
-								value={userFormData.password}
+								value={eventFormData.description}
 								required
 							/>
 							<Form.Control.Feedback className="feedback" type="invalid">
-								Password is required!
+								A description of your event is required!
 							</Form.Control.Feedback>
 						</Form.Group>
+
+						<Form.Group>
+							<Form.Label className="label" htmlFor="date">
+								Event Date
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="MM/DD/YYYY"
+								name="date"
+								onChange={handleInputChange}
+								value={eventFormData.date}
+								required
+							/>
+							<Form.Control.Feedback className="feedback" type="invalid">
+								A date is required!
+							</Form.Control.Feedback>
+						</Form.Group>
+
+						<Form.Group>
+							<Form.Label className="label" htmlFor="time">
+								Event Time
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="What time does the game begin?"
+								name="time"
+								onChange={handleInputChange}
+								value={eventFormData.time}
+								required
+							/>
+							<Form.Control.Feedback className="feedback" type="invalid">
+								A time for your event is required!
+							</Form.Control.Feedback>
+						</Form.Group>
+
+						<Form.Group>
+							<Form.Label className="label" htmlFor="location">
+								Location
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="Where is your event?"
+								name="location"
+								onChange={handleInputChange}
+								value={eventFormData.location}
+								required
+							/>
+							<Form.Control.Feedback className="feedback" type="invalid">
+								A location is required!
+							</Form.Control.Feedback>
+						</Form.Group>
+
+						<Form.Group>
+							<Form.Label className="label" htmlFor="numberPlayersNeeded">
+								How many players?
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="examples: 4 players, 5-10 players"
+								name="numberPlayersNeeded"
+								onChange={handleInputChange}
+								value={eventFormData.numberPlayersNeeded}
+								required
+							/>
+							<Form.Control.Feedback className="feedback" type="invalid">
+								Number of players is required!
+							</Form.Control.Feedback>
+						</Form.Group>
+
+						<Form.Group>
+							<Form.Label className="label" htmlFor="organizerName">
+								Organizer's name
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="Enter a name..."
+								name="organizerName"
+								onChange={handleInputChange}
+								value={eventFormData.organizerName}
+								required
+							/>
+							<Form.Control.Feedback className="feedback" type="invalid">
+								This field is required!
+							</Form.Control.Feedback>
+						</Form.Group>
+
 						<Button
 							className="loginBtn button:hover "
-							disabled={!(userFormData.email && userFormData.password)}
+							// disabled={!loggedIn}
 							type="submit"
 							variant="success">
-							Game Time!
+							Post your game!
 						</Button>
 					</Form>
 				</>
