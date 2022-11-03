@@ -110,7 +110,7 @@ const resolvers = {
       },
       context
     ) => {
-      if (context.user) {
+      // if (context.user) {
         const updatedEvent = await User.findOneAndUpdate(
           { _id: eventId },
           {
@@ -128,8 +128,8 @@ const resolvers = {
           { new: true, runValidators: true }
         );
         return updatedEvent;
-      }
-      throw new AuthenticationError("You need to be logged in!");
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
     },
     deleteEvent: async (parent, { eventId }, context) => {
       if (context.user) {

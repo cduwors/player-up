@@ -41,10 +41,11 @@ const Login = () => {
 
 			console.log(data);
 			Auth.login(data.login.token);
+			
 		} catch (err) {
 			console.error(err);
+	
 		}
-
 		setUserFormData({
 			username: "",
 			email: "",
@@ -71,6 +72,7 @@ const Login = () => {
 							variant="danger">
 							Something went wrong with your login credentials!
 						</Alert>
+						{/* <Form.Group className="formGroup" > */}
 						<Form.Group>
 							<Form.Label className="label" htmlFor="email">
 								Email
@@ -106,13 +108,15 @@ const Login = () => {
 								Password is required!
 							</Form.Control.Feedback>
 						</Form.Group>
-						<Button
+						<Button 
 							className="loginBtn button:hover "
 							disabled={!(userFormData.email && userFormData.password)}
 							type="submit"
 							variant="success">
 							Game Time!
 						</Button>
+						{/* </Form.Group> */}
+
 					</Form>
 				</>
 			</div>
