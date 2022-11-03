@@ -1,9 +1,22 @@
-import React from 'react';
+import React from "react";
+import { useParams } from "react-router-dom";
 
-const SingleEvent = () => {
-  return (
-    <div>SingleEvent</div>
-  );
+import EventList from "../components/EventList";
+import Event from "../components/Event";
+
+// import Auth from "../utils/auth";
+import { useQuery } from "@apollo/client";
+import { QUERY_SINGLE_EVENTS } from "../utils/queries";
+
+const SingleEvent = (props) => {
+  const { id: eventId } = useParams();
+  const { loading, data } = useQuery(QUERY_SINGLE_EVENTS, {
+    variables: { id: eventId },
+  });
+  const event = data?.event || {};
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 };
-
 export default SingleEvent;
