@@ -28,6 +28,7 @@ const Header = ({
           </a>
           <nav>
             <ul className="nav-header">
+<<<<<<< HEAD
               <li
                 className={`nav-link ${
                   currentPage.name === "Profile" && pageSelected && "navActive"
@@ -61,6 +62,27 @@ const Header = ({
               >
                 <Link to={"/"} onClick={() => Auth.logout()}>Logout</Link>
               </li>
+=======
+              {navList.map((page) => (
+                <li
+                  className={`nav-link ${
+                    currentPage.name === page.name &&
+                    pageSelected &&
+                    "navActive"
+                  }`}
+                  key={page.name}
+                >
+                  <span
+                    onClick={() => {
+                      setCurrentPage(page);
+                      setPageSelected(true);
+                    }}
+                  >
+                    <Link style={{ textDecoration: 'none' }} to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
+                  </span>
+                </li>
+              ))}
+>>>>>>> 637082008e15f25431f2faca3a2e2d813c377c47
             </ul>
           </nav>
         </div>
@@ -74,6 +96,7 @@ const Header = ({
           <div className="nav-home">
             <nav>
               <ul className="nav-header-home">
+<<<<<<< HEAD
                 <li
                   className={`nav-link-home ${
                     currentPage.name === "Profile" &&
@@ -114,6 +137,28 @@ const Header = ({
                   <Link to={"/"} onClick={() => Auth.logout()}>Logout</Link>
                 </li>
                 </ul>
+=======
+                {homeNavList.map((page) => (
+                  <li
+                    className={`nav-link-home ${
+                      currentPage.name === page.name &&
+                      pageSelected &&
+                      "navActive"
+                    }`}
+                    key={page.name}
+                  >
+                    <span
+                      onClick={() => {
+                        setCurrentPage(page);
+                        setPageSelected(true);
+                      }}
+                    >
+                      <Link style={{ textDecoration: 'none' }} to={page.path}>{capitalizeFirstLetter(page.name)}</Link>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+>>>>>>> 637082008e15f25431f2faca3a2e2d813c377c47
             </nav>
           </div>
         </div>
