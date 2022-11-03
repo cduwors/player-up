@@ -57,8 +57,7 @@ main {
 
 .navActive {
 	color: black;
-	background-color: rgb(47, 255, 203);
-  border: 2px solid black;
+  border: 2px solid rgb(53, 30, 8);
   padding: 5px 10px;
   text-decoration: none !important;
 }
@@ -212,10 +211,11 @@ ul button {
 }
 
 .list-button {
-  background-color: rgb(47, 255, 203);
+  border: 2px solid rgb(53, 30, 8);
 }
 .list-btn:hover {
-  background-color: rgb(47, 255, 203);
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgb(53, 30, 8);
 }
 
 button:hover {
@@ -229,7 +229,7 @@ button:hover {
 	padding: 25px;
 	font-size: 24px;
 	font-weight: bold;
-	border: 5px solid rgb(29, 175, 29);
+	/* border: 5px solid rgb(29, 175, 29); */
 	/* height: 100vh; */
 }
 
@@ -241,7 +241,7 @@ button:hover {
 	flex-grow: 1;
 	flex-shrink: 1;
 	padding: 35px;
-	border: 5px solid rgb(29, 175, 29);
+	border: 5px solid rgb(53, 30, 8);
 	/* width: 50%; */
 	margin: 35px;
 	background-image: url("./images/board-games.jpg");
@@ -255,7 +255,7 @@ button:hover {
 	flex-grow: 1;
 	flex-shrink: 1;
 	padding: 20px;
-	border: 5px solid rgb(29, 175, 29);
+	/* border: 5px solid rgb(29, 175, 29); */
 	/* width: 50%; */
 	margin: 25px;
 	background-color: #ffffff;
