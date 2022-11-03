@@ -55,12 +55,13 @@ const typeDefs = gql`
       attending: [String]
     ): Events
     updateEvent(
-      eventName: String!
-      description: String!
-      date: String!
-      time: String!
-      location: String!
-      numberPlayersNeeded: String!
+      eventId: ID
+      eventName: String
+      description: String
+      date: String
+      time: String
+      location: String
+      numberPlayersNeeded: String
       organizerName: String
       attending: [String]
     ): Events

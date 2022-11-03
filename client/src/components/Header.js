@@ -12,13 +12,13 @@ const Header = ({
  
   // update document.title to match category selection
   useEffect(() => {
-    document.title = currentPage.name;
+    document.title = currentPage;
   }, [currentPage]);
 
   return (
     <> {Auth.loggedIn() ?
     (<header>
-      {currentPage.name !== "Home" ? (
+      {currentPage !== "Home" ? (
         <div className="header">
           <a href="/" onClick={() => setCurrentPage("Home")}>
             <div className="logo-header">
@@ -29,7 +29,7 @@ const Header = ({
             <ul className="nav-header">
               <li
                 className={`nav-link ${
-                  currentPage.name === "Profile" && pageSelected && "navActive"
+                  currentPage === "Profile" && pageSelected && "navActive"
                 }`}
                 onClick={() => {
                   setCurrentPage("Profile");
@@ -40,7 +40,7 @@ const Header = ({
               </li>
               <li
                 className={`nav-link ${
-                  currentPage.name === "Events" && pageSelected && "navActive"
+                  currentPage === "Events" && pageSelected && "navActive"
                 }`}
                 onClick={() => {
                   setCurrentPage("Events");
@@ -51,7 +51,7 @@ const Header = ({
               </li>
               <li
                 className={`nav-link ${
-                  currentPage.name === "Logout" && pageSelected && "navActive"
+                  currentPage === "Logout" && pageSelected && "navActive"
                 }`}
                 onClick={() => {
                   setCurrentPage("Logout");
@@ -75,7 +75,7 @@ const Header = ({
               <ul className="nav-header">
                 <li
                   className={`nav-link-home ${
-                    currentPage.name === "Profile" &&
+                    currentPage === "Profile" &&
                     pageSelected &&
                     "navActive"
                   }`}
@@ -88,7 +88,7 @@ const Header = ({
                 </li>
                 <li
                   className={`nav-link-home ${
-                    currentPage.name === "Events" &&
+                    currentPage === "Events" &&
                     pageSelected &&
                     "navActive"
                   }`}
@@ -101,7 +101,7 @@ const Header = ({
                 </li>
                 <li
                   className={`nav-link-home ${
-                    currentPage.name === "Logout" &&
+                    currentPage === "Logout" &&
                     pageSelected &&
                     "navActive"
                   }`}
@@ -118,7 +118,7 @@ const Header = ({
         </div>
       )}
     </header>) : (<header>
-      {currentPage.name !== "Home" ? (
+      {currentPage !== "Home" ? (
         <div className="header">
           <a href="/" onClick={() => setCurrentPage("Home")}>
             <div className="logo-header">
@@ -129,7 +129,7 @@ const Header = ({
             <ul className="nav-header">
               <li
                 className={`nav-link ${
-                  currentPage.name === "Events" && pageSelected && "navActive"
+                  currentPage === "Events" && pageSelected && "navActive"
                 }`}
                 onClick={() => {
                   setCurrentPage("Events");
@@ -140,7 +140,7 @@ const Header = ({
               </li>
               <li
                 className={`nav-link ${
-                  currentPage.name === "Login" && pageSelected && "navActive"
+                  currentPage === "Login" && pageSelected && "navActive"
                 }`}
                 onClick={() => {
                   setCurrentPage("Login");
@@ -151,7 +151,7 @@ const Header = ({
               </li>
               <li
                 className={`nav-link ${
-                  currentPage.name === "Signup" && pageSelected && "navActive"
+                  currentPage === "Signup" && pageSelected && "navActive"
                 }`}
                 onClick={() => {
                   setCurrentPage("Signup");
@@ -175,7 +175,7 @@ const Header = ({
               <ul className="nav-header">
                 <li
                   className={`nav-link-home ${
-                    currentPage.name === "Events" &&
+                    currentPage === "Events" &&
                     pageSelected &&
                     "navActive"
                   }`}
@@ -188,7 +188,7 @@ const Header = ({
                 </li>
                 <li
                   className={`nav-link-home ${
-                    currentPage.name === "Login" &&
+                    currentPage === "Login" &&
                     pageSelected &&
                     "navActive"
                   }`}
@@ -201,7 +201,7 @@ const Header = ({
                 </li>
                 <li
                   className={`nav-link-home ${
-                    currentPage.name === "Signup" &&
+                    currentPage === "Signup" &&
                     pageSelected &&
                     "navActive"
                   }`}
