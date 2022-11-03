@@ -44,7 +44,7 @@ const Login = () => {
 			
 		} catch (err) {
 			console.error(err);
-		}
+	
 
 		setUserFormData({
 			username: "",
