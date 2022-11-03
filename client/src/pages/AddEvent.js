@@ -5,9 +5,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 
-import Auth from "../utils/auth";
-
-const AddEvent = () => {
+const AddEvent = ( { addEventPage, setEventPage } ) => {
 	const [eventFormData, setEventFormData] = useState({
 		eventName: "",
 		description: "",
@@ -17,22 +15,22 @@ const AddEvent = () => {
 		numberPlayersNeeded: "",
 		organizerName: "",
 	});
-	// const [validated] = useState(false);
-	// const [showAlert, setShowAlert] = useState(false);
+	const [validated] = useState(false);
+	const [showAlert, setShowAlert] = useState(false);
 	const [event, { error }] = useMutation(ADD_EVENT);
 
-	// useEffect(() => {
-	// 	if (error) {
-	// 		setShowAlert(true);
-	// 	} else {
-	// 		setShowAlert(false);
-	// 	}
-	// }, [error]);
+	useEffect(() => {
+		if (error) {
+			setShowAlert(true);
+		} else {
+			setShowAlert(false);
+		}
+	}, [error]);
 
-	// const handleInputChange = (event) => {
-	// 	const { name, value } = event.target;
-	// 	setEventFormData({ ...userEventData, [name]: value });
-	// };
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
+		setEventFormData({ ...eventFormData, [name]: value });
+	};
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
@@ -51,6 +49,7 @@ const AddEvent = () => {
 			// Auth.login(data.login.token);
 		} catch (err) {
 			console.error(err);
+			setShowAlert(true);
 		}
 
 		setEventFormData({
@@ -66,9 +65,9 @@ const AddEvent = () => {
 
 	return (
 		<section className="cork-board loginForm">
-			<div className="login-background">
+			{/* <div className="login-background">
 				<h1 className="event-header">List your Event here!</h1>
-			</div>
+			</div> */}
 			<div className="formGroupBackground">
 				<>
 					<Form
@@ -84,6 +83,7 @@ const AddEvent = () => {
 							Something went wrong!
 						</Alert>
 						<Form.Group>
+							<h2 className="addEventHeader">The Game Plan!</h2>
 							<Form.Label className="label" htmlFor="eventName">
 								Event Name
 							</Form.Label>
