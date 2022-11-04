@@ -6,7 +6,7 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ username: context.user.username })
+        const userData = await User.findOne({ id: context.user._id })
           .select("-__v -password")
           .populate("events");
 
@@ -21,9 +21,9 @@ const resolvers = {
     events: async () => {
       return await  Events.find({}).sort({ createdAt: -1 });
     },
-    userEvents: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Events.find(params).sort({ createdAt: -1 });
+    userEvents: async (parent, { organizerName }) => {
+      // const params = username ? { username } : {};
+      return Events.find({ organizerName }).sort({ createdAt: -1 });
     },
     event: async (parent, { _id }) => {
       return Events.findOne({ _id });

@@ -1,6 +1,13 @@
 import React from "react";
 import EventList from "../components/EventList";
+import { useQuery } from "@apollo/client";
+import { QUERY_ALL_EVENTS } from "../utils/queries";
 
+const Events = () => {
+  const { loading, data } = useQuery(QUERY_ALL_EVENTS);
+  const events = data?.events || [];
+
+<<<<<<< HEAD
 const Events = () => {
   const events = [
     {
@@ -64,10 +71,16 @@ const Events = () => {
       organizerNames: "James Douglas",
     },
   ];
+=======
+>>>>>>> 16b188835f872c22e494437e7e0337405423b2cc
   return (
     <section className="cork-board">
       <h1 className="event-header">Are You Game?</h1>
-      <EventList events={events}></EventList>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <EventList events={events}></EventList>
+      )}
     </section>
   );
 };
