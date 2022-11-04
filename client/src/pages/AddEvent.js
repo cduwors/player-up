@@ -1,8 +1,8 @@
 // see SignupForm.js for comments
 import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-
-import { useMutation } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+import { useMutation, useQuery } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 
 const AddEvent = ( { addEventPage, setEventPage } ) => {
@@ -17,7 +17,9 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 	});
 	const [validated] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
-	const [event, { error }] = useMutation(ADD_EVENT);
+	const [eventAdd, { error }] = useMutation(ADD_EVENT);
+	const { data } = useQuery(QUERY_ME);
+	const me = data?.me || {}
 
 	useEffect(() => {
 		if (error) {
@@ -43,10 +45,8 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 		}
 
 		try {
-			const { data } = await event({ variables: { ...eventFormData } });
-
+			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			console.log(data);
-			// Auth.login(data.login.token);
 		} catch (err) {
 			console.error(err);
 			setShowAlert(true);
@@ -65,9 +65,6 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 
 	return (
 		<section className="cork-board loginForm">
-			{/* <div className="login-background">
-				<h1 className="event-header">List your Event here!</h1>
-			</div> */}
 			<div className="formGroupBackground">
 				<>
 					<Form
@@ -112,7 +109,6 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 								name="description"
 								onChange={handleInputChange}
 								value={eventFormData.description}
-								required
 							/>
 							<Form.Control.Feedback className="feedback" type="invalid">
 								A description of your event is required!
@@ -184,7 +180,6 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 								name="numberPlayersNeeded"
 								onChange={handleInputChange}
 								value={eventFormData.numberPlayersNeeded}
-								required
 							/>
 							<Form.Control.Feedback className="feedback" type="invalid">
 								Number of players is required!
@@ -198,11 +193,11 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							<Form.Control
 								className="input"
 								type="text"
-								placeholder="Enter a name..."
+								placeholder={me.username}
 								name="organizerName"
 								onChange={handleInputChange}
-								value={eventFormData.organizerName}
-								required
+								value={me.username}
+								disabled={true}
 							/>
 							<Form.Control.Feedback className="feedback" type="invalid">
 								This field is required!
@@ -211,7 +206,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 
 						<Button
 							className="loginBtn button:hover "
-							// disabled={!loggedIn}
+							disabled={!(eventFormData.eventName && eventFormData.date && eventFormData.time && eventFormData.location)}
 							type="submit"
 							variant="success">
 							Post your game!

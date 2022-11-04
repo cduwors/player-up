@@ -213,7 +213,7 @@ link:hover {
 	padding: 10px 0;
 }
 
-.button-box button {
+.list-btn {
 	border-radius: 10px;
 	padding: 10px;
 	background-color: rgba(255, 255, 255, 0.8);
@@ -237,6 +237,16 @@ button:hover {
 }
 
 .selectEvents {
+	background-color: greenyellow;
+	border-radius: 10px;
+	padding: 10px;
+	/* background-color: rgba(255, 255, 255, 0.8); */
+	border: none;
+	color: black;
+	font-weight: 900;
+}
+
+.green-yellow {
 	background-color: greenyellow;
 }
 /* Login/signup pages */
