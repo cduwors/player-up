@@ -87,7 +87,6 @@ link:hover {
 .header-home {
 	display: flex;
 	justify-content: flex-end;
- 
 }
 .nav-header-home {
 	display: flex;
@@ -100,20 +99,20 @@ link:hover {
 .nav-home {
 	list-style-type: none;
 	text-align: right;
-  position: absolute;
-  top: 250px;
-  left: 100px;
+	position: absolute;
+	top: 250px;
+	left: 100px;
 }
 
 .nav-link-home {
 	margin: 20px 0;
 	cursor: pointer;
-  /* background-color: rgb(14, 240, 165); */
-  padding: 20px;
-  border-radius: 10px;
-  min-height: 50px;
-  background-image: url("./images/red-dice.png");
-  background-size: cover;
+	/* background-color: rgb(14, 240, 165); */
+	padding: 20px;
+	border-radius: 10px;
+	min-height: 50px;
+	background-image: url("./images/red-dice.png");
+	background-size: cover;
 	/* background-attachment: fixed; */
 }
 
@@ -294,7 +293,7 @@ button:hover {
 .label {
 	display: flex;
 	justify-content: center;
-  text-align: center;
+	text-align: center;
 	padding: 0.5em;
 }
 .feedback {
@@ -310,19 +309,30 @@ button:hover {
 	opacity: 1;
 	width: 100%;
 }
+
+.inputDescription {
+	flex: 1;
+	border-radius: 10px;
+	font-size: 24px;
+	opacity: 1;
+	width: 100%;
+	display: block;
+	margin: 0;
+	resize: vertical;
+}
 .loginBtn {
 	position: relative;
 	display: flex;
-  top: 10px;
+	top: 10px;
 	width: 225px;
 	text-align: center;
 	background-color: rgb(29, 175, 29);
 	border-radius: 10px;
 	font-size: 24px;
 	color: black;
-	opacity: .8;
-  justify-content: center;
-  /* box-shadow: 10px 3px 3px greenyellow; */
+	opacity: 0.8;
+	justify-content: center;
+	/* box-shadow: 10px 3px 3px greenyellow; */
 }
 
 .login-background {

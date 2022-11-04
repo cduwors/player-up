@@ -47,6 +47,8 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 		try {
 			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			console.log(data);
+			setEventPage(false);
+			// Auth.login(data.login.token);
 		} catch (err) {
 			console.error(err);
 			setShowAlert(true);
@@ -103,11 +105,13 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 								Description
 							</Form.Label>
 							<Form.Control
-								className="input"
-								type="text"
-								placeholder="Describe your event!"
+								className="inputDescription"
+								type="textarea"
+								// style={{height: '200px'}}
+								placeholder="What we'll be doing..."
 								name="description"
 								onChange={handleInputChange}
+								multiline={true}
 								value={eventFormData.description}
 							/>
 							<Form.Control.Feedback className="feedback" type="invalid">
@@ -140,7 +144,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							<Form.Control
 								className="input"
 								type="text"
-								placeholder="What time does the game begin?"
+								placeholder="ex. 4:00 PM, 5-8 PM"
 								name="time"
 								onChange={handleInputChange}
 								value={eventFormData.time}
@@ -158,7 +162,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							<Form.Control
 								className="input"
 								type="text"
-								placeholder="Where is your event?"
+								placeholder="ex. address, Ting Park"
 								name="location"
 								onChange={handleInputChange}
 								value={eventFormData.location}
@@ -176,7 +180,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							<Form.Control
 								className="input"
 								type="text"
-								placeholder="examples: 4 players, 5-10 players"
+								placeholder="ex. 4 players, 5-10 players"
 								name="numberPlayersNeeded"
 								onChange={handleInputChange}
 								value={eventFormData.numberPlayersNeeded}
@@ -211,6 +215,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							variant="success">
 							Post your game!
 						</Button>
+
 					</Form>
 				</>
 			</div>
