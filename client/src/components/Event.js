@@ -9,12 +9,12 @@ function Event({ event }) {
     <article className="text-box">
       <h2 className="eventName">{event.eventName}</h2>
       <span>
-        {event.dateAndTime} <br />
+        {event.time} | {event.date} <br />
         {event.location}
       </span>
       <p>Description: {event.description}</p>
       <span>
-        {event.organizerNames} | Players needed: {event.numberPlayersNeeded} <br />
+        {event.organizerName} | Players needed: {event.numberPlayersNeeded} <br />
         Players attending: {!event.attending.length ? "0" : pluralize("player", event.attending.length)}
       </span>
     </article>
