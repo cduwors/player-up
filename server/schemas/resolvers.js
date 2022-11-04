@@ -19,7 +19,7 @@ const resolvers = {
       return await User.findOne({ username: username }).populate("events");
     },
     events: async () => {
-      return await User.find({}).sort({ createdAt: -1 });
+      return await  Events.find({}).sort({ createdAt: -1 });
     },
     userEvents: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -54,7 +54,7 @@ const resolvers = {
       if (context.user) {
         const updatedEvent = await Event.findOneAndUpdate(
           { _id: eventId },
-          { $addToSet: { attending: { username: context.user.username } } },
+          { $addToSet: { attending: context.user.username } },
           { new: true }
         );
         return updatedEvent;
@@ -70,7 +70,6 @@ const resolvers = {
         time,
         location,
         numberPlayersNeeded,
-        organizerName,
         attending,
       },
       context
@@ -83,7 +82,7 @@ const resolvers = {
           time,
           location,
           numberPlayersNeeded,
-          organizerName,
+          organizerName: context.user.username,
           attending,
         });
         const updatedUser = await User.findOneAndUpdate(
@@ -96,40 +95,17 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     updateEvent: async (
-      parent,
-      {
-        eventId,
-        eventName,
-        description,
-        date,
-        time,
-        location,
-        numberPlayersNeeded,
-        organizerName,
-        attending,
-      },
+      parent, args,
       context
     ) => {
-      // if (context.user) {
-        const updatedEvent = await User.findOneAndUpdate(
-          { _id: eventId },
-          {
-            $push: {
-              eventName,
-              description,
-              date,
-              time,
-              location,
-              numberPlayersNeeded,
-              organizerName,
-              attending,
-            },
-          },
+      if (context.user) {
+        const updatedEvent = await Events.findOneAndUpdate(
+          { _id: args.eventId }, args,
           { new: true, runValidators: true }
         );
         return updatedEvent;
-      // }
-      // throw new AuthenticationError("You need to be logged in!");
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
     deleteEvent: async (parent, { eventId }, context) => {
       if (context.user) {
