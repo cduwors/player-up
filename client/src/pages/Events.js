@@ -1,7 +1,7 @@
 import React from "react";
 import EventList from "../components/EventList";
 
-const Event = () => {
+const Events = () => {
   const events = [
     {
       _id: 1,
@@ -72,4 +72,4 @@ const Event = () => {
   );
 };
 
-export default Event;
+export default Events;

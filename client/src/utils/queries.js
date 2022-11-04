@@ -30,19 +30,19 @@ export const QUERY_ME = gql`
       _id
       username
       email
-        events {
+      events {
+        _id
+        eventName
+        description
+        date
+        time
+        location
+        numberPlayersNeeded
+        organizerName
+        attending {
           _id
-          eventName
-          description
-          date
-          time
-          location
-          numberPlayersNeeded
-          organizerName
-          attending {
-            _id
-            username
-          }
+          username
+        }
       }
     }
   }
@@ -68,39 +68,39 @@ export const QUERY_ALL_EVENTS = gql`
 `;
 
 export const QUERY_USER_EVENTS = gql`
-  { query events($username: String!)
-      events(username: $username) {
+  query events($username: String!) {
+    events(username: $username) {
+      _id
+      eventName
+      description
+      date
+      time
+      location
+      numberPlayersNeeded
+      organizerName
+      attending {
         _id
-          eventName
-          description
-          date
-          time
-          location
-          numberPlayersNeeded
-          organizerName
-          attending {
-            _id
-            username
-          }
+        username
       }
     }
+  }
 `;
 
 export const QUERY_SINGLE_EVENTS = gql`
-  { query events($id: ID!)
-      events(_id: $id) {
-        _id
-          eventName
-          description
-          date
-          time
-          location
-          numberPlayersNeeded
-          organizerName
-          attending {
-            _id
-            username
-          }
-      }
+  query events($id: ID!) {
+    events(_id: $id) {
+      _id
+        eventName
+        description
+        date
+        time
+        location
+        numberPlayersNeeded
+        organizerName
+        attending {
+          _id
+          username
+        }
     }
+  }
 `;

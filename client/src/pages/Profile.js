@@ -42,11 +42,15 @@ const Profile = () => {
 	const [commitmentList, setCommitmentList] = useState(false);
 	const [addEventPage, setAddEventPage] = useState(false);
 
+
 	const displayCommitments = () => {
-		// document.querySelector("#event-list").textContent("")
+		document.querySelector(".selectEvents").style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+		document.querySelector(".selectCommitments").style.backgroundColor = 'GREENYELLOW';
 		setCommitmentList(true);
 	};
 	const displayEvents = () => {
+		document.querySelector(".selectEvents").style.backgroundColor = 'GREENYELLOW';
+		document.querySelector(".selectCommitments").style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
 		setCommitmentList(false);
 	};
 
@@ -57,7 +61,7 @@ const Profile = () => {
 				<div className="button-box">
 					<button
 						onClick={displayEvents}
-						className={`list-btn ${!commitmentList && "list-button"}`}>
+						className="list-btn selectEvents">
 						My Events
 					</button>
 
@@ -67,7 +71,7 @@ const Profile = () => {
 
 					<button
 						onClick={displayCommitments}
-						className={`list-btn ${commitmentList && "list-button"}`}>
+						className="list-btn selectCommitments">
 						My Game Plan
 					</button>
 				</div>
