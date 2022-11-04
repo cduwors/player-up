@@ -12,6 +12,7 @@ const Events = () => {
       location: "Jenks Carpenter Rd, Cary, NC 27519",
       numberPlayersNeeded: "10+",
       organizerNames: "James Douglas",
+      attending: []
     },
     {
       _id: 2,
@@ -22,6 +23,7 @@ const Events = () => {
       location: "506 Rowan Way, Apex NC",
       numberPlayersNeeded: "2-6",
       organizerNames: "Chelsea Montreal",
+      attending: ["mary", "jane"]
     },
     {
       _id: 3,
@@ -32,6 +34,7 @@ const Events = () => {
       location: "Jenks Carpenter Rd, Cary, NC 27519",
       numberPlayersNeeded: "4-10",
       organizerNames: "James Douglas",
+      attending: ["john"]
     },
     {
       _id: 4,
@@ -42,6 +45,7 @@ const Events = () => {
       location: "506 Rowan Way, Apex NC",
       numberPlayersNeeded: "2-6",
       organizerNames: "Chelsea Montreal",
+      attending: []
     },
     {
       _id: 5,
@@ -52,6 +56,7 @@ const Events = () => {
       location: "Jenks Carpenter Rd, Cary, NC 27519",
       numberPlayersNeeded: "10+",
       organizerNames: "James Douglas",
+      attending: []
     },
     {
       _id: 6,
@@ -62,6 +67,7 @@ const Events = () => {
       location: "Jenks Carpenter Rd, Cary, NC 27519",
       numberPlayersNeeded: "4-10",
       organizerNames: "James Douglas",
+      attending: []
     },
   ];
   return (
