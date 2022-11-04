@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 // import logo from "../images/player-up-logo.png";
 import { useLocation } from "react-router-dom";
 import Auth from "../utils/auth";
@@ -15,14 +15,14 @@ const Header = () => {
     if (titleLocation !== "profile" && titleLocation !== "events" && titleLocation !== "login" && titleLocation !== "signup") {
       document.title = "PlayerUP"
     } 
-  }, [location]);
+  }, [titleLocation]);
 
   return (
     <>
       {Auth.loggedIn() ? (
-        <NavLoggedIn></NavLoggedIn>
+        <NavLoggedIn titleLocation={titleLocation}></NavLoggedIn>
       ) : (
-        <NavLoggedOut></NavLoggedOut>
+        <NavLoggedOut titleLocation={titleLocation}></NavLoggedOut>
       )}
     </>
   );

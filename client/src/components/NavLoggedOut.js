@@ -3,7 +3,7 @@ import logo from "../images/player-up-logo.png";
 import { Link } from "react-router-dom";
 // import Auth from "../utils/auth";
 
-const NavLoggedOut = () => {
+const NavLoggedOut = ({titleLocation}) => {
      // page selection state
   const [pageSelected, setPageSelected] = useState(false);
   const [homePage, setHomePage] = useState(true); 
@@ -25,7 +25,7 @@ const NavLoggedOut = () => {
           <nav>
             <ul className="nav-header">
               <li
-                className={!pageSelected ? "nav-link navActive" : "nav-link"}
+                className={`nav-link ${pageSelected && titleLocation === "events" && "navActive"}`}
                 onClick={clickState}
               >
                 <Link style={{ textDecoration: "none" }} to={"/events"}>
@@ -33,7 +33,7 @@ const NavLoggedOut = () => {
                 </Link>
               </li>
               <li
-                className={`nav-link ${pageSelected && "navActive"}`}
+                className={`nav-link ${pageSelected && titleLocation === "login" && "navActive"}`}
                 onClick={clickState}
               >
                 <Link style={{ textDecoration: "none" }} to={"/login"}>
@@ -41,7 +41,7 @@ const NavLoggedOut = () => {
                 </Link>
               </li>
               <li
-                className={`nav-link ${pageSelected && "navActive"}`}
+                className={`nav-link ${pageSelected && titleLocation === "signup" && "navActive"}`}
                 onClick={clickState}
               >
                 <Link style={{ textDecoration: "none" }} to={"/signup"}>
