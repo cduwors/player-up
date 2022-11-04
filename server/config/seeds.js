@@ -76,30 +76,35 @@ db.once("open", async () => {
     username: "Brian",
     email: "brian@testmail.com",
     password: "password12345",
+    events: []
   });
 
   await User.create({
     username: "Rodolfo",
     email: "rodolfo@testmail.com",
     password: "password12345",
+    events: []
   });
 
   await User.create({
     username: "Melissa",
     email: "melissa@testmail.com",
     password: "password12345",
+    events: []
   });
 
   await User.create({
     username: "Christina",
     email: "christina@testmail.com",
     password: "password12345",
+    events: []
   });
 
   await User.create({
     username: "Morgan",
     email: "morgan@testmail.com",
     password: "password12345",
+    events: []
   });
 
   console.log("users seeded");
