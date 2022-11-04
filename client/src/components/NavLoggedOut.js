@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import logo from "../images/player-up-logo.png";
 import { Link } from "react-router-dom";
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 
 const NavLoggedOut = () => {
      // page selection state
@@ -25,7 +25,7 @@ const NavLoggedOut = () => {
           <nav>
             <ul className="nav-header">
               <li
-                className={pageSelected ? "navActive" : "nav-link"}
+                className={!pageSelected ? "nav-link navActive" : "nav-link"}
                 onClick={clickState}
               >
                 <Link style={{ textDecoration: "none" }} to={"/events"}>
