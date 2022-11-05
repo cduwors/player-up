@@ -4,18 +4,15 @@ import AddEvent from "./AddEvent";
 // import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_EVENTS } from "../utils/queries";
-import { QUERY_USER_EVENTS } from "../utils/queries";
+// import { QUERY_USER_EVENTS } from "../utils/queries";
 import { QUERY_ME } from "../utils/queries";
 
 const Profile = () => {
 	const { data } = useQuery(QUERY_ME);
 	
 	const me = data?.me || {}
-	console.log(me);
-	const { loading, eventData } = useQuery(QUERY_USER_EVENTS, {
-		variables: { organizerName: me.username },
-	});
-	const events = eventData || [];
+	console.log("me", me);
+	const events = me?.events || [];
 	console.log(events)
 
 	
