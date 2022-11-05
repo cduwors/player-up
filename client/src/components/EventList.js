@@ -9,7 +9,7 @@ function EventList({events}) {
   const me = data?.me;
   console.log("This is me", me);
   // need to change userName to me later
-  const userName = "James Douglas";
+  const userName = me.username;
 
       return (
           <ul className="event-list">
