@@ -181,7 +181,7 @@ link:hover {
 	margin-bottom: 5px;
 }
 
-.play-btn {
+.play-btn, .edit-btn {
 	position: relative;
 	top: 40px;
 	left: 30px;
