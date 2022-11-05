@@ -1,8 +1,8 @@
 // see SignupForm.js for comments
 import React, { useState, useEffect } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
-
 import { useMutation } from "@apollo/client";
+import { Form, Button, Alert } from "react-bootstrap";
+// import { Link } from "react-router-dom";
 import { LOGIN_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
@@ -41,7 +41,6 @@ const Login = () => {
 
 			console.log(data);
 			Auth.login(data.login.token);
-			
 		} catch (err) {
 			console.error(err);
 	
@@ -112,7 +111,8 @@ const Login = () => {
 							className="loginBtn button:hover "
 							disabled={!(userFormData.email && userFormData.password)}
 							type="submit"
-							variant="success">
+							variant="success"
+							>
 							Game Time!
 						</Button>
 						{/* </Form.Group> */}

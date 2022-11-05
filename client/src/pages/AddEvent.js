@@ -1,8 +1,8 @@
 // see SignupForm.js for comments
 import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-
-import { useMutation } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+import { useMutation, useQuery } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 
 const AddEvent = ( { addEventPage, setEventPage } ) => {
@@ -17,7 +17,9 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 	});
 	const [validated] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
-	const [event, { error }] = useMutation(ADD_EVENT);
+	const [eventAdd, { error }] = useMutation(ADD_EVENT);
+	const { data } = useQuery(QUERY_ME);
+	const me = data?.me || {}
 
 	useEffect(() => {
 		if (error) {
@@ -43,9 +45,9 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 		}
 
 		try {
-			const { data } = await event({ variables: { ...eventFormData } });
-
+			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			console.log(data);
+			setEventPage(false);
 			// Auth.login(data.login.token);
 		} catch (err) {
 			console.error(err);
@@ -65,9 +67,6 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 
 	return (
 		<section className="cork-board loginForm">
-			{/* <div className="login-background">
-				<h1 className="event-header">List your Event here!</h1>
-			</div> */}
 			<div className="formGroupBackground">
 				<>
 					<Form
@@ -106,17 +105,18 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 								Description
 							</Form.Label>
 							<Form.Control
-								className="input"
-								type="text"
-								placeholder="Describe your event!"
+								className="inputDescription"
+								type="textarea"
+								// style={{height: '200px'}}
+								placeholder="What we'll be doing..."
 								name="description"
 								onChange={handleInputChange}
+								multiline={true}
 								value={eventFormData.description}
-								required
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								A description of your event is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -125,7 +125,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							</Form.Label>
 							<Form.Control
 								className="input"
-								type="text"
+								type="date"
 								placeholder="MM/DD/YYYY"
 								name="date"
 								onChange={handleInputChange}
@@ -143,8 +143,8 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							</Form.Label>
 							<Form.Control
 								className="input"
-								type="text"
-								placeholder="What time does the game begin?"
+								type="time"
+								placeholder="ex. 4:00 PM, 5-8 PM"
 								name="time"
 								onChange={handleInputChange}
 								value={eventFormData.time}
@@ -162,7 +162,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							<Form.Control
 								className="input"
 								type="text"
-								placeholder="Where is your event?"
+								placeholder="ex. address, Ting Park"
 								name="location"
 								onChange={handleInputChange}
 								value={eventFormData.location}
@@ -180,15 +180,14 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							<Form.Control
 								className="input"
 								type="text"
-								placeholder="examples: 4 players, 5-10 players"
+								placeholder="ex. 4 players, 5-10 players"
 								name="numberPlayersNeeded"
 								onChange={handleInputChange}
 								value={eventFormData.numberPlayersNeeded}
-								required
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								Number of players is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -198,24 +197,25 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							<Form.Control
 								className="input"
 								type="text"
-								placeholder="Enter a name..."
+								placeholder={me.username}
 								name="organizerName"
 								onChange={handleInputChange}
-								value={eventFormData.organizerName}
-								required
+								value={me.username}
+								disabled={true}
 							/>
 							<Form.Control.Feedback className="feedback" type="invalid">
-								This field is required!
+								This field is predetermined
 							</Form.Control.Feedback>
 						</Form.Group>
 
 						<Button
 							className="loginBtn button:hover "
-							// disabled={!loggedIn}
+							disabled={!(eventFormData.eventName && eventFormData.date && eventFormData.time && eventFormData.location)}
 							type="submit"
 							variant="success">
 							Post your game!
 						</Button>
+
 					</Form>
 				</>
 			</div>

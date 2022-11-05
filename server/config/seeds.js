@@ -13,7 +13,7 @@ db.once("open", async () => {
       time: "3:57pm",
       location: "Long Leaf Park",
       numberPlayersNeeded: "1",
-      organizerName: "Joe",
+      organizerName: "Morgan",
     },
     {
       eventName: "Uno",
@@ -23,7 +23,7 @@ db.once("open", async () => {
       time: "9:00pm",
       location: "School Cafeteria",
       numberPlayersNeeded: "4",
-      organizerName: "Bill",
+      organizerName: "Melissa",
     },
     {
       eventName: "Ultimate Frisbee",
@@ -33,7 +33,7 @@ db.once("open", async () => {
       time: "3:00pm",
       location: "Founders Park",
       numberPlayersNeeded: "20",
-      organizerName: "Jess",
+      organizerName: "Brian",
     },
     {
       eventName: "Magic!",
@@ -43,7 +43,7 @@ db.once("open", async () => {
       time: "5:00pm",
       location: "You know where",
       numberPlayersNeeded: "1",
-      organizerName: "Tony",
+      organizerName: "Rodolfo",
     },
     {
       eventName: "Beer Pong",
@@ -53,7 +53,7 @@ db.once("open", async () => {
       time: "1:00am",
       location: "The garage",
       numberPlayersNeeded: "3",
-      organizerName: "John",
+      organizerName: "Melissa",
     },
 
     {
@@ -64,7 +64,7 @@ db.once("open", async () => {
       time: "1:00pm",
       location: "Town Creek Athletic Fields",
       numberPlayersNeeded: "24",
-      organizerName: "Brett",
+      organizerName: "Christina",
     },
   ]);
 
@@ -76,30 +76,35 @@ db.once("open", async () => {
     username: "Brian",
     email: "brian@testmail.com",
     password: "password12345",
+    events: []
   });
 
   await User.create({
     username: "Rodolfo",
     email: "rodolfo@testmail.com",
     password: "password12345",
+    events: []
   });
 
   await User.create({
     username: "Melissa",
     email: "melissa@testmail.com",
     password: "password12345",
+    events: []
   });
 
   await User.create({
     username: "Christina",
     email: "christina@testmail.com",
     password: "password12345",
+    events: []
   });
 
   await User.create({
     username: "Morgan",
     email: "morgan@testmail.com",
     password: "password12345",
+    events: []
   });
 
   console.log("users seeded");

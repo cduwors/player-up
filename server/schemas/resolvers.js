@@ -21,9 +21,9 @@ const resolvers = {
     events: async () => {
       return await  Events.find({}).sort({ createdAt: -1 });
     },
-    userEvents: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Events.find(params).sort({ createdAt: -1 });
+    userEvents: async (parent, { organizerName }) => {
+      // const params = username ? { username } : {};
+      return Events.find({ organizerName: organizerName }).sort({ createdAt: -1 });
     },
     event: async (parent, { _id }) => {
       return Events.findOne({ _id });
