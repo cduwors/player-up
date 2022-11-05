@@ -114,9 +114,9 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 								multiline={true}
 								value={eventFormData.description}
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								A description of your event is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -125,7 +125,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							</Form.Label>
 							<Form.Control
 								className="input"
-								type="text"
+								type="date"
 								placeholder="MM/DD/YYYY"
 								name="date"
 								onChange={handleInputChange}
@@ -143,7 +143,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							</Form.Label>
 							<Form.Control
 								className="input"
-								type="text"
+								type="time"
 								placeholder="ex. 4:00 PM, 5-8 PM"
 								name="time"
 								onChange={handleInputChange}
@@ -185,9 +185,9 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 								onChange={handleInputChange}
 								value={eventFormData.numberPlayersNeeded}
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								Number of players is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -204,7 +204,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 								disabled={true}
 							/>
 							<Form.Control.Feedback className="feedback" type="invalid">
-								This field is required!
+								This field is predetermined
 							</Form.Control.Feedback>
 						</Form.Group>
 
