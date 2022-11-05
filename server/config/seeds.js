@@ -13,7 +13,7 @@ db.once("open", async () => {
       time: "3:57pm",
       location: "Long Leaf Park",
       numberPlayersNeeded: "1",
-      organizerName: "Morgan",
+      organizerName: "Joe",
     },
     {
       eventName: "Uno",
@@ -23,7 +23,7 @@ db.once("open", async () => {
       time: "9:00pm",
       location: "School Cafeteria",
       numberPlayersNeeded: "4",
-      organizerName: "Melissa",
+      organizerName: "Bill",
     },
     {
       eventName: "Ultimate Frisbee",
@@ -33,7 +33,7 @@ db.once("open", async () => {
       time: "3:00pm",
       location: "Founders Park",
       numberPlayersNeeded: "20",
-      organizerName: "Brian",
+      organizerName: "Jess",
     },
     {
       eventName: "Magic!",
@@ -43,7 +43,7 @@ db.once("open", async () => {
       time: "5:00pm",
       location: "You know where",
       numberPlayersNeeded: "1",
-      organizerName: "Rodolfo",
+      organizerName: "Tony",
     },
     {
       eventName: "Beer Pong",
@@ -53,7 +53,7 @@ db.once("open", async () => {
       time: "1:00am",
       location: "The garage",
       numberPlayersNeeded: "3",
-      organizerName: "Melissa",
+      organizerName: "John",
     },
 
     {
@@ -64,9 +64,10 @@ db.once("open", async () => {
       time: "1:00pm",
       location: "Town Creek Athletic Fields",
       numberPlayersNeeded: "24",
-      organizerName: "Christina",
+      organizerName: "Brett",
     },
   ]);
+
 
   console.log("events seeded");
 
