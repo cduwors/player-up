@@ -29,19 +29,53 @@ const Footer = () => {
 
       <div id="footer-text">
         <strong>
-          Melissa Mayfield &emsp;|&emsp; Morgan Gilbert &emsp;|&emsp; Christina
-          DuWors &emsp;|&emsp; Rodolfo Ramos &emsp;|&emsp;{" "}
+          <a
+            className=" text-dark text-decoration-none"
+            href="https://mayfieldmel.github.io/Mayfield-Portfolio-2.0/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            MELISSA MAYFIELD
+          </a>
+          &emsp;|&emsp;
+          <a
+            className=" text-dark text-decoration-none"
+            href="https://morganegilbert.github.io/react-portfolio/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            MORGAN GILBERT
+          </a>
+          &emsp;|&emsp;
+          <a
+            className=" text-dark text-decoration-none"
+            href="https://cduwors.github.io/React-Portfolio/#portfolio"
+            target="_blank"
+            rel="noreferrer"
+          >
+            CHRISTINA DUWORS
+          </a>
+          &emsp;|&emsp;
+          <a
+            className=" text-dark text-decoration-none"
+            href="https://rramosx11.github.io/react-portfolio/#about"
+            target="_blank"
+            rel="noreferrer"
+          >
+            RODOLFO RAMOS
+          </a>
+          &emsp;|&emsp;{" "}
           <a
             className=" text-dark text-decoration-none"
             href="https://bnk5532.github.io/BNK-Port-v2/"
             target="_blank"
             rel="noreferrer"
           >
-            Brian King
+            BRIAN KING
           </a>
         </strong>
-        <div>
-          &copy; 2022, <em>Player-Up!</em>
+        <div className="fs-8">
+          &copy; 2022, Player-Up! All Rights Reserved.
         </div>
       </div>
     </div>
