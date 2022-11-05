@@ -61,7 +61,9 @@ function App() {
                 <Route path="/profile:username">
                   <Profile />
                 </Route>
-                <Route path="/single_event/:id" element={<SingleEvent />} />
+                <Route path="/event/:id">
+                  <SingleEvent />
+                </Route>
                 <Route path="/">
                   <Home />
                 </Route>

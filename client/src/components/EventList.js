@@ -3,30 +3,33 @@ import SingleEvent from "../pages/SingleEvent";
 import Event from "./Event";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
+import { Link } from "react-router-dom";
 
 function EventList({ events }) {
-  console.log(QUERY_ME);
+  // console.log(QUERY_ME);
   const { data } = useQuery(QUERY_ME);
-  const me = data?.me;
+  const me = data?.me || {};
   console.log("This is me", me);
   // need to change userName to me later
-  const userName = me.username;
+  // const userName = me.username;
 
-  function EventList({ events }) {
-    return (
-      <ul className="event-list">
-        {events.map((eventObj) => (
-          <li key={eventObj._id} className="card">
+  return (
+    <ul className="event-list">
+      {events.map((eventObj) => (
+        <li key={eventObj._id} className="card">
+          <Link className="event-link" to={`/event/${eventObj._id}`}>
             <Event event={eventObj}></Event>
-            {/* {event.organizerName === context.user.username ?  */}
+          </Link>
+          {eventObj.organizerName === me.username ? (
+            <button className="edit-btn">Edit Game</button>
+          ) : (
             <button className="play-btn">I'm Game!</button>
-            {/*  :  <button>Edit Game</button>} */}
-            <SingleEvent props={eventObj} />
-          </li>
-        ))}
-      </ul>
-    );
-  }
+          )}
+          {/* <SingleEvent props={eventObj} /> */}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default EventList;

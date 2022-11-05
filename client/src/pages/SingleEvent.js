@@ -28,13 +28,13 @@ const SingleEvent = (props) => {
           <span style={{ fontWeight: 700 }} className="">
             {event.username}
           </span>{" "}
-          thought on {event.createdAt}
+          {/* {event.createdAt} */}
         </p>
         <div className="card-body">
           <p>{event.eventText}</p>
         </div>
       </div>
-      SingleEvent
+      fkdmglfngld
     </div>
   );
 };
