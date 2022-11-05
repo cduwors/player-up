@@ -8,50 +8,12 @@ import { QUERY_ALL_EVENTS } from "../utils/queries";
 import { QUERY_ME } from "../utils/queries";
 
 const Profile = () => {
-	const { data } = useQuery(QUERY_ME);
+	const { loading, data } = useQuery(QUERY_ME);
 	
 	const me = data?.me || {}
 	console.log("me", me);
 	const events = me?.events || [];
 	console.log(events)
-
-	
-	// const events = [
-	// 	{
-	// 		_id: 1,
-	// 		eventName: "Capture the Flag",
-	// 		description:
-	// 			"Two teams each have their own flag placed in their “home base.” Objective is to steal the other team's flag and take it home. Players can tag or capture opposing players if they enter enemy territory.",
-	// 		dateAndTime: "2pm Sunday, June 12th, 2022",
-	// 		location: "Jenks Carpenter Rd, Cary, NC 27519",
-	// 		numberPlayersNeeded: "10+",
-	// 		organizerNames: "James Douglas",
-	// 		attending: []
-	// 	},
-	// 	{
-	// 		_id: 2,
-	// 		eventName: "Apples to Apples",
-	// 		description:
-	// 			"The game of hilarious comparisons with a roll of the dice. Judge awards a chip to the noun he or she deems the best comparison.",
-	// 		dateAndTime: "2pm Sunday, June 12th, 2022",
-	// 		location: "Jenks Carpenter Rd, Cary, NC 27519",
-	// 		numberPlayersNeeded: "4-10",
-	// 		organizerNames: "James Douglas",
-	// 		attending: []
-	// 	},
-	// ];
-	// const commitments = [
-	// 	{
-	// 		_id: 4,
-	// 		eventName: "Clue",
-	// 		description:
-	// 			"players move from room to room in a mansion to solve the mystery of: who done it, with what, and where?",
-	// 		dateAndTime: "7pm Friday, July 22th, 2022",
-	// 		location: "506 Rowan Way, Apex NC",
-	// 		numberPlayersNeeded: "2-6",
-	// 		organizerNames: "Chelsea Montreal",
-	// 	},
-	// ];
 
 	const [commitmentList, setCommitmentList] = useState(false);
 	const [addEventPage, setAddEventPage] = useState(false);
@@ -79,6 +41,19 @@ const Profile = () => {
 		setAddEventPage(true)
 	}
 
+	if (loading) {
+		return <div>Loading...</div>;
+	  }
+	
+	  if (!me?.username) {
+		return (
+		  <h4>
+			You need to be logged in to see this page. Use the navigation links
+			above to sign up or log in!
+		  </h4>
+		);
+	  }
+
 	return (
 		<section className="cork-board">
 			<div className="profile-background">
@@ -95,7 +70,7 @@ const Profile = () => {
 					<button
 						onClick={displayCommitments}
 						className="list-btn selectCommitments">
-						My Game Plan
+						My Game Plans
 					</button>
 				</div>
 			</div>
