@@ -7,6 +7,7 @@ function EventList({events}) {
   const { data } = useQuery(QUERY_ME);
 	const me = data?.me || {}
 	console.log("me", me); 
+
       return (
           <ul className="event-list">
             {events.map((eventObj) => (
