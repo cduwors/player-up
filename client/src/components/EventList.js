@@ -3,7 +3,7 @@ import Event from "./Event";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { ADD_PLAYER } from "../utils/mutations";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function EventList({ events }) {
   // query me
@@ -28,7 +28,7 @@ function EventList({ events }) {
         <li key={eventObj._id} className="card">
           <Event event={eventObj}></Event>
           {eventObj.organizerName === me.username ? (
-            <link to=`{../event/edit/${eventObj._id}}`><button className="play-btn">Edit Game</button></link>
+            <link to={"./event/edit/{$eventObj._id}"}><button className="play-btn">Edit Game</button></link>
           ) : (
             <button className="play-btn" onClick={() => {handleAddPlayer(eventObj._id)}}>I'm Game!</button>
           )}

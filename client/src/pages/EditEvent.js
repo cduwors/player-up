@@ -1,11 +1,11 @@
-import { useQuery, useMutation } from '@apollo/client';
-import React from 'react';
-import { Form, Button } from "react-bootstrap";
+// import { useQuery, useMutation } from '@apollo/client';
+// import React from 'react';
+// import { Form, Button } from "react-bootstrap";
 
-// import Event from "../components/Event";
-import QUERY_ME from "../utils/queries";
-import { REMOVE_EVENT, UPDATE_EVENT } from '../utils/mutations';
-import Auth from '../utils/auth';
+// // import Event from "../components/Event";
+// import QUERY_ME from "../utils/queries";
+// import { REMOVE_EVENT, UPDATE_EVENT } from '../utils/mutations';
+// import Auth from '../utils/auth';
 
 const EditEvent = () => {
   // const { loading, data } = useQuery(QUERY_ME);
