@@ -41,11 +41,12 @@ function App() {
   // page navigation
   const [pages] = useState([
     { name: "Home", path: "/" },
-    { name: "Profile", path: "/profile"  },
-    { name: "Events", path: "/event"  },
-    { name: "Login", path: "/login"  },
+    { name: "Profile", path: "/profile" },
+    { name: "Events", path: "/events" },
+    { name: "SingleEvent", path: "/single_event" },
+    { name: "Login", path: "/login" },
     { name: "Signup", path: "/signup" },
-    { name: "Logout", path: "/"}
+    { name: "Logout", path: "/" },
   ]);
 
   // page selection state
@@ -58,6 +59,8 @@ function App() {
       return <Profile></Profile>;
     } else if (currentPage === "Events") {
       return <Events></Events>;
+    } else if (currentPage === "SingleEvent") {
+      return <SingleEvent></SingleEvent>;
     } else if (currentPage === "Login") {
       return <Login></Login>;
     } else if (currentPage === "Signup") {
@@ -73,11 +76,8 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="page">
-          <div
-            className="side"
-          >
+          <div className="side">
             <Header
-              
               pageSelected={pageSelected}
               setPageSelected={setPageSelected}
               currentPage={currentPage}
@@ -93,7 +93,7 @@ function App() {
                   <Route path=":username" element={<Profile />} />
                   <Route path="" element={<Profile />} />
                 </Route>
-                <Route path="/event/:id" element={<SingleEvent />} />
+                <Route path="/single_event/:id" element={<SingleEvent />} />
                 <Route path="*" element={<NoMatch />} />
               </Switch>
             </main>

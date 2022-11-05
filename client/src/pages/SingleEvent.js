@@ -19,6 +19,8 @@ const SingleEvent = (props) => {
     return <div>Loading...</div>;
   }
 
+  console.log("inhome");
+
   return (
     <div>
       <div className="">
