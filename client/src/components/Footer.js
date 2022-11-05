@@ -5,12 +5,15 @@ const Footer = () => {
     <div className="footer-wrapper p-4">
       <div className="footer-links">
         <p>
-          <a className="p-3" href="mailto:contact@playerup.com">
-            <i className="fa-solid fa-envelope footer-links" aria-hidden="true"></i>
+          <a className="p-3 fs-3" href="mailto:support@playerup.com">
+            <i
+              className="fa-solid fa-envelope footer-links"
+              aria-hidden="true"
+            ></i>
           </a>
 
           <a
-            className="p-3"
+            className="p-3 fs-3"
             href="https://github.com/Mayfieldmel/player-up"
             target="_blank"
             rel="noopener noreferrer"
@@ -18,13 +21,28 @@ const Footer = () => {
             <i className="fa fa-github is-size-5" aria-hidden="true"></i>
           </a>
 
-          <a className="p-3" href="tel:+1-910-123-4567">
+          <a className="p-3 fs-3" href="tel:+1-910-123-4567">
             <i className="fa-solid fa-mobile-button" aria-hidden="true"></i>
           </a>
         </p>
       </div>
-      <div className="footer-text">
-        <strong>&copy; 2022. Melissa Mayfield, Morgan Gilbert, Christina DuWors, Rodolfo Ramos & Brian King.</strong>
+
+      <div id="footer-text">
+        <strong>
+          Melissa Mayfield &emsp;|&emsp; Morgan Gilbert &emsp;|&emsp; Christina
+          DuWors &emsp;|&emsp; Rodolfo Ramos &emsp;|&emsp;{" "}
+          <a
+            className=" text-dark text-decoration-none"
+            href="https://bnk5532.github.io/BNK-Port-v2/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Brian King
+          </a>
+        </strong>
+        <div>
+          &copy; 2022, <em>Player-Up!</em>
+        </div>
       </div>
     </div>
   );
