@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Events from "./pages/Events";
+import EditEvent from "./pages/EditEvent";
 import NoMatch from "./pages/NoMatch";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/events"><Events /></Route>
                 <Route path="/profile:username"><Profile /></Route>
                 <Route path="/event/:id"><SingleEvent /></Route>
+                <Route path="/event/edit/:id"><EditEvent /></Route>
                 <Route path="/"><Home /></Route>
                 <Route path="*"><NoMatch /></Route>
               </Switch>

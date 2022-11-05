@@ -1,5 +1,7 @@
 import { useQuery, useMutation } from '@apollo/client';
 import React from 'react';
+import { Form, Button } from "react-bootstrap";
+
 // import Event from "../components/Event";
 import GET_ME from "../utils/queries";
 import { REMOVE_EVENT, UPDATE_EVENT } from '../utils/mutations';
@@ -7,7 +9,7 @@ import Auth from '../utils/auth';
 
 const EditEvent = () => {
   const { loading, data } = useQuery(GET_ME);
-  const [updateEvent, { error }] = useMutation(UPDATE_EVENT);
+  const updateEvent = useMutation(UPDATE_EVENT);
   const removeEvent = useMutation(REMOVE_EVENT);
   const userData = data?.userData || [];
 
@@ -19,7 +21,7 @@ const EditEvent = () => {
     }
 
     try {
-      const response = await removeEvent(eventId, token);
+      const response = await updateEvent(eventId, token);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
