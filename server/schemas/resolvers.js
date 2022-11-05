@@ -52,9 +52,9 @@ const resolvers = {
     },
     addPlayer: async (parent, { eventId }, context) => {
       if (context.user) {
-        const updatedEvent = await Event.findOneAndUpdate(
+        const updatedEvent = await Events.findOneAndUpdate(
           { _id: eventId },
-          { $addToSet: { attending: context.user.username } },
+          { $addToSet: { attending: username } },
           { new: true }
         );
         return updatedEvent;
