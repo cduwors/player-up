@@ -68,8 +68,8 @@ export const QUERY_ALL_EVENTS = gql`
 `;
 
 export const QUERY_USER_EVENTS = gql`
-  query events($username: String!) {
-    events(username: $username) {
+  query events($organizerName: String!) {
+    events(organizerName: $organizerName) {
       _id
       eventName
       description

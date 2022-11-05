@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 // import page components
@@ -38,63 +38,22 @@ const client = new ApolloClient({
 });
 
 function App() {
-  // page navigation
-  const [pages] = useState([
-    { name: "Home", path: "/" },
-    { name: "Profile", path: "/profile"  },
-    { name: "Events", path: "/event"  },
-    { name: "Login", path: "/login"  },
-    { name: "Signup", path: "/signup" },
-    { name: "Logout", path: "/"}
-  ]);
-
-  // page selection state
-  const [pageSelected, setPageSelected] = useState(false);
-  const [currentPage, setCurrentPage] = useState(pages[0]);
-  //   const [homePage, setHomePage] = useState(false);
-
-  function renderPage(currentPage) {
-    if (currentPage === "Profile") {
-      return <Profile></Profile>;
-    } else if (currentPage === "Events") {
-      return <Events></Events>;
-    } else if (currentPage === "Login") {
-      return <Login></Login>;
-    } else if (currentPage === "Signup") {
-      return <Signup></Signup>;
-    } else if (currentPage === "Logout") {
-      return <Home></Home>;
-    } else {
-      return <Home></Home>;
-    }
-  }
-
   return (
     <ApolloProvider client={client}>
       <Router>
         <div className="page">
-          <div
-            className="side"
-          >
-            <Header
-              
-              pageSelected={pageSelected}
-              setPageSelected={setPageSelected}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            ></Header>
+          <div className="side">
+            <Header/>
             <main>
-              {pageSelected ? renderPage(currentPage) : <Home></Home>}
               <Switch>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/profile">
-                  <Route path=":username" element={<Profile />} />
-                  <Route path="" element={<Profile />} />
-                </Route>
-                <Route path="/event/:id" element={<SingleEvent />} />
-                <Route path="*" element={<NoMatch />} />
+                <Route path="/login"><Login /></Route>
+                <Route path="/signup"><Signup /></Route>
+                <Route path="/profile"><Profile /></Route>
+                <Route path="/events"><Events /></Route>
+                <Route path="/profile:username"><Profile /></Route>
+                <Route path="/event/:id"><SingleEvent /></Route>
+                <Route path="/"><Home /></Route>
+                <Route path="*"><NoMatch /></Route>
               </Switch>
             </main>
           </div>
