@@ -11,7 +11,7 @@ import { QUERY_SINGLE_EVENTS } from "../utils/queries";
 const SingleEvent = (props) => {
   const { id: eventId } = useParams();
   const { loading, data } = useQuery(QUERY_SINGLE_EVENTS, {
-    variables: { id: eventId },
+    variables: { id: props.id },
   });
   const event = data?.event || {};
 
