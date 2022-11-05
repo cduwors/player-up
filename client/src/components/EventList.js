@@ -8,15 +8,14 @@ function EventList({events}) {
   const { data } = useQuery(QUERY_ME);
   const me = data?.me;
   console.log("This is me", me);
-  // need to change userName to me later
-  const userName = me.username;
+  const userName = me;
 
       return (
           <ul className="event-list">
             {events.map((eventObj) => (
               <li key={eventObj._id} className="card">
                 <Event event={eventObj}></Event>
-                 {eventObj.organizerNames === userName ? <button className="edit-btn">Edit Game</button>
+                 {eventObj.organizerNames === userName.username ? <button className="edit-btn">Edit Game</button>
                   :  <button className="play-btn">I'm Game!</button>}
               </li>
             ))}
