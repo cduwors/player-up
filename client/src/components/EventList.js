@@ -8,7 +8,7 @@ function EventList({ events }) {
   // query me
   const { data } = useQuery(QUERY_ME);
   const me = data?.me || {};
-  console.log("me", me);
+  console.log("events", events);
 // mutation addPlayer
   const [addPlayer] = useMutation(ADD_PLAYER);
   const handleAddPlayer = async (id) => { 

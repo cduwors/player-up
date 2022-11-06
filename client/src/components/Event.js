@@ -15,7 +15,7 @@ function Event({ event }) {
       <p>Description: {event.description}</p>
       <span>
         {event.organizerName} | Players needed: {event.numberPlayersNeeded} <br />
-        Players attending: {!event.attending.length ? "0" : pluralize("player", event.attending.length)}
+        Players attending: {!event.attending ? "0" : pluralize("player", event.attending.length)}
       </span>
     </article>
   );

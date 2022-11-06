@@ -1,11 +1,15 @@
 // see SignupForm.js for comments
 import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import { QUERY_ME } from "../utils/queries";
-import { useMutation, useQuery } from "@apollo/client";
+import { QUERY_ALL_EVENTS, QUERY_ME } from "../utils/queries";
+import { useMutation, useQuery, useLazyQuery } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 
-const AddEvent = ( { addEventPage, setEventPage } ) => {
+const AddEvent = ( { setAddEventPage} ) => {
+	
+	const closeForm = () => {
+		setAddEventPage(false)
+	}
 	const [eventFormData, setEventFormData] = useState({
 		eventName: "",
 		description: "",
@@ -17,9 +21,10 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 	});
 	const [validated] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
-	const [eventAdd, { error }] = useMutation(ADD_EVENT);
+	const [eventAdd, { error }] = useMutation(ADD_EVENT)
 	const { data } = useQuery(QUERY_ME);
 	const me = data?.me || {}
+	const [getUpdatedList, {updatedData}] = useLazyQuery(QUERY_ME)
 
 	useEffect(() => {
 		if (error) {
@@ -46,8 +51,10 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 
 		try {
 			const { data } = await eventAdd({ variables: { ...eventFormData } });
-			console.log(data);
-			setEventPage(false);
+			if (data) {
+				closeForm()
+			}
+			
 			// Auth.login(data.login.token);
 		} catch (err) {
 			console.error(err);
@@ -107,16 +114,15 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							<Form.Control
 								className="inputDescription"
 								type="textarea"
-								// style={{height: '200px'}}
 								placeholder="What we'll be doing..."
 								name="description"
 								onChange={handleInputChange}
-								multiline={true}
 								value={eventFormData.description}
+								required
 							/>
-							{/* <Form.Control.Feedback className="feedback" type="invalid">
+							<Form.Control.Feedback className="feedback" type="invalid">
 								A description of your event is required!
-							</Form.Control.Feedback> */}
+							</Form.Control.Feedback>
 						</Form.Group>
 
 						<Form.Group>
@@ -180,14 +186,15 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 							<Form.Control
 								className="input"
 								type="text"
-								placeholder="ex. 4 players, 5-10 players"
+								placeholder="ex. 4+ players, 5-10 players"
 								name="numberPlayersNeeded"
 								onChange={handleInputChange}
 								value={eventFormData.numberPlayersNeeded}
+								required
 							/>
-							{/* <Form.Control.Feedback className="feedback" type="invalid">
+							<Form.Control.Feedback className="feedback" type="invalid">
 								Number of players is required!
-							</Form.Control.Feedback> */}
+							</Form.Control.Feedback>
 						</Form.Group>
 
 						<Form.Group>
