@@ -1,5 +1,4 @@
 import React from "react";
-import SingleEvent from "../pages/SingleEvent";
 import Event from "./Event";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
@@ -25,7 +24,6 @@ function EventList({ events }) {
           ) : (
             <button className="play-btn">I'm Game!</button>
           )}
-          {/* <SingleEvent props={eventObj} /> */}
         </li>
       ))}
     </ul>

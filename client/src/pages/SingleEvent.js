@@ -9,21 +9,17 @@ import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_EVENTS } from "../utils/queries";
 
 const SingleEvent = (props) => {
-  const { id: eventId } = useParams();
-  const { loading, data } = useQuery(QUERY_SINGLE_EVENTS, {
-    variables: { id: props.id },
+  // const { id: eventId } = useParams();
+  const { data } = useQuery(QUERY_SINGLE_EVENTS, {
+    variables: { id: props._id },
   });
   const event = data?.event || {};
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   console.log("inhome");
 
   return (
     <div>
-      <div className="">
+      <div className="event-list">
         <p className="">
           <span style={{ fontWeight: 700 }} className="">
             {event.username}
@@ -34,7 +30,7 @@ const SingleEvent = (props) => {
           <p>{event.eventText}</p>
         </div>
       </div>
-      fkdmglfngld
+      {/* <EventList events={event.events} /> */}
     </div>
   );
 };
