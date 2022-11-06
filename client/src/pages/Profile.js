@@ -3,7 +3,7 @@ import EventList from "../components/EventList";
 import AddEvent from "./AddEvent";
 // import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { QUERY_ALL_EVENTS } from "../utils/queries";
+// import { QUERY_ALL_EVENTS } from "../utils/queries";
 // import { QUERY_USER_EVENTS } from "../utils/queries";
 import { QUERY_ME } from "../utils/queries";
 
@@ -11,9 +11,9 @@ const Profile = () => {
 	const { loading, data } = useQuery(QUERY_ME);
 	
 	const me = data?.me || {}
-	console.log("me", me);
+	// console.log("me", me);
 	const events = me?.events || [];
-	console.log(events)
+	// console.log(events)
 
 	const [commitmentList, setCommitmentList] = useState(false);
 	const [addEventPage, setAddEventPage] = useState(false);

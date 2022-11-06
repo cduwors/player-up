@@ -5,7 +5,10 @@ import { QUERY_ME } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 
-const AddEvent = ( { addEventPage, setEventPage } ) => {
+const AddEvent = ({ setAddEventPage }) => {
+	const closeForm = () => {
+		setAddEventPage(false);
+	};
 	const [eventFormData, setEventFormData] = useState({
 		eventName: "",
 		description: "",
@@ -19,7 +22,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 	const [showAlert, setShowAlert] = useState(false);
 	const [eventAdd, { error }] = useMutation(ADD_EVENT);
 	const { data } = useQuery(QUERY_ME);
-	const me = data?.me || {}
+	const me = data?.me || {};
 
 	useEffect(() => {
 		if (error) {
@@ -47,7 +50,9 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 		try {
 			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			console.log(data);
-			setEventPage(false);
+			if (data) {
+				closeForm();
+			}
 			// Auth.login(data.login.token);
 		} catch (err) {
 			console.error(err);
@@ -111,7 +116,7 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 								placeholder="What we'll be doing..."
 								name="description"
 								onChange={handleInputChange}
-								multiline={true}
+								// multiline={true}
 								value={eventFormData.description}
 							/>
 							{/* <Form.Control.Feedback className="feedback" type="invalid">
@@ -210,12 +215,18 @@ const AddEvent = ( { addEventPage, setEventPage } ) => {
 
 						<Button
 							className="loginBtn button:hover "
-							disabled={!(eventFormData.eventName && eventFormData.date && eventFormData.time && eventFormData.location)}
+							disabled={
+								!(
+									eventFormData.eventName &&
+									eventFormData.date &&
+									eventFormData.time &&
+									eventFormData.location
+								)
+							}
 							type="submit"
 							variant="success">
 							Post your game!
 						</Button>
-
 					</Form>
 				</>
 			</div>
