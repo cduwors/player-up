@@ -116,7 +116,7 @@ const AddEvent = ({ setAddEventPage }) => {
 								placeholder="What we'll be doing..."
 								name="description"
 								onChange={handleInputChange}
-								multiline={true}
+								// multiline={true}
 								value={eventFormData.description}
 							/>
 							{/* <Form.Control.Feedback className="feedback" type="invalid">

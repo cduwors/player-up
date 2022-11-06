@@ -7,10 +7,13 @@ function Event({ event }) {
 			<h2 className="eventName">{event.eventName}</h2>
 			<span>
 				{event.time} | {event.date} <br />
-				{event.location}
+				<a
+					className="mapLink"
+					href="https://www.google.com/maps/dir/?api=1"
+					target="_blank">
+					{event.location}
+				</a>
 			</span>
-      <br></br>
-      <a className="mapLink" href="https://www.google.com/maps/dir/?api=1" target="_blank">Get Directions</a>
 			<p>Description: {event.description}</p>
 			<span>
 				{event.organizerName} | Players needed: {event.numberPlayersNeeded}{" "}
@@ -18,7 +21,6 @@ function Event({ event }) {
 				Players attending:{" "}
 				{!event.attending ? "0" : pluralize("player", event.attending.length)}
 			</span>
-      
 		</article>
 	);
 }
