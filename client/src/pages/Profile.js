@@ -8,31 +8,15 @@ import { QUERY_ALL_EVENTS } from "../utils/queries";
 import { QUERY_ME } from "../utils/queries";
 
 const Profile = () => {
-	const [userData, setUserData] = useState({});
+	const { loading, data } = useQuery(QUERY_ME);
+	
+	const userData = data?.userData || {}
+	console.log("userData", userData);
+	const events = userData?.events || [];
+	console.log(events)
+
 	const [commitmentList, setCommitmentList] = useState(false);
 	const [addEventPage, setAddEventPage] = useState(false);
-	const [eventListState, setEventListState] = useState({})
-	// const eventListLength = Object.keys(eventListState).length
-	const { loading, data } = useQuery(QUERY_ME);
-	const user = data?.me || data?.user || {};
-	useEffect(() => {
-		let isMounted = true;
-		const getUserData = async () => {
-			try {
-				if (user) {
-					setUserData(user);
-					console.log("userData", userData);}
-				
-				const events = userData?.events || [];
-				setEventListState(events);
-				console.log("event list", eventListState)
-			
-			} catch (err) {
-			console.error(err);
-		  }}
-		  getUserData();
-		  return () => {isMounted = false}
-}, [data, eventListState, eventListLength]);
 
 	const displayCommitments = () => {
 		document.querySelector(".selectEvents").style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
@@ -87,9 +71,9 @@ const Profile = () => {
 			{!addEventPage ? (
 				<>
 					{commitmentList ? (
-						<EventList events={eventListState}></EventList>
+						<EventList events={events}></EventList>
 					) : (
-						<EventList events={eventListState}></EventList>
+						<EventList events={events}></EventList>
 					)}
 				</>
 			) : (
