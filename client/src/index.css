@@ -108,9 +108,9 @@ link:hover {
 	margin: 20px 0;
 	cursor: pointer;
 	/* background-color: rgb(14, 240, 165); */
-	padding: 20px;
+	padding: 40px;
 	border-radius: 10px;
-	min-height: 50px;
+	min-height: 100px;
 	background-image: url("./images/red-dice.png");
 	background-size: cover;
 	/* background-attachment: fixed; */
