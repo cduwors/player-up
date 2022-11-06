@@ -1,40 +1,68 @@
-// import { useQuery, useMutation } from '@apollo/client';
-// import React from 'react';
-// import { Form, Button } from "react-bootstrap";
+import { useQuery, useMutation } from '@apollo/client';
+import React from 'react';
+import { Form, Button } from "react-bootstrap";
 
-// // import Event from "../components/Event";
-// import QUERY_ME from "../utils/queries";
-// import { REMOVE_EVENT, UPDATE_EVENT } from '../utils/mutations';
-// import Auth from '../utils/auth';
+// import Event from "../components/Event";
+import QUERY_ME from "../utils/queries";
+import { REMOVE_EVENT, UPDATE_EVENT } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 const EditEvent = () => {
-  // const { loading, data } = useQuery(QUERY_ME);
-  // const updateEvent = useMutation(UPDATE_EVENT);
-  // const removeEvent = useMutation(REMOVE_EVENT);
-  // const userData = data?.userData || [];
+  const [newEventFormData, setUpdateFormData] = useState({
+		eventName: "",
+		description: "",
+		date: "",
+		time: "",
+		location: "",
+		numberPlayersNeeded: "",
+		organizerName: "",
+	});
 
-  // const handleUpdateEvent = async (eventId) => {
-  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const [validated] = useState(false);
+  const { data } = useQuery(QUERY_ME);
+  const updateEvent = useMutation(UPDATE_EVENT);
+  const removeEvent = useMutation(REMOVE_EVENT);
+  const me = data?.me || [];
+  
+  const handleUpdateInput = (event) => {
+    const { name, value } = event.target;
+    setUpdateFormData({ ...newEventFormData, [name]: value });
+  };
 
-  //   if (!token) {
-  //     return false;
-  //   }
+  const handleUpdateEvent = async (event) => {
+    event.preventDefault();
 
-  //   try {
-  //     const response = await updateEvent(eventId, token);
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-  //     if (!response.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
+    if (!token) {
+      return false;
+    }
 
-  //     // const updatedUser = await response.json();
-  //     // setUserData(updatedUser);
-  //     // // upon success, remove events's id from localStorage
-  //     // removeEventId(eventId);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+    try {
+      const response = await updateEvent({ variables: { ...eventFormData }});
+      console.log("This is new data", data);
+      if (!response.ok) {
+        throw new Error('something went wrong!');
+      }
+
+      // const updatedUser = await response.json();
+      // setUserData(updatedUser);
+      // // upon success, remove events's id from localStorage
+      // removeEventId(eventId);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setEventFormData({
+			eventName: "",
+			description: "",
+			date: "",
+			time: "",
+			location: "",
+			numberPlayersNeeded: "",
+			organizerName: "",
+		});
+  };
 
   // const handleDeleteEvent = async (eventId) => {
   //   const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -59,32 +87,27 @@ const EditEvent = () => {
   //   }
   // }
 
-  // if (loading) {
-  //   return <h2>LOADING...</h2>;
-  // }
-
-    
 	return (
 		<section className="cork-board loginForm">
-			{/* <div className="login-background">
-				<h1 className="event-header">List your Event here!</h1>
-			</div> */}
+			<div className="login-background">
+				<h1 className="event-header">Update your Event here!</h1>
+			</div>
 			<div className="formGroupBackground">
 				<>
-					{/* <Form
+					<Form
 						className="formGroup"
-						noValidate
-						validated={validated}
-						onSubmit={handleFormSubmit}>
-						<Alert
+						// noValidate
+						// validated={validated}
+						onSubmit={handleUpdateEvent}>
+						{/* <Alert
 							dismissible
 							onClose={() => setShowAlert(false)}
 							show={showAlert}
 							variant="danger">
 							Something went wrong!
-						</Alert>
+						</Alert> */}
 						<Form.Group>
-							<h2 className="addEventHeader">The Game Plan!</h2>
+							<h2 className="addEventHeader">Update The Game Plan!</h2>
 							<Form.Label className="label" htmlFor="eventName">
 								Event Name
 							</Form.Label>
@@ -97,9 +120,9 @@ const EditEvent = () => {
 								value={eventFormData.eventName}
 								required
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								An event name is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -115,9 +138,9 @@ const EditEvent = () => {
 								value={eventFormData.description}
 								required
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								A description of your event is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -133,9 +156,9 @@ const EditEvent = () => {
 								value={eventFormData.date}
 								required
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								A date is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -151,9 +174,9 @@ const EditEvent = () => {
 								value={eventFormData.time}
 								required
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								A time for your event is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -169,9 +192,9 @@ const EditEvent = () => {
 								value={eventFormData.location}
 								required
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								A location is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -187,9 +210,9 @@ const EditEvent = () => {
 								value={eventFormData.numberPlayersNeeded}
 								required
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								Number of players is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -205,9 +228,9 @@ const EditEvent = () => {
 								value={eventFormData.organizerName}
 								required
 							/>
-							<Form.Control.Feedback className="feedback" type="invalid">
+							{/* <Form.Control.Feedback className="feedback" type="invalid">
 								This field is required!
-							</Form.Control.Feedback>
+							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Button
@@ -215,9 +238,9 @@ const EditEvent = () => {
 							// disabled={!loggedIn}
 							type="submit"
 							variant="success">
-							Post your game!
+							Submit The Edits!
 						</Button>
-					</Form> */}
+					</Form>
 				</>
 			</div>
 		</section>
