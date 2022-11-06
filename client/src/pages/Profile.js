@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EventList from "../components/EventList";
 import AddEvent from "./AddEvent";
 // import { Link } from "react-router-dom";
@@ -10,14 +10,14 @@ import { QUERY_ME } from "../utils/queries";
 const Profile = () => {
 	const { loading, data } = useQuery(QUERY_ME);
 	
-	const me = data?.me || {}
-	console.log("me", me);
-	const events = me?.events || [];
+	// const {userData, setUserData} = useState({})
+	const userData = data?.me || {}
+	console.log("userData", userData);
+	const events = userData?.events || [];
 	console.log(events)
 
 	const [commitmentList, setCommitmentList] = useState(false);
 	const [addEventPage, setAddEventPage] = useState(false);
-
 
 	const displayCommitments = () => {
 		document.querySelector(".selectEvents").style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
@@ -41,23 +41,18 @@ const Profile = () => {
 		setAddEventPage(true)
 	}
 
+	// const closeForm = () => {
+	// 	setAddEventPage(false)
+	// }
 	if (loading) {
 		return <div>Loading...</div>;
-	  }
+		}
 	
-	  if (!me?.username) {
-		return (
-		  <h4>
-			You need to be logged in to see this page. Use the navigation links
-			above to sign up or log in!
-		  </h4>
-		);
-	  }
 
 	return (
 		<section className="cork-board">
 			<div className="profile-background">
-				<h1 className="event-header">{me.username}</h1>
+				<h1 className="event-header">{userData.username}</h1>
 				<div className="button-box">
 					<button
 						onClick={displayEvents}
@@ -83,9 +78,7 @@ const Profile = () => {
 					)}
 				</>
 			) : (
-				<AddEvent
-					addEventPage={addEventPage}
-					setAddEventPage={setAddEventPage}></AddEvent>
+				<AddEvent setAddEventPage={setAddEventPage}></AddEvent>
 			)}
 		</section>
 	);
