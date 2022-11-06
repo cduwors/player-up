@@ -10,7 +10,8 @@ import { QUERY_ME } from "../utils/queries";
 const Profile = () => {
 	const { loading, data } = useQuery(QUERY_ME);
 	
-	const userData = data?.userData || {}
+	// const {userData, setUserData} = useState({})
+	const userData = data?.me || {}
 	console.log("userData", userData);
 	const events = userData?.events || [];
 	console.log(events)
@@ -77,7 +78,7 @@ const Profile = () => {
 					)}
 				</>
 			) : (
-				<AddEvent setAddEventPage={setAddEventPage} setEventListState={setEventListState} eventListState={eventListState}></AddEvent>
+				<AddEvent setAddEventPage={setAddEventPage}></AddEvent>
 			)}
 		</section>
 	);
