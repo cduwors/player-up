@@ -9,7 +9,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_EVENTS } from "../utils/queries";
 
 const SingleEvent = (props) => {
-  // const { id: eventId } = useParams();
+  const { id: eventId } = useParams();
   const { data } = useQuery(QUERY_SINGLE_EVENTS, {
     variables: { id: props._id },
   });
@@ -19,18 +19,13 @@ const SingleEvent = (props) => {
 
   return (
     <div>
-      <div className="event-list">
-        <p className="">
-          <span style={{ fontWeight: 700 }} className="">
-            {event.username}
-          </span>{" "}
-          {/* {event.createdAt} */}
-        </p>
-        <div className="card-body">
-          <p>{event.eventText}</p>
-        </div>
+      <div className="card">
+        <span style={{ fontWeight: 700 }} className="event-link">
+          {event.username}
+        </span>{" "}
+        {/* events on {events.date} */}
+        {/* <Event events={event.events} /> */}
       </div>
-      {/* <EventList events={event.events} /> */}
     </div>
   );
 };

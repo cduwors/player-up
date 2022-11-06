@@ -110,7 +110,7 @@ link:hover {
   /* background-color: rgb(14, 240, 165); */
   padding: 20px;
   border-radius: 10px;
-  min-height: 50px;
+  min-height: 100px;
   background-image: url("./images/red-dice.png");
   background-size: cover;
   /* background-attachment: fixed; */
@@ -351,6 +351,18 @@ button:hover {
 .login-background h1 {
   color: white;
   padding: 0x;
+}
+
+.addEventHeader {
+  text-align: center;
+}
+.mapLink {
+  text-decoration: none;
+  font-style: italic;
+}
+.mapLink:hover {
+  font-weight: bold;
+  color: rgb(29, 175, 29);
 }
 
 footer {
