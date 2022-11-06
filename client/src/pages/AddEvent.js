@@ -32,6 +32,7 @@ const AddEvent = ({ setAddEventPage }) => {
 		}
 	}, [error]);
 
+	
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setEventFormData({ ...eventFormData, [name]: value });
