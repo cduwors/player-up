@@ -5,11 +5,10 @@ import { QUERY_ALL_EVENTS, QUERY_ME } from "../utils/queries";
 import { useMutation, useQuery, useLazyQuery } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 
-const AddEvent = ( { setAddEventPage} ) => {
-	
+const AddEvent = ({ setAddEventPage }) => {
 	const closeForm = () => {
-		setAddEventPage(false)
-	}
+		setAddEventPage(false);
+	};
 	const [eventFormData, setEventFormData] = useState({
 		eventName: "",
 		description: "",
@@ -23,8 +22,7 @@ const AddEvent = ( { setAddEventPage} ) => {
 	const [showAlert, setShowAlert] = useState(false);
 	const [eventAdd, { error }] = useMutation(ADD_EVENT)
 	const { data } = useQuery(QUERY_ME);
-	const me = data?.me || {}
-	const [getUpdatedList, {updatedData}] = useLazyQuery(QUERY_ME)
+	const me = data?.me || {};
 
 	useEffect(() => {
 		if (error) {
@@ -217,12 +215,18 @@ const AddEvent = ( { setAddEventPage} ) => {
 
 						<Button
 							className="loginBtn button:hover "
-							disabled={!(eventFormData.eventName && eventFormData.date && eventFormData.time && eventFormData.location)}
+							disabled={
+								!(
+									eventFormData.eventName &&
+									eventFormData.date &&
+									eventFormData.time &&
+									eventFormData.location
+								)
+							}
 							type="submit"
 							variant="success">
 							Post your game!
 						</Button>
-
 					</Form>
 				</>
 			</div>

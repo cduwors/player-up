@@ -26,6 +26,14 @@ View the Deployed site here:
 
 ## Usage
 
+User Story: 
+
+AS individuals who love group games, 
+
+WE want to create a website to find new friends to play with, 
+
+SO THAT we can create “events” and “RSVP” to attend.
+
 
 
 ## Issues
