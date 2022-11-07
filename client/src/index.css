@@ -164,6 +164,11 @@ link:hover {
   text-decoration: none;
 }
 
+.event-link:hover {
+  color: black;
+  text-decoration: none;
+}
+
 .card {
   font-size: 12px;
   width: 300px;
@@ -172,6 +177,11 @@ link:hover {
   background: url("./images/blank-thumbtack-note.png");
   background-size: cover;
   border: none;
+}
+
+.card:hover {
+	/* border: 5px solid greenyellow; */
+	/* background-color: greenyellow; */
 }
 
 .text-box {
