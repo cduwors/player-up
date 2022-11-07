@@ -58,7 +58,7 @@ function App() {
                 <Route path="/events">
                   <Events />
                 </Route>
-                <Route path="/profile:username">
+                <Route path="/profile/:username">
                   <Profile />
                 </Route>
                 <Route path="/event/:id">

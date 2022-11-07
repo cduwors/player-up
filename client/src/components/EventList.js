@@ -26,9 +26,10 @@ function EventList({ events }) {
     <ul className="event-list">
       {events.map((eventObj) => (
         <li key={eventObj._id} className="card">
-          {/* <Link className="event-link" to={`/event/${eventObj._id}`}> */}
-          <Event event={eventObj}></Event>
-          {/* </Link> */};{" "}
+          <Link className="event-link" to={`/event/${eventObj._id}`}>
+            <Event event={eventObj}></Event>
+          </Link>
+          ;{" "}
           {eventObj.organizerName === me.username ? (
             <button className="play-btn">Edit Game</button>
           ) : (
