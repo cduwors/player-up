@@ -5,9 +5,10 @@ import { QUERY_ALL_EVENTS, QUERY_ME } from "../utils/queries";
 import { useMutation, useQuery, useLazyQuery } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 
-const AddEvent = ({ setAddEventPage }) => {
+const AddEvent = ({ setAddEventPage, setEventList }) => {
 	const closeForm = () => {
 		setAddEventPage(false);
+		setEventList(true);
 	};
 	const [eventFormData, setEventFormData] = useState({
 		eventName: "",
@@ -52,7 +53,6 @@ const AddEvent = ({ setAddEventPage }) => {
 			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			if (data) {
 				closeForm()
-				document.querySelector(".selectEvents").style.backgroundColor = 'GREENYELLOW';
 			}
 			
 			// Auth.login(data.login.token);

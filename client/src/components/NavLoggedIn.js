@@ -3,7 +3,7 @@ import logo from "../images/player-up-logo.png";
 import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 
-const NavLoggedIn = ({ titleLocation }) => {
+const NavLoggedIn = ({ titleLocation, param }) => {
   // page selection state
   const [pageSelected, setPageSelected] = useState(false);
   const [homePage, setHomePage] = useState(true);
@@ -25,9 +25,11 @@ const NavLoggedIn = ({ titleLocation }) => {
           <nav>
             <ul className="nav-header">
               <li
-                className={`nav-link ${
-                  pageSelected && titleLocation === "profile" && "navActive"
-                }`}
+                className={
+                  pageSelected && (titleLocation === "profile") & !param
+                    ? "nav-link navActive"
+                    : "nav-link"
+                }
                 onClick={clickState}
               >
                 <Link style={{ textDecoration: "none" }} to={"/profile"}>
