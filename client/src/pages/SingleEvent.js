@@ -3,9 +3,6 @@ import { useParams } from "react-router-dom";
 import { pluralize } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
-import EventList from "../components/EventList";
-import Event from "../components/Event";
-
 // import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_EVENTS } from "../utils/queries";
@@ -18,7 +15,7 @@ const SingleEvent = () => {
   const event = data?.event || {};
   console.log(eventId);
   console.log(data);
-  console.log("inhome");
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -27,7 +24,6 @@ const SingleEvent = () => {
   return (
     <div className="text-box">
       <div className="card">
-        {/* events on {events.date} */}
         <h2 className="eventName">{event.eventName}</h2>
         <span>
           {event.time} | {event.date} <br />

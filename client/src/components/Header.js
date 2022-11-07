@@ -10,6 +10,7 @@ const Header = () => {
   // update document.title to match category 
   const location = useLocation();
   const titleLocation = location.pathname.split("/")[1]
+  const param = location.pathname.split("/")[2]
   useEffect(() => {
     document.title = titleLocation 
     if (titleLocation !== "profile" && titleLocation !== "events" && titleLocation !== "login" && titleLocation !== "signup") {
@@ -20,9 +21,9 @@ const Header = () => {
   return (
     <>
       {Auth.loggedIn() ? (
-        <NavLoggedIn titleLocation={titleLocation}></NavLoggedIn>
+        <NavLoggedIn titleLocation={titleLocation} param={param}></NavLoggedIn>
       ) : (
-        <NavLoggedOut titleLocation={titleLocation}></NavLoggedOut>
+        <NavLoggedOut titleLocation={titleLocation} param={param}></NavLoggedOut>
       )}
     </>
   );
