@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { pluralize } from "../utils/helpers";
+import { Link } from "react-router-dom";
 
 import EventList from "../components/EventList";
 import Event from "../components/Event";
@@ -42,9 +43,12 @@ const SingleEvent = () => {
         <p>Description: {event.description}</p>
 
         <span>
-          {event.organizerName} | Players needed: {event.numberPlayersNeeded}{" "}
+          <Link to={`/profile/${event.organizerName}`} className="profile-link">
+            {event.organizerName}
+          </Link>
+          | Players needed: {event.numberPlayersNeeded}
           <br />
-          Players attending:{" "}
+          Players attending:
           {!event.attending ? "0" : pluralize("player", event.attending.length)}
         </span>
       </div>
