@@ -26,32 +26,32 @@ console.log(userParam)
   const [addEventPage, setAddEventPage] = useState(false);
 
   const displayCommitments = () => {
-    document.querySelector(".selectEvents").style.backgroundColor =
-      "rgba(255, 255, 255, 0.8)";
-    document.querySelector(".selectCommitments").style.backgroundColor =
-      "GREENYELLOW";
-    document.querySelector(".selectAdd").style.backgroundColor =
-      "rgba(255, 255, 255, 0.8)";
+    // document.querySelector(".selectEvents").style.backgroundColor =
+    //   "rgba(255, 255, 255, 0.8)";
+    // document.querySelector(".selectCommitments").style.backgroundColor =
+    //   "GREENYELLOW";
+    // document.querySelector(".selectAdd").style.backgroundColor =
+    //   "rgba(255, 255, 255, 0.8)";
     setCommitmentList(true);
     setAddEventPage(false);
   };
   const displayEvents = () => {
-    document.querySelector(".selectEvents").style.backgroundColor =
-      "GREENYELLOW";
-    document.querySelector(".selectCommitments").style.backgroundColor =
-      "rgba(255, 255, 255, 0.8)";
-    document.querySelector(".selectAdd").style.backgroundColor =
-      "rgba(255, 255, 255, 0.8)";
+    // document.querySelector(".selectEvents").style.backgroundColor =
+    //   "GREENYELLOW";
+    // document.querySelector(".selectCommitments").style.backgroundColor =
+    //   "rgba(255, 255, 255, 0.8)";
+    // document.querySelector(".selectAdd").style.backgroundColor =
+    //   "rgba(255, 255, 255, 0.8)";
     setCommitmentList(false);
     setAddEventPage(false);
   };
 
   const displayAddEvent = () => {
-    document.querySelector(".selectAdd").style.backgroundColor = "GREENYELLOW";
-    document.querySelector(".selectCommitments").style.backgroundColor =
-      "rgba(255, 255, 255, 0.8)";
-    document.querySelector(".selectEvents").style.backgroundColor =
-      "rgba(255, 255, 255, 0.8)";
+    // document.querySelector(".selectAdd").style.backgroundColor = "GREENYELLOW";
+    // document.querySelector(".selectCommitments").style.backgroundColor =
+    //   "rgba(255, 255, 255, 0.8)";
+    // document.querySelector(".selectEvents").style.backgroundColor =
+    //   "rgba(255, 255, 255, 0.8)";
     setAddEventPage(true);
   };
 
@@ -68,17 +68,17 @@ console.log(userParam)
       <div className="profile-background">
         <h1 className="event-header">{userData.username}</h1>
         <div className="button-box">
-          <button onClick={displayEvents} className="list-btn selectEvents">
+          <button onClick={displayEvents} className={`list-btn selectEvents ${!commitmentList && 'green-yellow'}`}>
             My Events
           </button>
           {!userParam ? (
-            <button onClick={displayAddEvent} className="list-btn selectAdd">
+            <button onClick={displayAddEvent} className={`list-btn ${addEventPage && 'green-yellow'}`}>
               Post a Game
             </button>
           ): null}
           <button
             onClick={displayCommitments}
-            className="list-btn selectCommitments"
+            className={`list-btn selectCommitments ${commitmentList && 'green-yellow'}`}
           >
             My Game Plans
           </button>
