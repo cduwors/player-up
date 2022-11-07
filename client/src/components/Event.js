@@ -1,6 +1,5 @@
 import React from "react";
 import { pluralize } from "../utils/helpers";
-import { Link } from "react-router-dom";
 
 function Event({ event }) {
   return (

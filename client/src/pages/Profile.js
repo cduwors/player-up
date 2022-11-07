@@ -3,26 +3,31 @@ import EventList from "../components/EventList";
 import AddEvent from "./AddEvent";
 import { useParams, useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { QUERY_ALL_EVENTS } from "../utils/queries";
-// import { QUERY_USER_EVENTS } from "../utils/queries";
-import { QUERY_ME, QUERY_USER } from "../utils/queries";
+import { QUERY_ME, QUERY_USER, QUERY_ALL_EVENTS } from "../utils/queries";
 // import Auth from "../utils/auth";
 
 const Profile = () => {
 //   const { username: userParam } = useParams();
 //   console.log(userParam);
+
+// collect params
   const location = useLocation().pathname;
   const param = location.split("/")[2];
   console.log("param", param);
+//   Query user or me
   const { loading, data } = useQuery(param ? QUERY_USER : QUERY_ME, {
     variables: { username: param },
   });
-
   const userData = data?.me || data?.user || {};
   console.log("userData", userData);
   const events = userData?.events || [];
   console.log(events);
 
+// query all events
+const { eventData } = useQuery(QUERY_ALL_EVENTS)
+const allEvents = eventData?.events || []
+console.log(allEvents)
+//   use state
   const [commitmentList, setCommitmentList] = useState(false);
   const [eventList, setEventList] = useState(true);
   const [addEventPage, setAddEventPage] = useState(false);
