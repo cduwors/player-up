@@ -5,23 +5,21 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { ADD_PLAYER } from "../utils/mutations";
 import { Link } from "react-router-dom";
-// import { eventNames } from "../../../server/models/Events";
 
 function EventList({ events }) {
   // query me
   const { data } = useQuery(QUERY_ME);
   const me = data?.me || {};
-  console.log("me", me);
-// mutation addPlayer
+  console.log("events", events);
+  // mutation addPlayer
   const [addPlayer] = useMutation(ADD_PLAYER);
-  // const [updateEvent] = useMutation(UPDATE_EVENT);
-
-  const handleAddPlayer = async (id) => { 
+  const handleAddPlayer = async (id) => {
     try {
       await addPlayer({
-        variables: { eventID: id, userId: me._id },
+        variables: { eventID: id },
       });
-      console.log(events)
+      console.log(me)
+      console.log(events);
     } catch (e) {
       console.error(e);
     }
@@ -32,7 +30,8 @@ function EventList({ events }) {
       await EditEvent({
         variables: { eventID: id},
       });
-      console.log(events)
+      console.log(me)
+      console.log(events);
     } catch (e) {
       console.error(e);
     }
@@ -42,11 +41,20 @@ function EventList({ events }) {
     <ul className="event-list">
       {events.map((eventObj) => (
         <li key={eventObj._id} className="card">
+          <Link className="event-link" to={`/event/${eventObj._id}`}>
           <Event event={eventObj}></Event>
+          </Link>
           {eventObj.organizerName === me.username ? (
             <Link to={`/event/edit/${eventObj._id}`} onClick={() => {handleEditEvent(eventObj)}}><button className="play-btn">Edit Game</button></Link>
           ) : (
-            <button className="play-btn" onClick={() => {handleAddPlayer(eventObj._id)}}>I'm Game!</button>
+            <button
+              className="play-btn"
+              onClick={() => {
+                handleAddPlayer(eventObj._id);
+              }}
+            >
+              I'm Game!
+            </button>
           )}
         </li>
       ))}

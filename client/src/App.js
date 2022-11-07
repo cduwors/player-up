@@ -44,18 +44,36 @@ function App() {
       <Router>
         <div className="page">
           <div className="side">
-            <Header/>
+            <Header />
             <main>
               <Switch>
-                <Route path="/login"><Login /></Route>
-                <Route path="/signup"><Signup /></Route>
-                <Route path="/profile"><Profile /></Route>
-                <Route path="/events"><Events /></Route>
-                <Route path="/profile:username"><Profile /></Route>
-                <Route path="/event/:id"><SingleEvent /></Route>
-                <Route path="/event/edit/:id"><EditEvent /></Route>
-                <Route path="/"><Home /></Route>
-                <Route path="*"><NoMatch /></Route>
+                <Route path="/login">
+                  <Login />
+                </Route>
+                <Route path="/signup">
+                  <Signup />
+                </Route>
+                <Route path="/profile">
+                  <Profile />
+                </Route>
+                <Route path="/events">
+                  <Events />
+                <Route path="/event/edit/:id">
+                  <EditEvent />
+                </Route>
+                </Route>
+                <Route path="/profile/:username">
+                  <Profile />
+                </Route>
+                <Route path="/event/:id">
+                  <SingleEvent />
+                </Route>
+                <Route path="/">
+                  <Home />
+                </Route>
+                <Route path="*">
+                  <NoMatch />
+                </Route>
               </Switch>
             </main>
           </div>
