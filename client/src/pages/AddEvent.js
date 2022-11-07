@@ -50,6 +50,7 @@ const AddEvent = ({ setAddEventPage }) => {
 		try {
 			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			console.log(data);
+			console.log(eventFormData);
 			if (data) {
 				closeForm();
 			}
@@ -68,6 +69,7 @@ const AddEvent = ({ setAddEventPage }) => {
 			numberPlayersNeeded: "",
 			organizerName: "",
 		});
+		
 	};
 
 	return (

@@ -1,22 +1,22 @@
-import React from "react";
-import { setContext } from '@apollo/client/link/context';
-import {
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-  createHttpLink,
-} from "@apollo/client";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import components
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-// import page components
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import NoMatch from "./pages/NoMatch";
-import SingleEvent from "./pages/SingleEvent";
-import Profile from "./pages/Profile";
-import Signup from "./pages/Signup";
+// import React from "react";
+// import { setContext } from '@apollo/client/link/context';
+// import {
+//   ApolloProvider,
+//   ApolloClient,
+//   InMemoryCache,
+//   createHttpLink,
+// } from "@apollo/client";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// // import components
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
+// // import page components
+// import Home from "./pages/Home";
+// import Login from "./pages/Login";
+// import NoMatch from "./pages/NoMatch";
+// import SingleEvent from "./pages/SingleEvent";
+// import Profile from "./pages/Profile";
+// import Signup from "./pages/Signup";
 
 // first, establish a new link to the GraphQL server at its /graphql endpoint
 const httpLink = createHttpLink({
@@ -64,4 +64,4 @@ function App() {
   );
 }
 
-export default App;
+// export default App;
