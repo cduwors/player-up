@@ -1,5 +1,6 @@
 import React from "react";
 import { pluralize } from "../utils/helpers";
+import {Link} from "react-router-dom";
 
 function Event({ event }) {
 	return (
@@ -17,9 +18,9 @@ function Event({ event }) {
 			</span>
 			<p>Description: {event.description}</p>
 			<span>
-				{event.organizerName} | Players needed: {event.numberPlayersNeeded}{" "}
+				<Link to={`/profile/${event.organizerName}`} className="profile-link">{event.organizerName}</Link> | Players needed: {event.numberPlayersNeeded}
 				<br />
-				Players attending:{" "}
+				Players attending: 
 				{!event.attending ? "0" : pluralize("player", event.attending.length)}
 			</span>
 		</article>

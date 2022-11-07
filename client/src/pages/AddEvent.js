@@ -52,6 +52,7 @@ const AddEvent = ({ setAddEventPage }) => {
 			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			if (data) {
 				closeForm()
+				document.querySelector(".selectEvents").style.backgroundColor = 'GREENYELLOW';
 			}
 			
 			// Auth.login(data.login.token);
