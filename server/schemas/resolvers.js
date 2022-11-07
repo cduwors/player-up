@@ -50,11 +50,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPlayer: async (parent, { eventId, userId }, context) => {
+    addPlayer: async (parent, { eventId }, context) => {
       if (context.user) {
         const updatedEvent = await Events.findOneAndUpdate(
           { _id: eventId },
-          { $addToSet: { attending: userId} },
+          { $addToSet: { attending: context.user.username } },
           { new: true }
         ).populate('attending');
         return updatedEvent;

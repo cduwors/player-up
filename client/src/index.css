@@ -243,7 +243,7 @@ button:hover {
 }
 
 .selectEvents {
-  background-color: greenyellow;
+  /* background-color: greenyellow; */
   border-radius: 10px;
   padding: 10px;
   /* background-color: rgba(255, 255, 255, 0.8); */

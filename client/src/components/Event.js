@@ -24,7 +24,7 @@ function Event({ event }) {
       </Link>
 
       <span>
-        {event.organizerName} | Players needed: {event.numberPlayersNeeded}{" "}
+      <Link to={`/profile/${event.organizerName}`} className="profile-link">{event.organizerName}</Link> | Players needed: {event.numberPlayersNeeded}
         <br />
         Players attending:{" "}
         {!event.attending ? "0" : pluralize("player", event.attending.length)}
