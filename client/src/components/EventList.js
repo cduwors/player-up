@@ -1,9 +1,11 @@
 import React from "react";
 import Event from "./Event";
+import EditEvent from "../pages/EditEvent";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { ADD_PLAYER } from "../utils/mutations";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import { eventNames } from "../../../server/models/Events";
 
 function EventList({ events }) {
   // query me
@@ -12,6 +14,8 @@ function EventList({ events }) {
   console.log("me", me);
 // mutation addPlayer
   const [addPlayer] = useMutation(ADD_PLAYER);
+  // const [updateEvent] = useMutation(UPDATE_EVENT);
+
   const handleAddPlayer = async (id) => { 
     try {
       await addPlayer({
@@ -22,13 +26,25 @@ function EventList({ events }) {
       console.error(e);
     }
   };
+
+  const handleEditEvent = async (id) => {
+    try {
+      await EditEvent({
+        variables: { eventID: id},
+      });
+      console.log(events)
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <ul className="event-list">
       {events.map((eventObj) => (
         <li key={eventObj._id} className="card">
           <Event event={eventObj}></Event>
           {eventObj.organizerName === me.username ? (
-            <link to={"./event/edit/{$eventObj._id}"}><button className="play-btn">Edit Game</button></link>
+            <Link to={`/event/edit/${eventObj._id}`} onClick={() => {handleEditEvent(eventObj)}}><button className="play-btn">Edit Game</button></Link>
           ) : (
             <button className="play-btn" onClick={() => {handleAddPlayer(eventObj._id)}}>I'm Game!</button>
           )}

@@ -1,33 +1,37 @@
-import { useQuery, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Form, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-
-// import Event from "../components/Event";
-import { QUERY_ME, QUERY_SINGLE_EVENTS } from "../utils/queries";
-import { REMOVE_EVENT, UPDATE_EVENT } from '../utils/mutations';
+import { UPDATE_EVENT } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const EditEvent = (props) => {
-  const { id: eventId } = useParams();
-  const { data } = useQuery(QUERY_SINGLE_EVENTS, {variables: { id: props.id },
-    });
-  console.log("This is data", data)
+const EditEvent = ( props ) => {
+  // console.log("This is props", props)
+  const { variables } = props;
+  // console.log("This is variables", variables);
+  const { eventID } = variables;
+  console.log("This is eventID", eventID);
+  // const { Events } = eventID;
 
-  const [eventData, setUpdateFormData] = {
-		eventName: data.eventName,
-		description: data.description,
-		date: data.date,
-		time: data.time,
-		location: data.location,
-		numberPlayersNeeded: data.numberPlayersNeeded,
-		organizerName: data.organizerName,
-	};
+
+  const [eventData, setUpdateFormData] = useState({
+		eventName: eventID.eventName,
+		description: eventID.description,
+		date: eventID.date,
+		time: eventID.time,
+		location: eventID.location,
+		numberPlayersNeeded: eventID.numberPlayersNeeded,
+		organizerName: eventID.organizerName,
+	});
+  console.log("Made it past useState");
+
+  const [ updateEvent, { error } ] = useMutation(UPDATE_EVENT, {
+    variable: { eventId: eventID._id, eventData: eventData},
+  });
+  console.log("Made it past useMutation");
 
   // const [validated] = useState(false);
   // const { data } = useQuery(QUERY_ME);
   console.log("This is event", eventData)
-  const updateEvent = useMutation(UPDATE_EVENT);
   // const removeEvent = useMutation(REMOVE_EVENT);
   // const me = data?.me || [];
   // console.log("This is mydata", me)
@@ -36,6 +40,9 @@ const EditEvent = (props) => {
     const { name, value } = event.target;
     setUpdateFormData({ ...eventData, [name]: value });
   };
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
   const handleUpdateEvent = async (event) => {
     event.preventDefault();
@@ -48,7 +55,7 @@ const EditEvent = (props) => {
 
     try {
       const response = await updateEvent({ variables: { ...eventData }});
-      console.log("This is new data", data);
+      // console.log("This is new data", data);
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
@@ -72,28 +79,28 @@ const EditEvent = (props) => {
 		});
   };
 
-  // const handleDeleteEvent = async (eventId) => {
-  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
+//   const handleDeleteEvent = async (eventId) => {
+//     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-  //   if (!token) {
-  //     return false;
-  //   }
+//     if (!token) {
+//       return false;
+//     }
 
-  //   try {
-  //     const response = await removeEvent(eventId, token);
+//     try {
+//       const response = await removeEvent(eventId, token);
 
-  //     if (!response.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
+//       if (!response.ok) {
+//         throw new Error('something went wrong!');
+//       }
 
-  //     // const updatedUser = await response.json();
-  //     // setUserData(updatedUser);
-  //     // // upon success, remove events's id from localStorage
-  //     // removeEventId(eventId);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
+//       // const updatedUser = await response.json();
+//       // setUserData(updatedUser);
+//       // // upon success, remove events's id from localStorage
+//       // removeEventId(eventId);
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   }
 
 	return (
 		<section className="cork-board loginForm">
@@ -106,7 +113,8 @@ const EditEvent = (props) => {
 						className="formGroup"
 						// noValidate
 						// validated={validated}
-						onSubmit={handleUpdateEvent}>
+						// onSubmit={handleUpdateEvent}
+            >
 						{/* <Alert
 							dismissible
 							onClose={() => setShowAlert(false)}
@@ -124,7 +132,7 @@ const EditEvent = (props) => {
 								type="text"
 								placeholder="Name your event"
 								name="eventName"
-								onChange={handleUpdateInput}
+								// onChange={handleUpdateInput}
 								value={eventData.eventName}
 								required
 							/>
@@ -142,7 +150,7 @@ const EditEvent = (props) => {
 								type="text"
 								placeholder="Describe your event!"
 								name="description"
-								onChange={handleUpdateInput}
+								// onChange={handleUpdateInput}
 								value={eventData.description}
 								required
 							/>
@@ -160,7 +168,7 @@ const EditEvent = (props) => {
 								type="text"
 								placeholder="MM/DD/YYYY"
 								name="date"
-								onChange={handleUpdateInput}
+								// onChange={handleUpdateInput}
 								value={eventData.date}
 								required
 							/>
@@ -178,7 +186,7 @@ const EditEvent = (props) => {
 								type="text"
 								placeholder="What time does the game begin?"
 								name="time"
-								onChange={handleUpdateInput}
+								// onChange={handleUpdateInput}
 								value={eventData.time}
 								required
 							/>
@@ -196,7 +204,7 @@ const EditEvent = (props) => {
 								type="text"
 								placeholder="Where is your event?"
 								name="location"
-								onChange={handleUpdateInput}
+								// onChange={handleUpdateInput}
 								value={eventData.location}
 								required
 							/>
@@ -214,7 +222,7 @@ const EditEvent = (props) => {
 								type="text"
 								placeholder="examples: 4 players, 5-10 players"
 								name="numberPlayersNeeded"
-								onChange={handleUpdateInput}
+								// onChange={handleUpdateInput}
 								value={eventData.numberPlayersNeeded}
 								required
 							/>
@@ -232,7 +240,7 @@ const EditEvent = (props) => {
 								type="text"
 								placeholder="Enter a name..."
 								name="organizerName"
-								onChange={handleUpdateInput}
+								// onChange={handleUpdateInput}
 								value={eventData.organizerName}
 								required
 							/>

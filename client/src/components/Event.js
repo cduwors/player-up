@@ -10,7 +10,8 @@ function Event({ event }) {
 				<a
 					className="mapLink"
 					href="https://www.google.com/maps/dir/?api=1"
-					target="_blank">
+					target="_blank"
+          rel="noreferrer">
 					{event.location}
 				</a>
 			</span>
