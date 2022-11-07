@@ -173,6 +173,15 @@ link:hover {
   background-size: cover;
   border: none;
 }
+.single-card {
+  font-size: 12px;
+  width: 300px;
+  height: 350px;
+  margin: 20px;
+  background: url("./images/blank-thumbtack-note.png");
+  background-size: cover;
+  border: none;
+}
 
 .text-box {
   position: relative;
@@ -180,9 +189,17 @@ link:hover {
   left: 35px;
   width: 225px;
   text-align: center;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
-
+.single-box {
+  position: relative;
+  top: 50px;
+  left: 350px;
+  width: 225px;
+  text-align: center;
+  margin-bottom: 10px;
+}
 .eventName {
   margin: 20px 0 5px 0;
   font-size: 20px;

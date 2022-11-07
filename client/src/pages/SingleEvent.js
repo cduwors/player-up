@@ -25,7 +25,7 @@ const SingleEvent = () => {
 
   return (
     <div className="text-box">
-      <div className="card">
+      <div className="single-card">
         {/* events on {events.date} */}
         <h2 className="eventName">{event.eventName}</h2>
         <span>
