@@ -16,9 +16,8 @@ function EventList({ events }) {
   const handleAddPlayer = async (id) => {
     try {
       await addPlayer({
-        variables: { eventID: id },
+        variables: { eventID: id, userId: me._id },
       });
-      console.log(me)
       console.log(events);
     } catch (e) {
       console.error(e);
@@ -42,8 +41,9 @@ function EventList({ events }) {
       {events.map((eventObj) => (
         <li key={eventObj._id} className="card">
           <Link className="event-link" to={`/event/${eventObj._id}`}>
-          <Event event={eventObj}></Event>
+            <Event event={eventObj}></Event>
           </Link>
+          ;{" "}
           {eventObj.organizerName === me.username ? (
             <Link to={`/event/edit/${eventObj._id}`} onClick={() => {handleEditEvent(eventObj)}}><button className="play-btn">Edit Game</button></Link>
           ) : (
