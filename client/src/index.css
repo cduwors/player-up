@@ -12,11 +12,6 @@ code {
 		monospace;
 }
 
-
-@font-face {
-	font-family: 'Shadows_Into_Light';
-	src: local('Shadows_Into_Light'), url("./fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf") format("truetype");
-  }
 @font-face {
 	font-family: 'Indie_Flower';
 	src: local('Indie_Flower'), url("./fonts/Indie_Flower/IndieFlower-Regular.ttf") format("truetype");
@@ -25,10 +20,7 @@ code {
 	font-family: 'Acme';
 	src: local('Acme'), url("./fonts/Acme/Acme-Regular.ttf") format("truetype");
   }
-@font-face {
-	font-family: 'Permanent_Marker';
-	src: local('Permanent_Marker'), url("./fonts/Permanent_Marker/PermanentMarker-Regular.ttf") format("truetype");
-  }
+
 
 .page {
 	padding: 20px;
@@ -41,7 +33,7 @@ code {
 }
 main {
 	width: 100%;
-	font-family: Permanent_Marker;
+	font-family: Acme;
 }
 /* header  */
 .header {
