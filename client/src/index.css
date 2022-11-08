@@ -12,6 +12,24 @@ code {
 		monospace;
 }
 
+
+@font-face {
+	font-family: 'Shadows_Into_Light';
+	src: local('Shadows_Into_Light'), url("./fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf") format("truetype");
+  }
+@font-face {
+	font-family: 'Indie_Flower';
+	src: local('Indie_Flower'), url("./fonts/Indie_Flower/IndieFlower-Regular.ttf") format("truetype");
+  }
+@font-face {
+	font-family: 'Acme';
+	src: local('Acme'), url("./fonts/Acme/Acme-Regular.ttf") format("truetype");
+  }
+@font-face {
+	font-family: 'Permanent_Marker';
+	src: local('Permanent_Marker'), url("./fonts/Permanent_Marker/PermanentMarker-Regular.ttf") format("truetype");
+  }
+
 .page {
 	padding: 20px;
 }
@@ -23,6 +41,7 @@ code {
 }
 main {
 	width: 100%;
+	font-family: Permanent_Marker;
 }
 /* header  */
 .header {
@@ -150,6 +169,7 @@ link:hover {
 	text-align: center;
 	font-size: 48px;
 	padding-top: 30px;
+	/* font-family: Acme; */
 }
 
 .event-list {
@@ -190,16 +210,18 @@ link:hover {
 
 .text-box {
 	position: relative;
-	top: 80px;
+	top: 65px;
 	left: 35px;
 	width: 225px;
 	text-align: center;
 	margin-bottom: 10px;
+	font-family: Indie_Flower;
+	font-size: 18px;
 }
 
 .eventName {
 	margin: 20px 0 5px 0;
-	font-size: 20px;
+	/* font-size: 20px; */
 }
 
 .play-btn,
@@ -209,6 +231,7 @@ link:hover {
 	left: 30px;
 	width: 225px;
 	text-align: center;
+	font-size: larger;
 }
 
 /* profile page */
