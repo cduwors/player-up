@@ -5,11 +5,8 @@ import { QUERY_ALL_EVENTS, QUERY_ME } from "../utils/queries";
 import { useMutation, useQuery, useLazyQuery } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 
-const AddEvent = ({ setAddEventPage, setEventList }) => {
-	const closeForm = () => {
-		setAddEventPage(false);
-		setEventList(true);
-	};
+const AddEvent = ({ closeForm }) => {
+	
 	const [eventFormData, setEventFormData] = useState({
 		eventName: "",
 		description: "",

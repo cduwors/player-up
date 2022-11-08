@@ -460,6 +460,11 @@ button:hover {
 	background-color: greenyellow;
 }
 
+.center {
+	display: flex;
+	justify-content: center;
+}
+
 footer {
 	text-align: center;
 }
