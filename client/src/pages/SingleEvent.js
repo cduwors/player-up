@@ -1,12 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { pluralize } from "../utils/helpers";
+import { pluralize, formatDate, formatTime} from "../utils/helpers";
 import { Link } from "react-router-dom";
 
 // import Auth from "../utils/auth";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_SINGLE_EVENTS, QUERY_ME } from "../utils/queries";
 import { ADD_PLAYER } from "../utils/mutations";
+
 
 const SingleEvent = () => {
   const { id: eventId } = useParams();
@@ -46,8 +47,8 @@ const SingleEvent = () => {
       <div className="singleEvent">
       <span>
         <p>
-           Date: {event.date} <br />
-           Time: {event.time} <br />
+           Date: {formatDate(event.date)} <br />
+           Time: {formatTime(event.time)} <br />
           <a
             className="mapLink"
             href="https://www.google.com/maps/dir/?api=1"
@@ -61,12 +62,12 @@ const SingleEvent = () => {
        <p>
         Organizer:      
            <Link to={`/profile/${event.organizerName}`} className="profile-link">
-            {event.organizerName}
+            {` ${event.organizerName}`}
           </Link>
           <br></br>
           Players needed: {event.numberPlayersNeeded}
           <br />
-          Players attending: 
+          {`Players attending: `}
           {!event.attending ? "0" : pluralize("player", event.attending.length)}
           </p>
         </span>
