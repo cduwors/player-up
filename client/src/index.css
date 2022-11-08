@@ -1,182 +1,219 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
 .page {
-  padding: 20px;
+	padding: 20px;
 }
 
 .side {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
 }
 main {
-  width: 100%;
+	width: 100%;
 }
 /* header  */
 .header {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .logo-header {
-  max-width: 150px;
-  max-height: auto;
+	max-width: 150px;
+	max-height: auto;
 }
 
 .logo {
-  height: 100%;
-  width: 100%;
+	height: 100%;
+	width: 100%;
 }
 .nav-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-right: 50px;
-  list-style-type: none;
-  flex-wrap: wrap;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-right: 50px;
+	list-style-type: none;
+	flex-wrap: wrap;
 }
 
 .nav-link {
-  margin: 40px 0;
-  cursor: pointer;
+	margin: 40px 0;
+	cursor: pointer;
 }
 
 .navActive {
-  color: black;
-  /* border: 2px solid rgb(53, 30, 8); */
-  background-color: greenyellow;
-  border-radius: 20px;
-  padding: 15px 20px;
-  text-decoration: none !important;
+	color: black;
+	/* border: 2px solid rgb(53, 30, 8); */
+	background-color: greenyellow;
+	border-radius: 20px;
+	padding: 15px 20px;
+	text-decoration: none !important;
 }
 
 link {
-  color: rgb(29, 175, 29);
+	color: rgb(29, 175, 29);
 }
 
 link:hover {
-  color: black;
-  text-decoration: none;
+	color: black;
+	text-decoration: none;
 }
 
 .background-cork {
-  background-image: url("./images/cork-board.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  height: 100%;
-  width: auto;
-  display: inline-block;
-  border-right: 100px solid black;
+	background-image: url("./images/cork-board.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	height: 100%;
+	width: auto;
+	display: inline-block;
+	border-right: 100px solid black;
 }
 
 /* home page */
 .header-home {
-  display: flex;
-  justify-content: flex-end;
+	display: flex;
+	justify-content: flex-end;
 }
 .nav-header-home {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 50px;
-  list-style-type: none;
-  flex-wrap: wrap;
+	display: flex;
+	justify-content: space-between;
+	margin-right: 50px;
+	list-style-type: none;
+	flex-wrap: wrap;
 }
 
 .nav-home {
-  list-style-type: none;
-  text-align: right;
-  position: absolute;
-  top: 250px;
-  left: 100px;
+	list-style-type: none;
+	text-align: right;
+	position: absolute;
+	top: 250px;
+	left: 100px;
 }
 
 .nav-link-home {
-  margin: 20px 0;
-  cursor: pointer;
-  /* background-color: rgb(14, 240, 165); */
-  padding: 20px;
-  border-radius: 10px;
-  min-height: 100px;
-  background-image: url("./images/red-dice.png");
-  background-size: cover;
-  /* background-attachment: fixed; */
+	margin: 20px 0;
+	cursor: pointer;
+	/* background-color: rgb(14, 240, 165); */
+	padding: 20px;
+	border-radius: 10px;
+	min-height: 100px;
+	background-image: url("./images/red-dice.png");
+	background-size: cover;
+	/* background-attachment: fixed; */
 }
 
 .logo-home {
-  max-width: 300px;
-  max-height: auto;
-  margin: 20px;
-  margin-left: 5px;
+	max-width: 300px;
+	max-height: auto;
+	margin: 20px;
+	margin-left: 5px;
 }
 
 .hide {
-  display: none;
+	display: none;
 }
 
 .home-background {
-  background-image: url("./images/board-games.jpg");
-  background-size: cover;
-  /* background-attachment: fixed; */
-  height: 700px;
-  width: 100%;
+	background-image: url("./images/board-games.jpg");
+	background-size: cover;
+	/* background-attachment: fixed; */
+	height: 700px;
+	width: 100%;
 }
 
 /* Events page */
 .cork-board {
-  background-image: url("./images/cork-board.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
+	background-image: url("./images/cork-board.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
 }
 
 .event-header {
-  text-align: center;
-  font-size: 48px;
+	text-align: center;
+	font-size: 48px;
+	padding-top: 30px;
 }
 
 .event-list {
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
 }
 
 .event-link {
-  color: black;
-  text-decoration: none;
+	color: black;
+	text-decoration: none;
 }
 
 .event-link:hover {
-  color: black;
-  text-decoration: none;
+	color: black;
+	text-decoration: none;
+}
+
+.single-event-header {
+	color: #ffffff;
+	text-align: center;
+	font-size: 30px;
+	padding: 20px;
+}
+.single-event-subtitle {
+	color: #ffffff;
+	text-align: center;
+	font-size: 15px;
+	padding-top: 20px;
+	font-style: italic;
+	font-weight: bolder;
+}
+
+.singleEvent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	margin: 50px;
+	border: 0px solid;
+	background-color: #fff;
+	opacity: 0.8;
+	border-radius: 20px;
+	font-size: 20px;
+}
+
+.single-event-background {
+	background-image: url("./images/board-games.jpg");
+	background-size: cover;
+	/* background-attachment: fixed; */
+	height: 700px;
+	width: 100%;
 }
 
 .card {
-  font-size: 12px;
-  width: 300px;
-  height: 350px;
-  margin: 10px;
-  background: url("./images/blank-thumbtack-note.png");
-  background-size: cover;
-  border: none;
+	font-size: 12px;
+	width: 300px;
+	height: 350px;
+	margin: 10px;
+	background: url("./images/blank-thumbtack-note.png");
+	background-size: cover;
+	border: none;
 }
 
 .card:hover {
@@ -185,198 +222,210 @@ link:hover {
 }
 
 .text-box {
-  position: relative;
-  top: 40px;
-  left: 35px;
-  width: 225px;
-  text-align: center;
-  margin-bottom: 10px;
+	position: relative;
+	top: 40px;
+	left: 35px;
+	width: 225px;
+	text-align: center;
+	margin-bottom: 10px;
 }
 
 .eventName {
-  margin: 20px 0 5px 0;
-  font-size: 20px;
+	margin: 20px 0 5px 0;
+	font-size: 20px;
 }
 
 .play-btn,
 .edit-btn {
-  position: relative;
-  top: 40px;
-  left: 30px;
-  width: 225px;
-  text-align: center;
+	position: relative;
+	top: 40px;
+	left: 30px;
+	width: 225px;
+	text-align: center;
 }
 
 /* profile page */
 .profile-background {
-  background-size: cover;
-  background-attachment: fixed;
-  background-color: black;
-  height: auto;
-  width: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+	background-color: black;
+	height: auto;
+	width: 100%;
 }
 
 .profile-background h1 {
-  color: white;
-  padding: 0px;
+	color: white;
+	padding: 0px;
+}
+
+.profile-link {
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  text-decoration: none;
+  font-weight: bolder;
+  color: rgb(29, 175, 29);
+
 }
 
 .button-box {
-  display: flex;
-  justify-content: space-evenly;
-  background-image: url("./images/board-games.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  padding: 10px 0;
+	display: flex;
+	justify-content: space-evenly;
+	background-image: url("./images/board-games.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	padding: 10px 0;
 }
 
 .list-btn {
-  border-radius: 10px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  color: black;
-  font-weight: 900;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.8);
+	border: none;
+	color: black;
+	font-weight: 900;
 }
 
 ul button {
-  background-color: rgb(29, 175, 29);
-  border-radius: 10px;
+	background-color: rgb(29, 175, 29);
+	border-radius: 10px;
 }
 
 .list-btn:hover {
-  background-color: greenyellow;
+	background-color: greenyellow;
 }
 
 button:hover {
-  background-color: greenyellow;
+	background-color: greenyellow;
 }
 
 .selectEvents {
-  /* background-color: greenyellow; */
-  border-radius: 10px;
-  padding: 10px;
-  /* background-color: rgba(255, 255, 255, 0.8); */
-  border: none;
-  color: black;
-  font-weight: 900;
+	/* background-color: greenyellow; */
+	border-radius: 10px;
+	padding: 10px;
+	/* background-color: rgba(255, 255, 255, 0.8); */
+	border: none;
+	color: black;
+	font-weight: 900;
 }
 
 .green-yellow {
-  background-color: greenyellow;
+	background-color: greenyellow;
 }
 /* Login/signup pages */
 .loginForm {
-  display: flex;
-  align-items: center;
-  padding: 25px;
-  font-size: 24px;
-  font-weight: bold;
-  /* border: 5px solid rgb(29, 175, 29); */
-  /* height: 100vh; */
+	display: flex;
+	align-items: center;
+	padding: 25px;
+	/* font-size: 24px; */
+	font-weight: bold;
+	/* border: 5px solid rgb(29, 175, 29); */
+	/* height: 100vh; */
 }
 
 .formGroupBackground {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  flex-grow: 1;
-  flex-shrink: 1;
-  padding: 35px;
-  border: 5px solid rgb(53, 30, 8);
-  /* width: 50%; */
-  margin: 35px;
-  background-image: url("./images/board-games.jpg");
-  border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	flex-grow: 1;
+	flex-shrink: 1;
+	padding: 35px;
+	border: 5px solid rgb(53, 30, 8);
+	/* width: 50%; */
+	margin: 35px;
+	background-image: url("./images/board-games.jpg");
+	border-radius: 20px;
 }
 
 .formGroup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  flex-grow: 1;
-  flex-shrink: 1;
-  padding: 20px;
-  /* border: 5px solid rgb(29, 175, 29); */
-  /* width: 50%; */
-  margin: 25px;
-  background-color: #ffffff;
-  opacity: 0.8;
-  border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	flex-grow: 1;
+	flex-shrink: 1;
+	padding: 20px;
+	/* border: 5px solid rgb(29, 175, 29); */
+	/* width: 50%; */
+	margin: 25px;
+	background-color: #ffffff;
+	opacity: 0.8;
+	border-radius: 20px;
 }
 
 .label {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  padding: 0.5em;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	padding: 0.5em;
+	margin-bottom: 0%;
 }
 .feedback {
-  padding: 0 20px 20px 20px;
-  font-size: 18px;
-  font-style: italic;
+	padding: 0 20px 20px 20px;
+	font-size: 18px;
+	font-style: italic;
 }
 
 .input {
-  flex: 1;
-  border-radius: 10px;
-  font-size: 24px;
-  opacity: 1;
-  width: 100%;
+	flex: 1;
+	border-radius: 10px;
+	/* font-size: 24px; */
+	opacity: 1;
+	width: 100%;
 }
 
 .inputDescription {
-  flex: 1;
-  border-radius: 10px;
-  font-size: 24px;
-  opacity: 1;
-  width: 100%;
-  display: block;
-  margin: 0;
-  resize: vertical;
+	flex: 1;
+	border-radius: 10px;
+	/* font-size: 24px; */
+	opacity: 1;
+	width: 100%;
+	display: block;
+	margin: 0;
+	resize: vertical;
 }
 .loginBtn {
-  position: relative;
-  display: flex;
-  top: 10px;
-  width: 225px;
-  text-align: center;
-  background-color: rgb(29, 175, 29);
-  border-radius: 10px;
-  font-size: 24px;
-  color: black;
-  opacity: 0.8;
-  justify-content: center;
-  /* box-shadow: 10px 3px 3px greenyellow; */
+	position: relative;
+	display: flex;
+	top: 10px;
+	width: 225px;
+	text-align: center;
+	background-color: rgb(29, 175, 29);
+	border-radius: 10px;
+	font-size: 20px;
+	color: black;
+	opacity: 0.8;
+	justify-content: center;
+	/* box-shadow: 10px 3px 3px greenyellow; */
 }
 
 .login-background {
-  background-size: cover;
-  background-attachment: fixed;
-  background-color: black;
-  height: auto;
-  width: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+	background-color: black;
+	height: auto;
+	width: 100%;
 }
 
 .login-background h1 {
-  color: white;
-  padding: 0x;
+	color: white;
+	padding: 0x;
 }
 
 .addEventHeader {
-  text-align: center;
+	text-align: center;
 }
 .mapLink {
-  text-decoration: none;
-  font-style: italic;
+	text-decoration: none;
+	font-style: italic;
 }
 .mapLink:hover {
-  font-weight: bold;
-  color: rgb(29, 175, 29);
+	font-weight: bold;
+	color: rgb(29, 175, 29);
 }
 
 footer {
-  text-align: center;
+	text-align: center;
 }

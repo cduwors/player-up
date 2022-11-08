@@ -65,7 +65,7 @@ const Signup = () => {
 	return (
 		<section className="cork-board loginForm">
 			<div className="login-background">
-				<h1 className="event-header">Sign Up to get playing!!</h1>
+				<h1 className="event-header">Sign Up To Play!!</h1>
 			</div>
 			<div className="formGroupBackground">
 				<>

@@ -9,7 +9,7 @@ function EventList({ events }) {
   // query me
   const { data } = useQuery(QUERY_ME);
   const me = data?.me || {};
-  console.log("events", events);
+  // console.log("events", events);
   // mutation addPlayer
   const [addPlayer] = useMutation(ADD_PLAYER);
   const handleAddPlayer = async (id) => {
@@ -17,8 +17,8 @@ function EventList({ events }) {
       await addPlayer({
         variables: { eventID: id },
       });
-      console.log(me)
-      console.log(events);
+      // console.log(me)
+      // console.log(events);
     } catch (e) {
       console.error(e);
     }

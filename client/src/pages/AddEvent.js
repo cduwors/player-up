@@ -21,7 +21,7 @@ const AddEvent = ({ setAddEventPage, setEventList }) => {
 	});
 	const [validated] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
-	const [eventAdd, { error }] = useMutation(ADD_EVENT)
+	const [eventAdd, { error }] = useMutation(ADD_EVENT);
 	const { data } = useQuery(QUERY_ME);
 	const me = data?.me || {};
 
@@ -33,7 +33,6 @@ const AddEvent = ({ setAddEventPage, setEventList }) => {
 		}
 	}, [error]);
 
-	
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setEventFormData({ ...eventFormData, [name]: value });
@@ -52,9 +51,9 @@ const AddEvent = ({ setAddEventPage, setEventList }) => {
 		try {
 			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			if (data) {
-				closeForm()
+				closeForm();
 			}
-			
+
 			// Auth.login(data.login.token);
 		} catch (err) {
 			console.error(err);
@@ -70,7 +69,6 @@ const AddEvent = ({ setAddEventPage, setEventList }) => {
 			numberPlayersNeeded: "",
 			organizerName: "",
 		});
-		
 	};
 
 	return (
@@ -114,7 +112,8 @@ const AddEvent = ({ setAddEventPage, setEventList }) => {
 							</Form.Label>
 							<Form.Control
 								className="inputDescription"
-								type="textarea"
+								as="textarea"
+								rows={5}
 								placeholder="What we'll be doing..."
 								name="description"
 								onChange={handleInputChange}
