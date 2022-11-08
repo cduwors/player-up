@@ -8,10 +8,10 @@ const NavLoggedIn = ({ titleLocation, param }) => {
   const [pageSelected, setPageSelected] = useState(false);
   const [homePage, setHomePage] = useState(true);
 
-  const clickState = () => {
-    setHomePage(false);
-    setPageSelected(true);
-  };
+	const clickState = () => {
+		setHomePage(false);
+		setPageSelected(true);
+	};
 
   return (
     <header>

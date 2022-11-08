@@ -13,18 +13,21 @@ const SingleEvent = () => {
     variables: { id: eventId },
   });
   const event = data?.event || {};
-  console.log(eventId);
-  console.log(data);
-
+  // console.log(eventId);
+  // console.log(data);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="text-box">
-      <div className="card">
-        <h2 className="eventName">{event.eventName}</h2>
+    <section className="single-event-background">
+    <div>
+      <p className="single-event-subtitle">Event Details for:</p>
+      <h1 className="single-event-header profile-background">{event.eventName}</h1>
+    </div>
+    <div>
+      <div className="singleEvent">
         <span>
           {event.time} | {event.date} <br />
           <a
@@ -39,16 +42,19 @@ const SingleEvent = () => {
         <p>Description: {event.description}</p>
 
         <span>
+        Organizer:    
           <Link to={`/profile/${event.organizerName}`} className="profile-link">
             {event.organizerName}
           </Link>
-          | Players needed: {event.numberPlayersNeeded}
+          <br></br>
+          Players needed: {event.numberPlayersNeeded}
           <br />
           Players attending:
           {!event.attending ? "0" : pluralize("player", event.attending.length)}
         </span>
       </div>
     </div>
+    </section>
   );
 };
 
