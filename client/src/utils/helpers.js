@@ -13,3 +13,24 @@ export function pluralize(name, count) {
   }
   return `${count} ${name}s`;
 }
+
+export function formatDate(date) {
+  const original = date.split("-")
+  const updatedDate = `${original[1]}/${original[2]}/${original[0]}`
+  return updatedDate
+}
+
+export function formatTime(time) {
+const original = time.split(":")
+const timeInt = JSON.parse(original[0])
+function subtract(timeInt) {if (timeInt > 12) { return (timeInt - 12)}} 
+function update() {
+  if(timeInt > 12) { 
+    return `${subtract(timeInt)}:${original[1]} PM`
+  } else {
+    return `${time} AM`
+  }
+}
+const updatedTime = update();
+return updatedTime
+}

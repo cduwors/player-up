@@ -3,6 +3,7 @@ import EventList from "../components/EventList";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_EVENTS } from "../utils/queries";
 
+
 const Events = () => {
   const { loading, data } = useQuery(QUERY_ALL_EVENTS);
   const events = data?.events || [];
