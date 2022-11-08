@@ -179,10 +179,10 @@ link:hover {
   border: none;
 }
 
-.card:hover {
-	/* border: 5px solid greenyellow; */
-	/* background-color: greenyellow; */
-}
+/* .card:hover {
+	 border: 5px solid greenyellow; 
+	 background-color: greenyellow; 
+} */
 
 .text-box {
   position: relative;
