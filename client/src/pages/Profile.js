@@ -38,7 +38,7 @@ const Profile = () => {
   const [commitmentList, setCommitmentList] = useState(false);
   const [eventList, setEventList] = useState(true);
   const [addEventPage, setAddEventPage] = useState(false);
-  const [userEvents, setUserEvents] = useState({});
+  
 
   const displayCommitments = () => {
     setCommitmentList(true);
