@@ -1,78 +1,190 @@
-import { useQuery, useMutation } from '@apollo/client';
-import React from 'react';
-// import Event from "../components/Event";
-import GET_ME from "../utils/queries";
-import { REMOVE_EVENT, UPDATE_EVENT } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
+import { Form, Button } from "react-bootstrap";
+import { UPDATE_EVENT } from '../utils/mutations';
+// import { QUERY_SINGLE_EVENTS } from '../utils/queries';
+// import Auth from '../utils/auth';
 
-const EditEvent = () => {
-  const { loading, data } = useQuery(GET_ME);
-  const [updateEvent, { error }] = useMutation(UPDATE_EVENT);
-  const removeEvent = useMutation(REMOVE_EVENT);
-  const userData = data?.userData || [];
+let variablesGlobal;
+let loadCounter = 0;
 
-  const handleUpdateEvent = async (eventId) => {
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+const EditEvent = ( variables ) => {
+	if (loadCounter === 0) {
+		variablesGlobal = variables;
+		loadCounter++
+	}
 
-    if (!token) {
-      return false;
-    }
+  const [eventID, setEventUpdate] = useState({
+			eventId: variablesGlobal.variables.eventID._id,
+			eventName: variablesGlobal.variables.eventID.eventName,
+			description: variablesGlobal.variables.eventID.description,
+			date: variablesGlobal.variables.eventID.date,
+			time: variablesGlobal.variables.eventID.time,
+			location: variablesGlobal.variables.eventID.location,
+			numberPlayersNeeded: variablesGlobal.variables.eventID.numberPlayersNeeded,
+			organizerName: variablesGlobal.variables.eventID.organizerName,
+		
+		});
 
-    try {
-      const response = await removeEvent(eventId, token);
+const handleInputChange = (event) => {
+	const { name, value } = event.target;
+	setEventUpdate({ ...eventID, [name]: value });
+	console.log("This is eventID after setEventUpdate", eventID);
+};
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+  const [ updateEvent ] = useMutation(UPDATE_EVENT);
 
-      // const updatedUser = await response.json();
-      // setUserData(updatedUser);
-      // // upon success, remove events's id from localStorage
-      // removeEventId(eventId);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+const handleFormSubmit = async (event) => {
+	event.preventDefault();
 
-  const handleDeleteEvent = async (eventId) => {
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+	try {
+		const { data } = await updateEvent({ variables: { ...eventID } });
+		if (data) {
+			setEventUpdate({
+				eventId: data.updateEvent._id,
+				eventName: data.updateEvent.eventName,
+				description: data.updateEvent.description,
+				date: data.updateEvent.date,
+				time: data.updateEvent.time,
+				location: data.updateEvent.location,
+				numberPlayersNeeded: data.updateEvent.numberPlayersNeeded,
+				organizerName: data.updateEvent.organizerName,
+			});			
+			console.log("success?", data);			
+			return(`./events`);
+		}
+	} catch (err) {
+		console.log(err);
+	}
+};
 
-    if (!token) {
-      return false;
-    }
+	return (
+		<section className="cork-board loginForm">
+			<div className="login-background">
+				<h1 className="event-header">Update your Event here!</h1>
+			</div>
+			<div className="formGroupBackground">
+				<>
+					<Form
+						className="formGroup" 
+						onSubmit={handleFormSubmit}
+            		>
+						<Form.Group>
+							<h2 className="addEventHeader">Update The Game Plan!</h2>
+							<Form.Label className="label" htmlFor="eventName">
+								Event Name
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="Name your event"
+								name="eventName"
+								value={eventID.eventName}
+								onChange={handleInputChange}
+								required
+							/>
+						</Form.Group>
 
-    try {
-      const response = await removeEvent(eventId, token);
+						<Form.Group>
+							<Form.Label className="label" htmlFor="description">
+								Description
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="Describe your event!"
+								name="description"
+								value={eventID.description}
+								onChange={handleInputChange}
+								required
+							/>
+						</Form.Group>
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+						<Form.Group>
+							<Form.Label className="label" htmlFor="date">
+								Event Date
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="MM/DD/YYYY"
+								name="date"
+								value={eventID.date}
+								onChange={handleInputChange}
+								required
+							/>
+						</Form.Group>
 
-      // const updatedUser = await response.json();
-      // setUserData(updatedUser);
-      // // upon success, remove events's id from localStorage
-      // removeEventId(eventId);
-    } catch (err) {
-      console.error(err);
-    }
-  }
+						<Form.Group>
+							<Form.Label className="label" htmlFor="time">
+								Event Time
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="What time does the game begin?"
+								name="time"
+								value={eventID.time}
+								onChange={handleInputChange}
+								required
+							/>
+						</Form.Group>
 
-  if (loading) {
-    return <h2>LOADING...</h2>;
-  }
+						<Form.Group>
+							<Form.Label className="label" htmlFor="location">
+								Location
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="Where is your event?"
+								name="location"
+								value={eventID.location}
+								onChange={handleInputChange}
+								required
+							/>
+						</Form.Group>
 
-    
-  return (
-    <section className="cork-board">
-      <div className="profile-background">
-        <h1 className="event-header">{}</h1> 
-        <input class="textarea" name="event-header" type="text"/>
-      </div>
-      <button type="submit" class="button is-primary">Save event</button>
-      <button type="button" class="button is-danger delete-post-btn">Delete event</button>
+						<Form.Group>
+							<Form.Label className="label" htmlFor="numberPlayersNeeded">
+								How many players?
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder="examples: 4 players, 5-10 players"
+								name="numberPlayersNeeded"
+								value={eventID.numberPlayersNeeded}
+								onChange={handleInputChange}
+								required
+							/>
+						</Form.Group>
 
-    </section>
-  );
+						<Form.Group>
+							<Form.Label className="label" htmlFor="organizerName">
+								Organizer's name
+							</Form.Label>
+							<Form.Control
+								className="input"
+								type="text"
+								placeholder={eventID.organizerName}
+								name="organizerName"
+								value={eventID.organizerName}
+								disabled={true}
+							/>
+						</Form.Group>
+
+						<Button
+							className="loginBtn button:hover "
+							type="submit"
+							variant="success">
+							Submit The Edits!
+						</Button>
+					</Form>
+				</>
+			</div>
+		</section>
+	);
 };
 
 
