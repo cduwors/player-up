@@ -1,5 +1,6 @@
 import React from "react";
 import Event from "./Event";
+import EditEvent from "../pages/EditEvent";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { ADD_PLAYER } from "../utils/mutations";
@@ -23,6 +24,20 @@ function EventList({ events }) {
       console.error(e);
     }
   };
+
+  const handleEditEvent = async (id) => {
+    try {
+      console.log("This is event",id)
+      console.log(events);      
+      await EditEvent({
+        variables: { eventID: id},
+      });
+
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <ul className="event-list">
       {events.map((eventObj) => (
@@ -31,7 +46,14 @@ function EventList({ events }) {
           <Event event={eventObj}></Event>
           </Link>
           {eventObj.organizerName === me.username ? (
-            <button className="play-btn">Edit Game</button>
+            <Link 
+              to={`/event/edit/${eventObj._id}`} 
+              onClick={() => {
+                console.log("This is eventObj", eventObj)
+              handleEditEvent(eventObj)
+              }}>
+                <button className="play-btn">Edit Game</button>
+            </Link>
           ) : (
             <button
               className="play-btn"
