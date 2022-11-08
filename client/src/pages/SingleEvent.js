@@ -4,8 +4,9 @@ import { pluralize } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
 // import Auth from "../utils/auth";
-import { useQuery } from "@apollo/client";
-import { QUERY_SINGLE_EVENTS } from "../utils/queries";
+import { useQuery, useMutation } from "@apollo/client";
+import { QUERY_SINGLE_EVENTS, QUERY_ME } from "../utils/queries";
+import { ADD_PLAYER } from "../utils/mutations";
 
 const SingleEvent = () => {
   const { id: eventId } = useParams();
@@ -15,6 +16,21 @@ const SingleEvent = () => {
   const event = data?.event || {};
   // console.log(eventId);
   // console.log(data);
+  const { myData } = useQuery(QUERY_ME);
+  const me = myData?.me || {};
+
+  const [addPlayer] = useMutation(ADD_PLAYER);
+  const handleAddPlayer = async (id) => {
+    try {
+      await addPlayer({
+        variables: { eventID: id },
+      });
+      // console.log(me)
+      // console.log(events);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -28,30 +44,44 @@ const SingleEvent = () => {
     </div>
     <div>
       <div className="singleEvent">
-        <span>
-          {event.time} | {event.date} <br />
+      <span>
+        <p>
+           Date: {event.date} <br />
+           Time: {event.time} <br />
           <a
             className="mapLink"
             href="https://www.google.com/maps/dir/?api=1"
             target="_blank"
             rel="noreferrer"
           >
-            {event.location}
+          Location: {event.location}
           </a>
-        </span>
+        </p>
         <p>Description: {event.description}</p>
-
-        <span>
-        Organizer:    
-          <Link to={`/profile/${event.organizerName}`} className="profile-link">
+       <p>
+        Organizer:      
+           <Link to={`/profile/${event.organizerName}`} className="profile-link">
             {event.organizerName}
           </Link>
           <br></br>
           Players needed: {event.numberPlayersNeeded}
           <br />
-          Players attending:
+          Players attending: 
           {!event.attending ? "0" : pluralize("player", event.attending.length)}
+          </p>
         </span>
+        {event.organizerName === me.username ? (
+            <button className="add-player">Edit Game</button>
+          ) : (
+            <button
+              className="add-player"
+              onClick={() => {
+                handleAddPlayer(event._id);
+              }}
+            >
+              I'm Game!
+            </button>
+          )}
       </div>
     </div>
     </section>
