@@ -9,9 +9,9 @@ function Event({ event }) {
         {event.time} | {event.date} <br />
         {event.location}
       </span>
-      <p>Description: {event.description}</p>
+      {/* <p>Description: {event.description}</p> */}
       <span>
-        {event.organizerName} | Players needed: {event.numberPlayersNeeded}
+        {/* {event.organizerName} | Players needed: {event.numberPlayersNeeded} */}
         <br />
         Players attending:{" "}
         {!event.attending ? "0" : pluralize("player", event.attending.length)}
