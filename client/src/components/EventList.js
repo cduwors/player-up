@@ -9,15 +9,16 @@ function EventList({ events }) {
   // query me
   const { data } = useQuery(QUERY_ME);
   const me = data?.me || {};
-  console.log("events", events);
+  // console.log("events", events);
   // mutation addPlayer
   const [addPlayer] = useMutation(ADD_PLAYER);
   const handleAddPlayer = async (id) => {
     try {
       await addPlayer({
-        variables: { eventID: id, userId: me._id },
+        variables: { eventID: id },
       });
-      console.log(events);
+      // console.log(me)
+      // console.log(events);
     } catch (e) {
       console.error(e);
     }
@@ -27,9 +28,8 @@ function EventList({ events }) {
       {events.map((eventObj) => (
         <li key={eventObj._id} className="card">
           <Link className="event-link" to={`/event/${eventObj._id}`}>
-            <Event event={eventObj}></Event>
+          <Event event={eventObj}></Event>
           </Link>
-          ;{" "}
           {eventObj.organizerName === me.username ? (
             <button className="play-btn">Edit Game</button>
           ) : (
