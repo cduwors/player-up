@@ -26,11 +26,12 @@ function EventList({ events }) {
 
   const handleEditEvent = async (id) => {
     try {
+      console.log("This is event",id)
+      console.log(events);      
       await EditEvent({
         variables: { eventID: id},
       });
-      console.log(me)
-      console.log(events);
+
     } catch (e) {
       console.error(e);
     }
@@ -45,7 +46,14 @@ function EventList({ events }) {
           </Link>
           ;{" "}
           {eventObj.organizerName === me.username ? (
-            <Link to={`/event/edit/${eventObj._id}`} onClick={() => {handleEditEvent(eventObj)}}><button className="play-btn">Edit Game</button></Link>
+            <Link 
+              to={`/event/edit/${eventObj._id}`} 
+              onClick={() => {
+                console.log("This is eventObj", eventObj)
+              handleEditEvent(eventObj)
+              }}>
+                <button className="play-btn">Edit Game</button>
+            </Link>
           ) : (
             <button
               className="play-btn"

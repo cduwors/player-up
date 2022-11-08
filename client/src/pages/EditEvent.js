@@ -1,106 +1,62 @@
 import { useMutation } from '@apollo/client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { UPDATE_EVENT } from '../utils/mutations';
-import Auth from '../utils/auth';
+// import { QUERY_SINGLE_EVENTS } from '../utils/queries';
+// import Auth from '../utils/auth';
 
-const EditEvent = ( props ) => {
-  // console.log("This is props", props)
-  const { variables } = props;
-  // console.log("This is variables", variables);
-  const { eventID } = variables;
-  console.log("This is eventID", eventID);
-  // const { Events } = eventID;
+let variablesGlobal;
+let loadCounter = 0;
 
+const EditEvent = ( variables ) => {
+	if (loadCounter === 0) {
+		variablesGlobal = variables;
+		loadCounter++
+	}
 
-  const [eventData, setUpdateFormData] = useState({
-		eventName: eventID.eventName,
-		description: eventID.description,
-		date: eventID.date,
-		time: eventID.time,
-		location: eventID.location,
-		numberPlayersNeeded: eventID.numberPlayersNeeded,
-		organizerName: eventID.organizerName,
-	});
-  console.log("Made it past useState");
-
-  const [ updateEvent, { error } ] = useMutation(UPDATE_EVENT, {
-    variable: { eventId: eventID._id, eventData: eventData},
-  });
-  console.log("Made it past useMutation");
-
-  // const [validated] = useState(false);
-  // const { data } = useQuery(QUERY_ME);
-  console.log("This is event", eventData)
-  // const removeEvent = useMutation(REMOVE_EVENT);
-  // const me = data?.me || [];
-  // console.log("This is mydata", me)
-
-  const handleUpdateInput = (event) => {
-    const { name, value } = event.target;
-    setUpdateFormData({ ...eventData, [name]: value });
-  };
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  const handleUpdateEvent = async (event) => {
-    event.preventDefault();
-
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    if (!token) {
-      return false;
-    }
-
-    try {
-      const response = await updateEvent({ variables: { ...eventData }});
-      // console.log("This is new data", data);
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      // const updatedUser = await response.json();
-      // setUserData(updatedUser);
-      // // upon success, remove events's id from localStorage
-      // removeEventId(eventId);
-    } catch (err) {
-      console.error(err);
-    }
-
-    setUpdateFormData({
-			eventName: "",
-			description: "",
-			date: "",
-			time: "",
-			location: "",
-			numberPlayersNeeded: "",
-			organizerName: "",
+  const [eventID, setEventUpdate] = useState({
+			eventId: variablesGlobal.variables.eventID._id,
+			eventName: variablesGlobal.variables.eventID.eventName,
+			description: variablesGlobal.variables.eventID.description,
+			date: variablesGlobal.variables.eventID.date,
+			time: variablesGlobal.variables.eventID.time,
+			location: variablesGlobal.variables.eventID.location,
+			numberPlayersNeeded: variablesGlobal.variables.eventID.numberPlayersNeeded,
+			organizerName: variablesGlobal.variables.eventID.organizerName,
+		
 		});
-  };
 
-//   const handleDeleteEvent = async (eventId) => {
-//     const token = Auth.loggedIn() ? Auth.getToken() : null;
+const handleInputChange = (event) => {
+	const { name, value } = event.target;
+	setEventUpdate({ ...eventID, [name]: value });
+	console.log("This is eventID after setEventUpdate", eventID);
+};
 
-//     if (!token) {
-//       return false;
-//     }
+  const [ updateEvent ] = useMutation(UPDATE_EVENT);
 
-//     try {
-//       const response = await removeEvent(eventId, token);
+const handleFormSubmit = async (event) => {
+	event.preventDefault();
 
-//       if (!response.ok) {
-//         throw new Error('something went wrong!');
-//       }
-
-//       // const updatedUser = await response.json();
-//       // setUserData(updatedUser);
-//       // // upon success, remove events's id from localStorage
-//       // removeEventId(eventId);
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   }
+	try {
+		const { data } = await updateEvent({ variables: { ...eventID } });
+		if (data) {
+			setEventUpdate({
+				eventId: data.updateEvent._id,
+				eventName: data.updateEvent.eventName,
+				description: data.updateEvent.description,
+				date: data.updateEvent.date,
+				time: data.updateEvent.time,
+				location: data.updateEvent.location,
+				numberPlayersNeeded: data.updateEvent.numberPlayersNeeded,
+				organizerName: data.updateEvent.organizerName,
+			});			
+			console.log("success?", data);			
+			return(`./events`);
+		}
+	} catch (err) {
+		console.log(err);
+	}
+};
 
 	return (
 		<section className="cork-board loginForm">
@@ -110,18 +66,9 @@ const EditEvent = ( props ) => {
 			<div className="formGroupBackground">
 				<>
 					<Form
-						className="formGroup"
-						// noValidate
-						// validated={validated}
-						// onSubmit={handleUpdateEvent}
-            >
-						{/* <Alert
-							dismissible
-							onClose={() => setShowAlert(false)}
-							show={showAlert}
-							variant="danger">
-							Something went wrong!
-						</Alert> */}
+						className="formGroup" 
+						onSubmit={handleFormSubmit}
+            		>
 						<Form.Group>
 							<h2 className="addEventHeader">Update The Game Plan!</h2>
 							<Form.Label className="label" htmlFor="eventName">
@@ -132,13 +79,10 @@ const EditEvent = ( props ) => {
 								type="text"
 								placeholder="Name your event"
 								name="eventName"
-								// onChange={handleUpdateInput}
-								value={eventData.eventName}
+								value={eventID.eventName}
+								onChange={handleInputChange}
 								required
 							/>
-							{/* <Form.Control.Feedback className="feedback" type="invalid">
-								An event name is required!
-							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -150,13 +94,10 @@ const EditEvent = ( props ) => {
 								type="text"
 								placeholder="Describe your event!"
 								name="description"
-								// onChange={handleUpdateInput}
-								value={eventData.description}
+								value={eventID.description}
+								onChange={handleInputChange}
 								required
 							/>
-							{/* <Form.Control.Feedback className="feedback" type="invalid">
-								A description of your event is required!
-							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -168,13 +109,10 @@ const EditEvent = ( props ) => {
 								type="text"
 								placeholder="MM/DD/YYYY"
 								name="date"
-								// onChange={handleUpdateInput}
-								value={eventData.date}
+								value={eventID.date}
+								onChange={handleInputChange}
 								required
 							/>
-							{/* <Form.Control.Feedback className="feedback" type="invalid">
-								A date is required!
-							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -186,13 +124,10 @@ const EditEvent = ( props ) => {
 								type="text"
 								placeholder="What time does the game begin?"
 								name="time"
-								// onChange={handleUpdateInput}
-								value={eventData.time}
+								value={eventID.time}
+								onChange={handleInputChange}
 								required
 							/>
-							{/* <Form.Control.Feedback className="feedback" type="invalid">
-								A time for your event is required!
-							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -204,13 +139,10 @@ const EditEvent = ( props ) => {
 								type="text"
 								placeholder="Where is your event?"
 								name="location"
-								// onChange={handleUpdateInput}
-								value={eventData.location}
+								value={eventID.location}
+								onChange={handleInputChange}
 								required
 							/>
-							{/* <Form.Control.Feedback className="feedback" type="invalid">
-								A location is required!
-							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -222,13 +154,10 @@ const EditEvent = ( props ) => {
 								type="text"
 								placeholder="examples: 4 players, 5-10 players"
 								name="numberPlayersNeeded"
-								// onChange={handleUpdateInput}
-								value={eventData.numberPlayersNeeded}
+								value={eventID.numberPlayersNeeded}
+								onChange={handleInputChange}
 								required
 							/>
-							{/* <Form.Control.Feedback className="feedback" type="invalid">
-								Number of players is required!
-							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Form.Group>
@@ -238,20 +167,15 @@ const EditEvent = ( props ) => {
 							<Form.Control
 								className="input"
 								type="text"
-								placeholder="Enter a name..."
+								placeholder={eventID.organizerName}
 								name="organizerName"
-								// onChange={handleUpdateInput}
-								value={eventData.organizerName}
-								required
+								value={eventID.organizerName}
+								disabled={true}
 							/>
-							{/* <Form.Control.Feedback className="feedback" type="invalid">
-								This field is required!
-							</Form.Control.Feedback> */}
 						</Form.Group>
 
 						<Button
 							className="loginBtn button:hover "
-							// disabled={!loggedIn}
 							type="submit"
 							variant="success">
 							Submit The Edits!
