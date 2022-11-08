@@ -33,6 +33,36 @@ const AddEvent = ({ setAddEventPage, setEventList }) => {
 		}
 	}, [error]);
 
+	// refetch code for profile refresh upon submit
+
+	// const emulateFetch = async (_) => {
+	// 	console.log(`Passing ${eventFormData} to fetch`);
+	// 	return new Promise((resolve) => {
+	// 		resolve([{ data: "ok" }]);
+	// 	});
+	// };
+
+	// const handleClick = () => {
+	// 	//manually refetch
+	// 	refetch();
+	// };
+
+	// const { isLoading, refetch } = useQuery(
+	// 	[QUERY_ME, { eventFormData }],
+	// 	emulateFetch,
+	// 	{
+	// 		refetchOnWindowFocus: false,
+	// 		enabled: false, // needed to handle refetch manually
+	// 	}
+	// );
+
+	// if (isLoading) return <div>Loading...</div>;
+	// if (error) return <div>Error: {error}</div>;
+
+	//   finish refetch code
+
+
+
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setEventFormData({ ...eventFormData, [name]: value });
@@ -226,7 +256,9 @@ const AddEvent = ({ setAddEventPage, setEventList }) => {
 								)
 							}
 							type="submit"
-							variant="success">
+							variant="success"
+							// onClick={handleClick}>
+								>
 							Post your game!
 						</Button>
 					</Form>
