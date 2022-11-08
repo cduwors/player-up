@@ -3,7 +3,7 @@ import EventList from "../components/EventList";
 import AddEvent from "./AddEvent";
 import { useParams, useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-// import { QUERY_ME, QUERY_USER, QUERY_ALL_EVENTS } from "../utils/queries";
+import { QUERY_ME, QUERY_USER, QUERY_ALL_EVENTS } from "../utils/queries";
 // import Auth from "../utils/auth";
 
 const Profile = () => {
