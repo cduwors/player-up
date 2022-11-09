@@ -40,7 +40,7 @@ const SingleEvent = () => {
 		<section className="single-event-background">
 			<div>
 				<div className="single-event-head-background">
-        <p className="single-event-subtitle">Event Details for:</p>
+					<p className="single-event-subtitle">Event Details for:</p>
 					<h1 className="single-event-header">{event.eventName}</h1>
 				</div>
 			</div>
@@ -86,6 +86,24 @@ const SingleEvent = () => {
 							I'm Game!
 						</button>
 					)}
+					<div className="mapouter">
+						<div className="gmap_canvas">
+							<iframe
+								width="500"
+								height="300"
+								id="gmap_canvas"
+								src="https://maps.google.com/maps?q=Raleigh,%20nc&t=&z=11&ie=UTF8&iwloc=&output=embed"
+								frameBorder="0"
+								scrolling="no"
+								margin-height="0"
+								margin-width="0"></iframe>
+							<a href="https://www.online-timer.net"></a>
+							<br></br>
+							{/* <style>.mapouter{position:relative;text-align:right;height:300px;width:500px;}</style>
+      <a href="https://www.embedgooglemap.net">html google maps</a>
+      <style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:500px;}</style> */}
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

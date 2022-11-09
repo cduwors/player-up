@@ -199,7 +199,7 @@ link:hover {
 
 .text-box {
 	position: relative;
-	top: 55px;
+	top: 65px;
 	left: 35px;
 	width: 225px;
 	text-align: center;
@@ -220,7 +220,7 @@ link:hover {
 .play-btn,
 .edit-btn {
 	position: relative;
-	top: 60px;
+	top: 75px;
 	left: 30px;
 	width: 225px;
 	text-align: center;
@@ -441,7 +441,7 @@ button:hover {
 	background-image: url("./images/board-games.jpg");
 	background-size: cover;
 	/* background-attachment: fixed; */
-	height: 700px;
+	min-height: 700px;
 	width: 100%;
 }
 
@@ -485,6 +485,50 @@ button:hover {
 .center {
 	display: flex;
 	justify-content: center;
+}
+
+.mapouter {
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	position: relative;
+	top: 20px;
+	margin-bottom: 50px;
+	/* text-align: right; */
+	height: 300px;
+	width: 500px;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	opacity: 1;
+}
+
+.hovertext {
+	position: relative;
+	/* border-bottom: 1px dotted black; */
+}
+
+.hovertext:before {
+	content: attr(data-hover);
+	visibility: hidden;
+	opacity: 0;
+	width: 140px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	padding: 5px 0;
+	transition: opacity 1s ease-in-out;
+
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	top: 110%;
+}
+
+.hovertext:hover:before {
+	opacity: 1;
+	visibility: visible;
 }
 
 footer {
