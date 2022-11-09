@@ -30,7 +30,8 @@ const eventSchema = new Schema({
 	},
 	attending: [
         {
-		type: String,
+		type: Schema.Types.ObjectId,
+		ref: "User"
 	},
     ]
 });

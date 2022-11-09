@@ -54,7 +54,7 @@ const resolvers = {
       if (context.user) {
         const updatedEvent = await Events.findOneAndUpdate(
           { _id: eventId },
-          { $addToSet: { attending: context.user.username } },
+          { $addToSet: { attending: context.user._id } },
           { new: true }
         ).populate('attending');
         return updatedEvent;

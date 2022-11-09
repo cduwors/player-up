@@ -17,10 +17,10 @@ function EventList({ events }) {
   const handleAddPlayer = async (id) => {
     try {
       await addPlayer({
-        variables: { eventID: id },
+        variables: { eventId: id },
       });
       // console.log(me)
-      // console.log(events);
+      console.log(events);
     } catch (e) {
       console.error(e);
     }
