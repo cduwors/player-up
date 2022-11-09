@@ -103,7 +103,7 @@ const resolvers = {
     },
     deleteEvent: async (parent, { eventId }, context) => {
       if (context.user) {
-        const deleteEvent = await Events.delete({ _id: eventId });
+        const deleteEvent = await Events.deleteOne({ _id: eventId });
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { events: { eventId } } },

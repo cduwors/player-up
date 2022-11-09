@@ -4,10 +4,11 @@ import EditEvent from "../pages/EditEvent";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { ADD_PLAYER, ADD_COMMITMENT } from "../utils/mutations";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function EventList({ events }) {
   // query me
+  const history = useHistory();
   const { data } = useQuery(QUERY_ME);
   const me = data?.me || {};
 
@@ -27,6 +28,7 @@ function EventList({ events }) {
       console.error(e);
     }
   };
+  
   const handleAddCommitment = async (id) => {
     try {
       await addCommitment({
@@ -46,9 +48,8 @@ function EventList({ events }) {
         variables: { eventID: id},
       });
 
-    } catch (e) {
-      console.error(e);
-    }
+  const handleEditEvent = async (eventObj) => {
+    history.push(`/events/edit/${eventObj._id}`, eventObj);
   };
 
 
@@ -60,14 +61,7 @@ function EventList({ events }) {
           <Event event={eventObj}></Event>
           </Link>
           {eventObj.organizerName === me.username ? (
-            <Link 
-              to={`/event/edit/${eventObj._id}`} 
-              onClick={() => {
-                console.log("This is eventObj", eventObj)
-              handleEditEvent(eventObj)
-              }}>
-                <button className="play-btn">Edit Game</button>
-            </Link>
+            <button onClick={() => handleEditEvent(eventObj)} className="play-btn">Edit Game</button>
           ) : (
             <button
               className="play-btn"

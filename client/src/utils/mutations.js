@@ -137,9 +137,9 @@ export const UPDATE_EVENT = gql`
   }
 `;
 
-export const REMOVE_EVENT = gql`
-  mutation removeEvent($eventId: ID!) {
-    removeEvent(eventId: $eventId) {
+export const DELETE_EVENT = gql`
+  mutation deleteEvent($eventId: ID!) {
+    deleteEvent(eventId: $eventId) {
       _id
       eventName
       description
