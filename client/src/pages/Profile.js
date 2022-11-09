@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import EventList from "../components/EventList";
 import AddEvent from "./AddEvent";
-import { useParams, useLocation } from "react-router-dom";
-import { useQuery, useLazyQuery } from "@apollo/client";
-import { QUERY_ME, QUERY_USER, QUERY_ALL_EVENTS } from "../utils/queries";
+import { useLocation } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME, QUERY_USER } from "../utils/queries";
 
 // import Auth from "../utils/auth";
 
 const Profile = () => {
-  //   const { username: userParam } = useParams();
-  //   console.log(userParam);
 
   // collect params
   const location = useLocation().pathname;
@@ -23,20 +21,8 @@ const Profile = () => {
   console.log("userData", userData);
   const events = userData?.events || [];
   console.log("my events", events);
-
-  //   LazyQuery
-//   const [getCommitments, { eventData }] = useLazyQuery(QUERY_ALL_EVENTS);
-//   const allEvents = eventData?.events || [];
-//   console.log(allEvents);
-
-//   query all events
-  const { data: eventData } = useQuery(QUERY_ALL_EVENTS)
-  const allEvents = eventData?.events || []
-  console.log("allEvents", allEvents)
-  const commitments = allEvents.filter(commitment => {
-	return commitment.attending.includes(`${userData.username}`)
-  })
-  console.log("commitments", commitments)
+  const commitments = userData?.commitments || [];
+  console.log("my commitments", commitments);
 
   //   use state
   const [commitmentList, setCommitmentList] = useState(false);
@@ -45,6 +31,7 @@ const Profile = () => {
   
 
   const displayCommitments = () => {
+	// refetch();
     setCommitmentList(true);
     setAddEventPage(false);
     setEventList(false);
@@ -72,19 +59,35 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  function noEvents() {
-    if (!events.length) {
-      return (
-		<div className="center">
-        <div className="card">
-          <div className="text-box">
-            <h2>No Events Yet. Post a Game to the Board!</h2>
-          </div>
-        </div>
-		</div>
-      );
-    }
-  }
+//   function noEvents() {
+//     if (!events.length) {
+//       return (
+		// <div className="center">
+        // <div className="card">
+        //   <div className="text-box">
+        //     <h2>No Events Yet. Post a Game to the Board!</h2>
+        //   </div>
+        // </div>
+		// </div>
+//       );
+//     } else {
+// 		return (<EventList events={events}></EventList>
+// 	}
+//   }
+  
+//   function noCommitments() {
+// 	if (!commitments.length) {
+// 		return (
+// 			<div className="center">
+// 			<div className="card">
+// 			  <div className="text-box">
+// 				<h2>No Commitments Yet. Go sign up for an Event!</h2>
+// 			  </div>
+// 			</div>
+// 			</div>
+// 		  );
+// 	}
+//   }
 
   return (
     <section className="cork-board">
@@ -117,13 +120,12 @@ const Profile = () => {
       </div>
       {!addEventPage ? (
         <>
-		{noEvents()}
           {commitmentList ? (
-            <EventList events={events}></EventList>
+            <EventList events={commitments}></EventList>
           ) : (
             <EventList events={events}></EventList>
           )}
-        </>
+          </>
       ) : (
         <AddEvent closeForm={closeForm}></AddEvent>
       )}
