@@ -59,7 +59,7 @@ const typeDefs = gql`
       organizerName: String
       attending: [String]
     ): Events
-    deleteEvent(_id: ID!): Events
+    deleteEvent(eventId: ID!): Events
     addPlayer(eventId: ID!): Events
   }
 `;
