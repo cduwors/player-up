@@ -40,13 +40,6 @@ function EventList({ events }) {
     }
   };
   console.log(events);
-  const handleEditEvent = async (id) => {
-    try {
-      console.log("This is event",id)
-            
-      await EditEvent({
-        variables: { eventID: id},
-      });
 
   const handleEditEvent = async (eventObj) => {
     history.push(`/events/edit/${eventObj._id}`, eventObj);
