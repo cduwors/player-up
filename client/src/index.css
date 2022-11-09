@@ -401,19 +401,27 @@ button:hover {
 }
 
 /* single event page */
-.single-event-header {
-	color: #ffffff;
-	text-align: center;
-	font-size: 30px;
-	padding: 20px;
-}
 .single-event-subtitle {
 	color: #ffffff;
 	text-align: center;
 	font-size: 15px;
 	padding-top: 20px;
 	font-style: italic;
-	font-weight: bolder;
+}
+.single-event-header {
+	color: #ffffff;
+	text-align: center;
+	font-size: 30px;
+	padding: 0px 0px 15px 0px;
+}
+
+.single-event-head-background {
+	background-size: cover;
+	background-attachment: fixed;
+	background-color: black;
+	height: auto;
+	width: 100%;
+	
 }
 
 .singleEvent {
