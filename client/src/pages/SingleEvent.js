@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { pluralize, formatDate, formatTime } from "../utils/helpers";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // import Auth from "../utils/auth";
 import { useQuery, useMutation } from "@apollo/client";
@@ -9,6 +9,7 @@ import { QUERY_SINGLE_EVENTS, QUERY_ME } from "../utils/queries";
 import { ADD_PLAYER } from "../utils/mutations";
 
 const SingleEvent = () => {
+  const history = useHistory();
 	const { id: eventId } = useParams();
 	const { loading, data } = useQuery(QUERY_SINGLE_EVENTS, {
 		variables: { id: eventId },
@@ -28,6 +29,10 @@ const SingleEvent = () => {
 			console.error(e);
 		}
 	};
+
+  const handleEditEvent = async (eventObj) => {
+    history.push(`/events/edit/${eventObj._id}`, eventObj);
+  };
 
 	if (loading) {
 		return <div>Loading...</div>;
@@ -73,7 +78,7 @@ const SingleEvent = () => {
 						</p>
 					</span>
 					{event.organizerName === me.username ? (
-						<button className="add-player">Edit Game</button>
+						<button onClick={() => handleEditEvent(event)} className="add-player">Edit Game</button>
 					) : (
 						<button
 							className="add-player"
