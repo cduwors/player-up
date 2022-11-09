@@ -35,7 +35,6 @@ const Profile = () => {
     setCommitmentList(true);
     setAddEventPage(false);
     setEventList(false);
-    // getCommitments();
   };
   const displayEvents = () => {
     setEventList(true);
