@@ -13,14 +13,14 @@ code {
 }
 
 @font-face {
-	font-family: 'Indie_Flower';
-	src: local('Indie_Flower'), url("./fonts/Indie_Flower/IndieFlower-Regular.ttf") format("truetype");
-  }
+	font-family: "Indie_Flower";
+	src: local("Indie_Flower"),
+		url("./fonts/Indie_Flower/IndieFlower-Regular.ttf") format("truetype");
+}
 @font-face {
-	font-family: 'Acme';
-	src: local('Acme'), url("./fonts/Acme/Acme-Regular.ttf") format("truetype");
-  }
-
+	font-family: "Acme";
+	src: local("Acme"), url("./fonts/Acme/Acme-Regular.ttf") format("truetype");
+}
 
 .page {
 	padding: 20px;
@@ -182,8 +182,6 @@ link:hover {
 	text-decoration: none;
 }
 
-
-
 .card {
 	font-size: 12px;
 	width: 300px;
@@ -194,7 +192,6 @@ link:hover {
 	border: none;
 }
 
-
 /* .card:hover {
 	 border: 5px solid greenyellow; 
 	 background-color: greenyellow; 
@@ -202,11 +199,11 @@ link:hover {
 
 .text-box {
 	position: relative;
-	top: 65px;
+	top: 55px;
 	left: 35px;
 	width: 225px;
 	text-align: center;
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 	font-family: Indie_Flower;
 	font-size: 18px;
 }
@@ -216,10 +213,14 @@ link:hover {
 	/* font-size: 20px; */
 }
 
+.event-note {
+	font-size: 12px;
+}
+
 .play-btn,
 .edit-btn {
 	position: relative;
-	top: 80px;
+	top: 60px;
 	left: 30px;
 	width: 225px;
 	text-align: center;
@@ -241,14 +242,13 @@ link:hover {
 }
 
 .profile-link {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .profile-link:hover {
-  text-decoration: none;
-  font-weight: bolder;
-  color: rgb(29, 175, 29);
-
+	text-decoration: none;
+	font-weight: bolder;
+	color: rgb(29, 175, 29);
 }
 
 .button-box {
@@ -421,7 +421,6 @@ button:hover {
 	background-color: black;
 	height: auto;
 	width: 100%;
-	
 }
 
 .singleEvent {
@@ -454,15 +453,15 @@ button:hover {
 	background: url("./images/blank-thumbtack-note.png");
 	background-size: cover;
 	border: none;
-  }
+}
 
 .single-box {
-  position: relative;
-  top: 50px;
-  left: 350px;
-  width: 225px;
-  text-align: center;
-  margin-bottom: 10px;
+	position: relative;
+	top: 50px;
+	left: 350px;
+	width: 225px;
+	text-align: center;
+	margin-bottom: 10px;
 }
 
 .mapLink {

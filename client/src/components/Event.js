@@ -5,6 +5,7 @@ function Event({ event }) {
   
   return (
     <article className="text-box">
+      <span className="event-note">Click for more details!</span>
       <h2 className="eventName">{event.eventName}</h2>
       <span>
         {formatTime(event.time)} | {formatDate(event.date)} <br />
