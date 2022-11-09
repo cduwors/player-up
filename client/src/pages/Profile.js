@@ -33,10 +33,19 @@ const Profile = () => {
   const { data: eventData } = useQuery(QUERY_ALL_EVENTS)
   const allEvents = eventData?.events || []
   console.log("allEvents", allEvents)
-  const commitments = allEvents.filter(commitment => {
-	return commitment.attending.includes(`${userData.username}`)
-  })
-  console.log("commitments", commitments)
+
+//   const commitments = allEvents.map(event => {
+// 	const attendingLists = event.attending})
+//     console.log("allAttending", attendingLists)
+//   const playersList = attendingLists.map(players => {
+// 		console.log("players", players.username)
+// 		players.map(player = {
+		
+// 		})
+// 		return players
+//   })
+//   })
+//   console.log("commitments", commitments)
 
   //   use state
   const [commitmentList, setCommitmentList] = useState(false);
