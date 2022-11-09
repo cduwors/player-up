@@ -13,14 +13,14 @@ code {
 }
 
 @font-face {
-	font-family: 'Indie_Flower';
-	src: local('Indie_Flower'), url("./fonts/Indie_Flower/IndieFlower-Regular.ttf") format("truetype");
-  }
+	font-family: "Indie_Flower";
+	src: local("Indie_Flower"),
+		url("./fonts/Indie_Flower/IndieFlower-Regular.ttf") format("truetype");
+}
 @font-face {
-	font-family: 'Acme';
-	src: local('Acme'), url("./fonts/Acme/Acme-Regular.ttf") format("truetype");
-  }
-
+	font-family: "Acme";
+	src: local("Acme"), url("./fonts/Acme/Acme-Regular.ttf") format("truetype");
+}
 
 .page {
 	padding: 20px;
@@ -182,8 +182,6 @@ link:hover {
 	text-decoration: none;
 }
 
-
-
 .card {
 	font-size: 12px;
 	width: 300px;
@@ -193,7 +191,6 @@ link:hover {
 	background-size: cover;
 	border: none;
 }
-
 
 /* .card:hover {
 	 border: 5px solid greenyellow; 
@@ -206,7 +203,7 @@ link:hover {
 	left: 35px;
 	width: 225px;
 	text-align: center;
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 	font-family: Indie_Flower;
 	font-size: 18px;
 }
@@ -216,10 +213,14 @@ link:hover {
 	/* font-size: 20px; */
 }
 
+.event-note {
+	font-size: 12px;
+}
+
 .play-btn,
 .edit-btn {
 	position: relative;
-	top: 80px;
+	top: 75px;
 	left: 30px;
 	width: 225px;
 	text-align: center;
@@ -241,14 +242,13 @@ link:hover {
 }
 
 .profile-link {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .profile-link:hover {
-  text-decoration: none;
-  font-weight: bolder;
-  color: rgb(29, 175, 29);
-
+	text-decoration: none;
+	font-weight: bolder;
+	color: rgb(29, 175, 29);
 }
 
 .button-box {
@@ -401,19 +401,26 @@ button:hover {
 }
 
 /* single event page */
-.single-event-header {
-	color: #ffffff;
-	text-align: center;
-	font-size: 30px;
-	padding: 20px;
-}
 .single-event-subtitle {
 	color: #ffffff;
 	text-align: center;
 	font-size: 15px;
 	padding-top: 20px;
 	font-style: italic;
-	font-weight: bolder;
+}
+.single-event-header {
+	color: #ffffff;
+	text-align: center;
+	font-size: 30px;
+	padding: 0px 0px 15px 0px;
+}
+
+.single-event-head-background {
+	background-size: cover;
+	background-attachment: fixed;
+	background-color: black;
+	height: auto;
+	width: 100%;
 }
 
 .singleEvent {
@@ -434,7 +441,7 @@ button:hover {
 	background-image: url("./images/board-games.jpg");
 	background-size: cover;
 	/* background-attachment: fixed; */
-	height: 700px;
+	min-height: 700px;
 	width: 100%;
 }
 
@@ -446,15 +453,15 @@ button:hover {
 	background: url("./images/blank-thumbtack-note.png");
 	background-size: cover;
 	border: none;
-  }
+}
 
 .single-box {
-  position: relative;
-  top: 50px;
-  left: 350px;
-  width: 225px;
-  text-align: center;
-  margin-bottom: 10px;
+	position: relative;
+	top: 50px;
+	left: 350px;
+	width: 225px;
+	text-align: center;
+	margin-bottom: 10px;
 }
 
 .mapLink {
@@ -478,6 +485,50 @@ button:hover {
 .center {
 	display: flex;
 	justify-content: center;
+}
+
+.mapouter {
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	position: relative;
+	top: 20px;
+	margin-bottom: 50px;
+	/* text-align: right; */
+	height: 300px;
+	width: 500px;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	opacity: 1;
+}
+
+.hovertext {
+	position: relative;
+	/* border-bottom: 1px dotted black; */
+}
+
+.hovertext:before {
+	content: attr(data-hover);
+	visibility: hidden;
+	opacity: 0;
+	width: 140px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	padding: 5px 0;
+	transition: opacity 1s ease-in-out;
+
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	top: 110%;
+}
+
+.hovertext:hover:before {
+	opacity: 1;
+	visibility: visible;
 }
 
 footer {
