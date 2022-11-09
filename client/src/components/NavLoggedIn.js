@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../images/player-up-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Auth from "../utils/auth";
 
 const NavLoggedIn = ({ titleLocation, param }) => {
@@ -8,16 +8,25 @@ const NavLoggedIn = ({ titleLocation, param }) => {
   const [pageSelected, setPageSelected] = useState(false);
   const [homePage, setHomePage] = useState(true);
 
+  const location = useLocation()
+console.log(location)
+
 	const clickState = () => {
 		setHomePage(false);
 		setPageSelected(true);
 	};
 
+  if (location.pathname !== "/") {
+    if(homePage) {
+    setHomePage(false)}
+  } 
+ 
+
   return (
     <header>
       {!homePage ? (
         <div className="header">
-          <a href="/" onClick={() => setHomePage("Home")}>
+          <a href="/" onClick={() => setHomePage(true)}>
             <div className="logo-header">
               <img className="logo" src={logo} alt="player-up-logo"></img>
             </div>

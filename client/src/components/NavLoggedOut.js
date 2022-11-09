@@ -1,17 +1,23 @@
 import React, {useState} from "react";
 import logo from "../images/player-up-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // import Auth from "../utils/auth";
 
 const NavLoggedOut = ({titleLocation}) => {
      // page selection state
   const [pageSelected, setPageSelected] = useState(false);
   const [homePage, setHomePage] = useState(true); 
+  const location = useLocation()
 
   const clickState = () => {
     setHomePage(false);
     setPageSelected(true);
   }
+
+  if (location.pathname !== "/") {
+    if(homePage) {
+    setHomePage(false)}
+  } 
 
   return (
     <header>
