@@ -3,16 +3,19 @@ import Event from "./Event";
 import EditEvent from "../pages/EditEvent";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
-import { ADD_PLAYER } from "../utils/mutations";
+import { ADD_PLAYER, ADD_COMMITMENT } from "../utils/mutations";
 import { Link } from "react-router-dom";
 
 function EventList({ events }) {
   // query me
   const { data } = useQuery(QUERY_ME);
   const me = data?.me || {};
-  // console.log("events", events);
-  // mutation addPlayer
+
+  // mutations
   const [addPlayer] = useMutation(ADD_PLAYER);
+  const [addCommitment] = useMutation(ADD_COMMITMENT);
+
+  // handle mutations
   const handleAddPlayer = async (id) => {
     try {
       await addPlayer({
@@ -20,6 +23,16 @@ function EventList({ events }) {
       });
       // console.log(me)
       console.log(events);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  const handleAddCommitment = async (id) => {
+    try {
+      await addCommitment({
+        variables: { eventId: id },
+      });
+      console.log("post-commitment", me)
     } catch (e) {
       console.error(e);
     }
@@ -37,6 +50,7 @@ function EventList({ events }) {
       console.error(e);
     }
   };
+
 
   return (
     <ul className="event-list">
@@ -59,6 +73,7 @@ function EventList({ events }) {
               className="play-btn"
               onClick={() => {
                 handleAddPlayer(eventObj._id);
+                handleAddCommitment(eventObj._id);
               }}
             >
               I'm Game!

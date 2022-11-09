@@ -113,7 +113,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addCommitment: async (parent, { eventId }) => {
+    addCommitment: async (parent, { eventId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },

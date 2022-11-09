@@ -3,7 +3,6 @@ import logo from "../images/player-up-logo.png";
 // import home from "../images/board-games.jpg";
 
 const Home = () => {
-  console.log("inhome");
   return (
     <section className="home-background">
       <div className="background-cork">
