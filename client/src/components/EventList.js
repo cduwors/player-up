@@ -16,19 +16,19 @@ function EventList({ events }) {
   const handleAddPlayer = async (id) => {
     try {
       await addPlayer({
-        variables: { eventID: id },
+        variables: { eventId: id },
       });
       // console.log(me)
-      // console.log(events);
+      console.log(events);
     } catch (e) {
       console.error(e);
     }
   };
-
+  console.log(events);
   const handleEditEvent = async (id) => {
     try {
       console.log("This is event",id)
-      console.log(events);      
+            
       await EditEvent({
         variables: { eventID: id},
       });

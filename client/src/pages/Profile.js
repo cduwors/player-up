@@ -25,14 +25,18 @@ const Profile = () => {
   console.log("my events", events);
 
   //   LazyQuery
-  const [getCommitments, { eventData }] = useLazyQuery(QUERY_ALL_EVENTS);
-  const allEvents = eventData?.events || [];
-  console.log(allEvents);
+//   const [getCommitments, { eventData }] = useLazyQuery(QUERY_ALL_EVENTS);
+//   const allEvents = eventData?.events || [];
+//   console.log(allEvents);
 
-  // query all events
-  // const { eventData } = useQuery(QUERY_ALL_EVENTS)
-  // const allEvents = eventData?.events || []
-  // console.log(allEvents)
+//   query all events
+  const { data: eventData } = useQuery(QUERY_ALL_EVENTS)
+  const allEvents = eventData?.events || []
+  console.log("allEvents", allEvents)
+  const commitments = allEvents.filter(commitment => {
+	return commitment.attending.includes(`${userData.username}`)
+  })
+  console.log("commitments", commitments)
 
   //   use state
   const [commitmentList, setCommitmentList] = useState(false);
@@ -44,7 +48,7 @@ const Profile = () => {
     setCommitmentList(true);
     setAddEventPage(false);
     setEventList(false);
-    getCommitments();
+    // getCommitments();
   };
   const displayEvents = () => {
     setEventList(true);
