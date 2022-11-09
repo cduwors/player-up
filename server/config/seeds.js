@@ -16,16 +16,6 @@ db.once("open", async () => {
       organizerName: "Joe",
     },
     {
-      eventName: "Uno",
-      description:
-        "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-      date: "2022-12-19",
-      time: "20:00",
-      location: "School Cafeteria",
-      numberPlayersNeeded: "4",
-      organizerName: "Bill",
-    },
-    {
       eventName: "Ultimate Frisbee",
       description:
         "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",

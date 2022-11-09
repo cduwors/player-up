@@ -45,9 +45,22 @@ function EventList({ events }) {
     history.push(`/events/edit/${eventObj._id}`, eventObj);
   };
 
+  function noEvents(events) {
+    if (!events.length) {
+  return (
+    			<div className="center">
+    			<div className="card">
+    			  <div className="text-box">
+    				<h2>No Events Yet!</h2>
+    			  </div>
+    			</div>
+    			</div>
+    		  );
+  }}
 
   return (
     <ul className="event-list">
+      {noEvents(events)}
       {events.map((eventObj) => (
         <li key={eventObj._id} className="card">
           <Link className="event-link" to={`/event/${eventObj._id}`}>
