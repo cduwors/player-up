@@ -8,8 +8,6 @@ import { QUERY_ME, QUERY_USER } from "../utils/queries";
 // import Auth from "../utils/auth";
 
 const Profile = () => {
-  //   const { username: userParam } = useParams();
-  //   console.log(userParam);
 
   // collect params
   const location = useLocation().pathname;
@@ -125,23 +123,9 @@ const Profile = () => {
           {commitmentList ? (
             <EventList events={commitments}></EventList>
           ) : (
-			<>
-			{events.length ?  
-			(
             <EventList events={events}></EventList>
-			) : (
-			<div className="center">
-			<div className="card">
-			  <div className="text-box">
-				<h2>No Events Yet. Post a Game to the Board!</h2>
-			  </div>
-			</div>
-			</div>
-			) 
-			}
-		  </>
           )}
-        </>
+          </>
       ) : (
         <AddEvent closeForm={closeForm}></AddEvent>
       )}
