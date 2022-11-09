@@ -15,7 +15,7 @@ const SingleEvent = () => {
 	});
 	const event = data?.event || {};
 
-	const { myData } = useQuery(QUERY_ME);
+	const { data: myData } = useQuery(QUERY_ME);
 	const me = myData?.me || {};
 
 	const [addPlayer] = useMutation(ADD_PLAYER);

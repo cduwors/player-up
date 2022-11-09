@@ -123,7 +123,7 @@ const EditEvent = () => {
 							</Form.Label>
 							<Form.Control
 								className="input"
-								type="text"
+								type="date"
 								placeholder="MM/DD/YYYY"
 								name="date"
 								value={eventID.date}
@@ -138,7 +138,7 @@ const EditEvent = () => {
 							</Form.Label>
 							<Form.Control
 								className="input"
-								type="text"
+								type="time"
 								placeholder="What time does the game begin?"
 								name="time"
 								value={eventID.time}
