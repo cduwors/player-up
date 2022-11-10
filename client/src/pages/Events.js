@@ -14,7 +14,7 @@ const Events = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <EventList events={events}></EventList>
+        <EventList events={events} ></EventList>
       )}
     </section>
   );
