@@ -50,7 +50,6 @@ const AddEvent = () => {
 		try {
 			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			if (data) {
-				window.location.reload()
 				history.push("/events")
 			}
 		} catch (err) {
