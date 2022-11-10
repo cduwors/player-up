@@ -55,7 +55,7 @@ const AddEvent = ({refetch}) => {
 		try {
 			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			if (data) {
-				refetch();
+				window.location.reload()
 				history.push("/events")
 			}
 		} catch (err) {
@@ -210,7 +210,7 @@ const AddEvent = ({refetch}) => {
 								placeholder={me.username}
 								name="organizerName"
 								onChange={handleInputChange}
-								value={me.username}
+								value={me?.username || ""}
 								disabled={true}
 							/>
 							<Form.Control.Feedback className="feedback" type="invalid">

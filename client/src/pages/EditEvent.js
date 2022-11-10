@@ -51,8 +51,9 @@ const EditEvent = () => {
 					numberPlayersNeeded: data.updateEvent.numberPlayersNeeded,
 					organizerName: data.updateEvent.organizerName,
 				});		
-
-				history.push('/events')
+				
+				history.push('/profile')
+				window.location.reload()
 
 			}
 		} catch (err) {
