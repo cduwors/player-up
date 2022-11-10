@@ -17,7 +17,7 @@ const SingleEvent = () => {
 //   console.log("attending", event.attending);
   const { data: myData } = useQuery(QUERY_ME);
   const me = myData?.me || {};
-
+  const history = useHistory();
   const [addPlayer] = useMutation(ADD_PLAYER);
   const handleAddPlayer = async (id) => {
     try {
