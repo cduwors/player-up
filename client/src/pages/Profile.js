@@ -18,11 +18,11 @@ const Profile = () => {
     variables: { username: param },
   });
   const userData = data?.me || data?.user || {};
-  console.log("userData", userData);
+  // console.log("userData", userData);
   const events = userData?.events || [];
-  console.log("my events", events);
+  // console.log("my events", events);
   const commitments = userData?.commitments || [];
-  console.log("my commitments", commitments);
+  // console.log("my commitments", commitments);
 
   //   use state
   const [commitmentList, setCommitmentList] = useState(false);
