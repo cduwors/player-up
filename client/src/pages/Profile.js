@@ -18,11 +18,8 @@ const Profile = () => {
     variables: { username: param },
   });
   const userData = data?.me || data?.user || {};
-  console.log("userData", userData);
   const events = userData?.events || [];
-  console.log("my events", events);
   const commitments = userData?.commitments || [];
-  console.log("my commitments", commitments);
 
   //   use state
   const [commitmentList, setCommitmentList] = useState(false);
@@ -47,12 +44,6 @@ const Profile = () => {
     setCommitmentList(false);
     setEventList(false);
   };
-
-  // const closeForm = () => {
-  //   setAddEventPage(false);
-  //   setEventList(true);
-  //   refetch();
-  // };
 
   if (loading) {
     return <div>Loading...</div>;

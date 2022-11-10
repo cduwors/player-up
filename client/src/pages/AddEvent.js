@@ -6,12 +6,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 import { useHistory } from 'react-router-dom';
 
-const AddEvent = ({refetch}) => {
-	// const closeForm = () => {
-	// 	setAddEventPage(false);
-	// 	setEventList(true);
-	// 	refetch();
-	//   };
+const AddEvent = () => {
 	const history = useHistory();
 
 	const [eventFormData, setEventFormData] = useState({
