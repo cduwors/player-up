@@ -14,7 +14,7 @@ const Profile = () => {
   const param = location.split("/")[2];
 
   //   Query user or me
-  const { loading, data } = useQuery(param ? QUERY_USER : QUERY_ME, {
+  const { loading, data, refetch } = useQuery(param ? QUERY_USER : QUERY_ME, {
     variables: { username: param },
   });
   const userData = data?.me || data?.user || {};
@@ -95,7 +95,7 @@ const Profile = () => {
           )}
           </>
       ) : (
-        <AddEvent></AddEvent>
+        <AddEvent refetch={refetch}></AddEvent>
       )}
     </section>
   );
