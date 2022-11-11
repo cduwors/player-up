@@ -72,7 +72,7 @@ This was a joint project of:
 
 ## Questions
 
-See more details at https://github.com/Mayfieldmel/player-up or contact __.
+See more details at https://github.com/cduwors/player-up or contact [Christina DuWors](christinaduwors@gmail.com).
 
 ## Images
 
