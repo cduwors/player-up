@@ -21,8 +21,11 @@ function EventList({ events }) {
       await addPlayer({
         variables: { eventId: id },
       });
+<<<<<<< HEAD
       // console.log(me)
       // console.log(events);
+=======
+>>>>>>> 6d7c9ffb6312a9244186c2ec85e1e3ca28b22a10
     } catch (e) {
       console.error(e);
     }
@@ -33,12 +36,11 @@ function EventList({ events }) {
       await addCommitment({
         variables: { eventId: id },
       });
-      console.log("post-commitment", me)
     } catch (e) {
       console.error(e);
     }
   };
-  console.log(events);
+
 
   const handleEditEvent = async (eventObj) => {
     history.push(`/events/edit/${eventObj._id}`, eventObj);
