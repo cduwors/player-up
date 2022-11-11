@@ -51,7 +51,7 @@ const AddEvent = ({refetch}) => {
 			const { data } = await eventAdd({ variables: { ...eventFormData } });
 			if (data) {
 				refetch();
-				history.push("/profile")
+				history.push("/events")
 			}
 		} catch (err) {
 			console.error(err);
